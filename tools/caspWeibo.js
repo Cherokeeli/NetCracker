@@ -2,6 +2,7 @@
 //微博模块
 //*************************
 //var x = require('casper').selectXPath;
+//var cookies = require('./tool/Cookies');
 
 function getCurrentInfoNum() {return document.querySelectorAll('.card-list div.card').length;}
 
@@ -52,7 +53,8 @@ casper.displayCookies=function() //显示当前cookies
 
 var login = function(USER,PASS) //微博登录
 {
-    //casper.start('http://m.weibo.cn/')
+    try{
+    if (!cookies.checkCookies()) {
     casper.wait(3000, function() {
         this.capture('./data/weibo.png'); //网页打开页面截图
         this.echo(this.getTitle());
@@ -73,7 +75,16 @@ var login = function(USER,PASS) //微博登录
         this.echo(this.getCurrentUrl());  //登录成功标志
         this.capture("./data/login.png");
         casper.displayCookies();
+        cookies.saveCookies();
     }); 
+    } else {
+        casper.reload(function() {
+            this.echo('reload!');
+        });
+    }
+    } catch(err) {
+        console.log(err);
+    }
     return true;
     
 }//caspWeibo.login

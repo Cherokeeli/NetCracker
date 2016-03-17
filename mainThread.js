@@ -9,14 +9,24 @@ var casper = require("casper").create({
 });
 var x = require('casper').selectXPath;
 var weibo = require('./tools/caspWeibo');
+try {
+var cookies = require('./tools/Cookies');}
+catch(err) {
+    console.log(err);
+}
 var USER = '13267241477';
 var PASS = 'ql13530088648';
+var fs = require('fs');
 var messages=[];
 
 
 
 casper.start('http://m.weibo.cn/',function() {
+    try {
     weibo.login(USER,PASS);
+    } catch(err) {
+        this.echo(err);
+    }
 });
 
 casper.thenOpen('http://m.weibo.cn/u/2271625161',function() {
