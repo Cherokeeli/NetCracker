@@ -21,14 +21,15 @@ casper.tryAndScroll = function () {
                 casper.waitFor(function check() {
                     return curItems != this.evaluate(getCurrentInfosNum);
                 }, function then() {
+                    this.wait(2000);
                     this.tryAndScroll();
                 }, function onTimeout() {
                     this.echo("Timout reached,reload");
-                    this.reload();
-                    this.tryAndScroll();
-                }, 20000);
+                    //this.reload();
+                    //this.tryAndScroll();
+                }, 15000);
             } else {
-                this.echo("no more items");
+                this.echo("没有更多项目了");
                 return true;
             }
         } catch (err) {
@@ -40,12 +41,15 @@ function getInnerHTML(selector) {
     console.log('getHTML');
     try {
     var nodes = document.querySelectorAll(selector);
-    } catch(err) {
+        } catch(err) {
         console.log(err);
     }
+
+    console.log(nodes.length);
     return Array.prototype.map.call(nodes, function (e) {
         return e.innerHTML;
     });
+
 }
 
 function getJumpLink(selector) {
@@ -55,14 +59,16 @@ function getJumpLink(selector) {
     } catch(err) {
         console.log(err);
     }
+    console.log(nodes.length);
     return Array.prototype.map.call(nodes, function (e) {
         return e.getAttribute('data-jump');
     });
+
 }
 
-function getMessagesCard() {
+casper.getMessagesCard = function () {
 
-    console.log('GET CARDS');
+    this.echo('GET CARDS');
     var cards = [];
     var tID = [];
     var tauthor = [];
@@ -72,16 +78,20 @@ function getMessagesCard() {
     var tbesend = [];
     var tlike = [];
     var tresend = [];
-        tID = getJumpLink('.card-list div.card'); //获取微博跳转链接
-        tauthor = getInnerHTML('.item-main span'); //微博作者
-        ttime = getInnerHTML('.item-minor span.time'); //发送时间
-        tfrom = getInnerHTML('.item-minor span.from'); //发送设备
-        tmessages = getInnerHTML('.weibo-detail default-content'); //发送内容
-        tbesend = getInnerHTML('a[data-node=forward] em'); //转发数
-        tlike = getInnerHTML('a[data-node=like] em'); //点赞数
-        tresend = getJumpLink('.weibo-detail div.extend-content');
+    casper.then(function() {
+        tauthor = this.evaluate(getInnerHTML,'.item-main span'); //微博作者
+        this.echo(tauthor);
+        ttime = this.evaluate(getInnerHTML,'.item-minor span.time'); //发送时间
+        tfrom = this.evaluate(getInnerHTML,'.item-minor span.from'); //发送设备
+        tmessages = this.evaluate(getInnerHTML,'.weibo-detail p.default-content'); //发送内容
+        tbesend = this.evaluate(getInnerHTML,'a[data-node=forward] em'); //转发数
+        tlike = this.evaluate(getInnerHTML,'a[data-node=like] em'); //点赞数
+        tresend = this.evaluate(getJumpLink,'.weibo-detail div.extend-content');
+        tID = this.evaluate(getJumpLink,'.card-list div.card.card9'); //获取微博跳转链接
+    });
+    casper.then(function(){
     var i = 0;
-    try {
+
     for (i = 0; i < tID.length; i++) {
         console.log(i);
         cards[i] = new Object();
@@ -89,20 +99,16 @@ function getMessagesCard() {
         cards[i].author = tauthor[i]; //微博作者
         cards[i].time = ttime[i]; //发送时间
         cards[i].from = tfrom[i]; //发送设备
-        cards[i].messages = tmessage[i]; //发送内容
-        cards[i].besend = tbesend[i]; //转发数
-        cards[i].like = tlike[i]; //点赞数
+        cards[i].messages = tmessages[i]; //发送内容
+        cards[i].besend = isNaN(tbesend[i])?0:parseInt(tbesend[i]); //转发数
+        cards[i].like = isNaN(tlike[i])?0:parseInt(tlike[i]); //点赞数
         cards[i].resend = tresend[i];
     } //for
-    } catch(err) {
-        console.log(err);
-    }
-    try {
-    JSON.stringify(cards);
-    fs.write('./data/info.json', cards, 644);
-    } catch (err) {
-        console.log(err);
-    }
+        var temp = JSON.stringify(cards);
+    fs.write('./data/info.json', temp, 644);
+    });
+
+
 
 } //getMessagesCard
 
@@ -118,7 +124,7 @@ casper.displayCookies = function () //显示当前cookies
 
 var login = function (USER, PASS) //微博登录
     {
-        try {
+
             if (!cookies.checkCookies()) {
                 casper.wait(3000, function () {
                     this.capture('./data/weibo.png'); //网页打开页面截图
@@ -146,11 +152,13 @@ var login = function (USER, PASS) //微博登录
             } else {
                 casper.reload(function () {
                     this.echo('reload!');
+                    this.wait(2000,function(){
+                        this.capture('./data/reload.png');
+                    });
+
                 });
             }
-        } catch (err) {
-            console.log(err);
-        }
+
         return true;
 
     } //caspWeibo.login
@@ -173,9 +181,9 @@ var getMsg = function () //获取微博消息
             }
         });
         try {
-        casper.wait(5000, function () {
-            getMessagesCard();
-            //this.capture('./data/afterdetail.png');
+        casper.wait(2000, function () {
+            casper.getMessagesCard();
+            this.capture('./data/afterdetail.png');
         }).thenEvaluate(function(){
             console.log('evaluate');
             //getMessagesCard();
