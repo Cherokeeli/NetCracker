@@ -11,7 +11,7 @@ var casper = require("casper").create({
 });
 var x = require('casper').selectXPath;
 try {
-var weibo = require('./tools/caspWeibo');
+    var weibo = require('./tools/caspWeibo');
 
     var cookies = require('./tools/Cookies');
 } catch (err) {
@@ -21,7 +21,9 @@ var USER = '13267241477';
 var PASS = 'ql13530088648';
 var fs = require('fs');
 var messages = [];
-
+var userID;
+//'1793285524';
+//
 
 
 casper.start('http://m.weibo.cn/', function () {
@@ -30,10 +32,17 @@ casper.start('http://m.weibo.cn/', function () {
     } catch (err) {
         this.echo(err);
     }
+    userID = '2271625161';
 });
 
-casper.thenOpen('http://m.weibo.cn/u/2271625161', function () {
-    weibo.getMsg();
+casper.then(function (userID) {
+    try {
+        userID = '2271625161';
+    weibo.getMsg(userID);
+    weibo.getUser(userID);
+    } catch (err) {
+        this.echo(err);
+    }
     //this.echo(this.fetchText('p.default-content'))
     //messages=messages.concat(this.evaluate(casper.getMessages));
 });
