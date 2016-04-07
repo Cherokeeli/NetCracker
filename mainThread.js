@@ -30,14 +30,14 @@ var userID;
 
 
 casper.start('http://m.weibo.cn/', function () {
-    weibo.login(USER, PASS);
+    weibo.login(USER, PASS,casper);
 });
 
 casper.then(function (userID) {
     userID = '5745465725';
     //weibo.getMsg(userID);
     //weibo.getUser(userID);
-    weibo.getFocusUsers(userID);
+    weibo.getFocusUsers(userID,casper);
     //this.echo(this.fetchText('p.default-content'))
     //messages=messages.concat(this.evaluate(casper.getMessages));
 });

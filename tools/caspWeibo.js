@@ -16,7 +16,7 @@
 //var cookies = require('./tool/Cookies');
 
 //**************************************************************
-//                       js原型函数
+//                       js DOM原型函数
 //**************************************************************
 
 function getCurrentInfosNum() {
@@ -57,44 +57,45 @@ function getAttriValue(selector, attribute) {
 //                       casper数据操作
 //**************************************************************
 
-casper.tryAndScroll = function () {
+var tryAndScroll = function (casper) {
         try {
-            this.echo('SCROLL!!');
-            this.scrollToBottom();
-            //var info = this.getElementInfo();
-            //this.wait(500);
-            if (this.exists('div.loading')) {
-                var curItems = this.evaluate(getCurrentInfosNum);
-                this.echo(curItems);
+            casper.echo('SCROLL!!');
+            casper.scrollToBottom();
+            //var info = casper.getElementInfo();
+            //casper.wait(500);
+            if (casper.exists('div.loading')) {
+                var curItems = casper.evaluate(getCurrentInfosNum);
+                casper.echo(curItems);
                 casper.waitFor(function check() {
-                    return curItems != this.evaluate(getCurrentInfosNum);
+                    return curItems != casper.evaluate(getCurrentInfosNum);
                 }, function then() {
-                    this.wait(800);
-                    this.tryAndScroll();
+                    casper.wait(800);
+                    tryAndScroll(casper);
                 }, function onTimeout() {
-                    this.echo("Timout reached,reload");
-                    //this.reload();
-                    //this.tryAndScroll();
+                    casper.echo("Timout reached,reload");
+                    //casper.reload();
+                    //casper.tryAndScroll();
                 }, 15000);
             } else {
-                this.echo("没有更多项目了");
+                casper.echo("没有更多项目了");
                 return true;
             }
         } catch (err) {
-            this.echo(err);
+            casper.echo(err);
         }
     } //casper.tryAndScroll
 
-casper.getAvatarInfo = function () {
-    this.echo('GET Avatar');
-    this.capture('./data/avaInfo.png');
-    var cards = [], value = [];
+var getAvatarInfo = function (casper) {
+    casper.echo('GET Avatar');
+    casper.capture('./data/avaInfo.png');
+    var cards = [],
+        value = [];
     result = new Object();
 
     casper.then(function () {
-        cards = this.evaluate(getInnerHTML, '.item-info-page span');
-        value = this.evaluate(getInnerHTML, '.item-info-page p');
-        result.isVerified = this.exists('./yellow-v') ? 1 : 0;
+        cards = casper.evaluate(getInnerHTML, '.item-info-page span');
+        value = casper.evaluate(getInnerHTML, '.item-info-page p');
+        result.isVerified = casper.exists('./yellow-v') ? 1 : 0;
     });
     casper.then(function () {
         for (x in cards) {
@@ -125,26 +126,26 @@ casper.getAvatarInfo = function () {
                 break;
             }
         }
-        this.echo(JSON.stringify(result, null, '\t'));
+        casper.echo(JSON.stringify(result, null, '\t'));
     });
 
 }
 
-casper.getFocus = function () {
-    this.echo('getFocus');
+var getFocus = function (casper) {
+    casper.echo('GET FOCUS');
     var focus = [];
-    this.capture('./data/focus.png');
+    casper.capture('./data/focus.png');
     focus = casper.evaluate(getAttriValue, '.card.card10 a', 'href');
     for (var x in focus) {
-        var uid="";
+        var uid = "";
         uid = focus[x].split('/');
-        this.echo(uid[2]);
+        casper.echo(uid[2]);
     }
 }
 
-casper.getMessagesCard = function () {
+var getMessagesCard = function (casper) {
 
-        this.echo('GET CARDS');
+        casper.echo('GET CARDS');
         var cards = [];
         var tID = [];
         var tauthor = [];
@@ -155,14 +156,14 @@ casper.getMessagesCard = function () {
         var tlike = [];
         var tresend = [];
         casper.then(function () {
-            tauthor = this.evaluate(getInnerHTML, '.item-main span'); //微博作者
-            ttime = this.evaluate(getInnerHTML, '.item-minor span.time'); //发送时间
-            tfrom = this.evaluate(getInnerHTML, '.item-minor span.from'); //发送设备
-            tmessages = this.evaluate(getInnerHTML, '.weibo-detail p.default-content'); //发送内容
-            tbesend = this.evaluate(getInnerHTML, 'a[data-node=forward] em'); //转发数
-            tlike = this.evaluate(getInnerHTML, 'a[data-node=like] em'); //点赞数
-            tresend = this.evaluate(getAttriValue, '.weibo-detail div.extend-content', 'data-jump');
-            tID = this.evaluate(getAttriValue, '.card-list div.card.card9', 'data-jump'); //获取微博跳转链接
+            tauthor = casper.evaluate(getInnerHTML, '.item-main span'); //微博作者
+            ttime = casper.evaluate(getInnerHTML, '.item-minor span.time'); //发送时间
+            tfrom = casper.evaluate(getInnerHTML, '.item-minor span.from'); //发送设备
+            tmessages = casper.evaluate(getInnerHTML, '.weibo-detail p.default-content'); //发送内容
+            tbesend = casper.evaluate(getInnerHTML, 'a[data-node=forward] em'); //转发数
+            tlike = casper.evaluate(getInnerHTML, 'a[data-node=like] em'); //点赞数
+            tresend = casper.evaluate(getAttriValue, '.weibo-detail div.extend-content', 'data-jump');
+            tID = casper.evaluate(getAttriValue, '.card-list div.card.card9', 'data-jump'); //获取微博跳转链接
         });
         casper.then(function () {
             var i = 0;
@@ -178,7 +179,7 @@ casper.getMessagesCard = function () {
                 cards[i].besend = isNaN(tbesend[i]) ? 0 : parseInt(tbesend[i]); //转发数
                 cards[i].like = isNaN(tlike[i]) ? 0 : parseInt(tlike[i]); //点赞数
                 cards[i].resend = tresend[i];
-                this.echo(JSON.stringify(cards[i], null, '\t'));
+                casper.echo(JSON.stringify(cards[i], null, '\t'));
             } //for
 
             //fs.write('./data/info.json', temp, 644);
@@ -188,7 +189,7 @@ casper.getMessagesCard = function () {
 
     } //getMessagesCard
 
-casper.displayCookies = function () //显示当前cookies
+var displayCookies = function () //显示当前cookies
     {
         console.log('---------------------------------------------------------------');
         var cookies = phantom.cookies;
@@ -201,103 +202,102 @@ casper.displayCookies = function () //显示当前cookies
 //**************************************************************
 //                       主进程调用方法(页面转换跳转操作)
 //**************************************************************
-var login = function (USER, PASS) //微博登录
+var login = function (USER, PASS,casper) //微博登录
     {
 
         if (!cookies.checkCookies()) {
             casper.wait(2000, function () {
-                this.capture('./data/weibo.png'); //网页打开页面截图
-                this.echo(this.getTitle());
-                this.click(x('/html/body/div/div/a[2]')); //点击登录
+                casper.capture('./data/weibo.png'); //网页打开页面截图
+                casper.echo(this.getTitle());
+                casper.click(x('/html/body/div/div/a[2]')); //点击登录
                 casper.displayCookies();
             });
 
             casper.then(function () {
-                this.fillSelectors('form', {
+                casper.fillSelectors('form', {
                     'input[id="loginName"]': USER,
                     'input[id="loginPassword"]': PASS
                 }, false);
 
-                this.click(x('//*[@id="loginAction"]')); //点击登录按钮
+                casper.click(x('//*[@id="loginAction"]')); //点击登录按钮
             });
 
 
             casper.wait(2000, function () {
-                this.echo(this.getCurrentUrl()); //登录成功标志
-                this.capture("./data/login.png");
+                casper.echo(casper.getCurrentUrl()); //登录成功标志
+                casper.capture("./data/login.png");
                 casper.displayCookies();
                 cookies.saveCookies();
             });
         } else {
             casper.reload(function () {
-                this.echo('reload!');
-                this.wait(3000, function () {
-                    this.capture('./data/reload.png');
+                casper.echo('reload!');
+                casper.wait(3000, function () {
+                    casper.capture('./data/reload.png');
                 });
 
             });
         }
-        return true;
+        //return true;
     } //caspWeibo.login
 exports.login = login;
 
-var getMsg = function (userID) //获取微博消息
+var getMsg = function (userID,casper) //获取微博消息
     {
-        var url = 'http://m.weibo.cn/u/'+ userID;
+        var url = 'http://m.weibo.cn/u/' + userID;
         casper.echo(url);
         casper.thenOpen(url);
         casper.waitForText('查看更多微博', function () {
-            this.capture('./data/mainPage.png');
-            this.click('.more-detail a.mct-d');
-            this.wait(1000);
+            casper.capture('./data/mainPage.png');
+            casper.click('.more-detail a.mct-d');
+            casper.wait(1000);
         }).then(function () {
-            this.echo('getmsg');
-            this.capture('./data/detail.png');
+            casper.echo('getmsg');
+            casper.capture('./data/detail.png');
         });
         casper.then(function () {
             try {
-                casper.tryAndScroll();
+                casper.tryAndScroll(casper);
             } catch (err) {
-                this.echo(err);
+                casper.echo(err);
             }
         });
         try {
             casper.wait(2000, function () {
-                casper.getMessagesCard();
-                this.capture('./data/afterdetail.png');
+                casper.getMessagesCard(casper);
+                casper.capture('./data/afterdetail.png');
             }).thenEvaluate(function () {
                 console.log('evaluate');
                 //getMessagesCard();
             });
         } catch (err) {
-            this.echo(err);
+            casper.echo(err);
         }
     }
 exports.getMsg = getMsg;
 
-var getUser = function (userID) //获取用户信息
+var getUser = function (userID,casper) //获取用户信息
     {
-        var url = 'http://m.weibo.cn/users/'+ userID;
+        var url = 'http://m.weibo.cn/users/' + userID;
         casper.echo(url);
         casper.thenOpen(url);
-        casper.then(function() {
-            this.getAvatarInfo()
+        casper.then(function () {
+            casper.getAvatarInfo(casper)
         });
     }
 exports.getUser = getUser;
 
-var getFocusUsers = function(userID)
-{
-    var url = 'http://m.weibo.cn/u/'+ userID;
-        casper.echo(url);
-        casper.thenOpen(url);
-        casper.waitForSelector('.card.card2 .layout-box',function() {
-            this.click('.card.card2 .layout-box a:nth-child(3)')
-        }).wait(2000,function() {
-           casper.tryAndScroll();
-        }).then(function() {
-            casper.getFocus();
-        });
+var getFocusUsers = function (userID,casper) {
+    var url = 'http://m.weibo.cn/u/' + userID;
+    casper.echo(url);
+    casper.thenOpen(url);
+    casper.waitForSelector('.card.card2 .layout-box', function () {
+        casper.click('.card.card2 .layout-box a:nth-child(3)')
+    }).wait(2000, function () {
+        tryAndScroll(casper);
+    }).then(function () {
+        getFocus(casper);
+    });
 }
 exports.getFocusUsers = getFocusUsers;
 //
