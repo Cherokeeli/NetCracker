@@ -257,15 +257,15 @@ var getMsg = function (userID,casper) //获取微博消息
         });
         casper.then(function () {
             try {
-                casper.tryAndScroll(casper);
+                tryAndScroll(casper);
             } catch (err) {
                 casper.echo(err);
             }
         });
         try {
             casper.wait(2000, function () {
-                casper.getMessagesCard(casper);
-                casper.capture('./data/afterdetail.png');
+                getMessagesCard(casper);
+                //casper.capture('./data/afterdetail.png');
             }).thenEvaluate(function () {
                 console.log('evaluate');
                 //getMessagesCard();
@@ -282,7 +282,7 @@ var getUser = function (userID,casper) //获取用户信息
         casper.echo(url);
         casper.thenOpen(url);
         casper.then(function () {
-            casper.getAvatarInfo(casper)
+            getAvatarInfo(casper)
         });
     }
 exports.getUser = getUser;
