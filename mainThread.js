@@ -7,7 +7,10 @@ var casper = require("casper").create({
         loadImages: false,
         loadPlugins: false,
         userAgent: 'Mozilla/5.0 (iPhone; CPU iPhone OS 7_0 like Mac OS X; en-us) AppleWebKit/537.51.1 (KHTML, like Gecko) Version/7.0 Mobile/11A465 Safari/9537.53'
-    }
+    },
+    verbose: true,
+    logLevel: "debug"
+
 });
 var x = require('casper').selectXPath;
 try {
@@ -27,22 +30,14 @@ var userID;
 
 
 casper.start('http://m.weibo.cn/', function () {
-    try {
-        weibo.login(USER, PASS);
-    } catch (err) {
-        this.echo(err);
-    }
-    userID = '2271625161';
+    weibo.login(USER, PASS);
 });
 
 casper.then(function (userID) {
-    try {
-        userID = '2271625161';
-    weibo.getMsg(userID);
-    weibo.getUser(userID);
-    } catch (err) {
-        this.echo(err);
-    }
+    userID = '5745465725';
+    //weibo.getMsg(userID);
+    //weibo.getUser(userID);
+    weibo.getFocusUsers(userID);
     //this.echo(this.fetchText('p.default-content'))
     //messages=messages.concat(this.evaluate(casper.getMessages));
 });

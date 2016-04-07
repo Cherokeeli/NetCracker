@@ -133,11 +133,13 @@ casper.getAvatarInfo = function () {
 casper.getFocus = function () {
     this.echo('getFocus');
     var focus = [];
+    this.capture('./data/focus.png');
     focus = casper.evaluate(getAttriValue, '.card.card10 a', 'href');
-    focus = focus.forEach(function (element, index) {
-        return element.split('/', 2);
-    });
-    return focus;
+    for (var x in focus) {
+        var uid="";
+        uid = focus[x].split('/');
+        this.echo(uid[2]);
+    }
 }
 
 casper.getMessagesCard = function () {
@@ -229,7 +231,7 @@ var login = function (USER, PASS) //微博登录
         } else {
             casper.reload(function () {
                 this.echo('reload!');
-                this.wait(2000, function () {
+                this.wait(3000, function () {
                     this.capture('./data/reload.png');
                 });
 
@@ -283,6 +285,21 @@ var getUser = function (userID) //获取用户信息
         });
     }
 exports.getUser = getUser;
+
+var getFocusUsers = function(userID)
+{
+    var url = 'http://m.weibo.cn/u/'+ userID;
+        casper.echo(url);
+        casper.thenOpen(url);
+        casper.waitForSelector('.card.card2 .layout-box',function() {
+            this.click('.card.card2 .layout-box a:nth-child(3)')
+        }).wait(2000,function() {
+           casper.tryAndScroll();
+        }).then(function() {
+            casper.getFocus();
+        });
+}
+exports.getFocusUsers = getFocusUsers;
 //
 //var getMsgComments = function() //获取微博评论
 //{
