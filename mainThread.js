@@ -2,7 +2,7 @@
 //爬虫主进程casperjs
 //*************************
 
-var casper1 = require("casper").create({
+var msgPage = require("casper").create({
     pageSettings: {
         loadImages: false,
         loadPlugins: false,
@@ -13,7 +13,18 @@ var casper1 = require("casper").create({
 
 });
 
-var casper2 = require("casper").create({
+var focusPage = require("casper").create({
+    pageSettings: {
+        loadImages: false,
+        loadPlugins: false,
+        userAgent: 'Mozilla/5.0 (iPhone; CPU iPhone OS 7_0 like Mac OS X; en-us) AppleWebKit/537.51.1 (KHTML, like Gecko) Version/7.0 Mobile/11A465 Safari/9537.53'
+    },
+    verbose: true,
+    logLevel: "debug"
+
+});
+
+var userPage = require("casper").create({
     pageSettings: {
         loadImages: false,
         loadPlugins: false,
@@ -42,40 +53,36 @@ var userID;
 //
 
 
-casper1.start('http://m.weibo.cn/', function () {
-    weibo.login(USER, PASS,casper1);
-});
-
-casper2.start('http://m.weibo.cn/', function () {
-    //weibo.login(USER, PASS,casper2);
-});
-
-casper1.then(function (userID) {
+msgPage.start('http://m.weibo.cn/', function () {
+    weibo.login(USER, PASS,msgPage);
+}).then(function (userID) {
     userID = '5745465725';
-    weibo.getMsg(userID,casper1);
-    //weibo.getUser(userID,casper);
+    weibo.getMsg(userID,msgPage);
+    //weibo.getUser(userID,msgPage);
     //weibo.getFocusUsers(userID,casper);
     //this.echo(this.fetchText('p.default-content'))
     //messages=messages.concat(this.evaluate(casper.getMessages));
-});
+}).run(function() {});
 
-casper2.then(function (userID) {
+focusPage.start('http://m.weibo.cn/', function () {
+    weibo.login(USER, PASS,focusPage);
+}).then(function (userID) {
     userID = '5745465725';
     //weibo.getMsg(userID,casper);
     //weibo.getUser(userID,casper);
-    weibo.getFocusUsers(userID,casper2);
+    weibo.getFocusUsers(userID,focusPage);
     //this.echo(this.fetchText('p.default-content'))
     //messages=messages.concat(this.evaluate(casper.getMessages));
-});
+}).run(function() {});
 
-casper1.run(function () {
-    //this.echo(messages.length+' messages found:');
-    //this.echo(' - ' + messages.join('\n--------------------\n')).exit();
+userPage.start('http://m.weibo.cn/', function () {
+    weibo.login(USER, PASS,userPage);
+}).then(function (userID) {
+    userID = '5745465725';
+    //weibo.getMsg(userID,casper);
+    weibo.getUser(userID,userPage);
+    //weibo.getFocusUsers(userID,userPage);
+    //this.echo(this.fetchText('p.default-content'))
+    //messages=messages.concat(this.evaluate(casper.getMessages));
+}).run(function() {});
 
-});
-
-casper2.run(function () {
-    //this.echo(messages.length+' messages found:');
-    //this.echo(' - ' + messages.join('\n--------------------\n')).exit();
-
-});
