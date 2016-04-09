@@ -9,9 +9,6 @@
 //
 //*************************
 
-
-
-
 //var x = require('casper').selectXPath;
 //var cookies = require('./tool/Cookies');
 
@@ -85,7 +82,7 @@ var tryAndScroll = function (casper) {
         }
     } //casper.tryAndScroll
 
-var getAvatarInfo = function (casper) {
+var getAvatarInfo = function (casper,callback) {
     //casper.echo('GET Avatar');
     casper.capture('./data/avaInfo.png');
     var cards = [],
@@ -126,24 +123,25 @@ var getAvatarInfo = function (casper) {
                 break;
             }
         }
-        casper.echo(JSON.stringify(result, null, '\t'));
+        //casper.echo(JSON.stringify(result, null, '\t'));
+        callback(result);
     });
-
 }
 
-var getFocus = function (casper) {
+var getFocus = function (casper, callback) {
     //casper.echo('GET FOCUS');
     var focus = [];
     casper.capture('./data/focus.png');
     focus = casper.evaluate(getAttriValue, '.card.card10 a', 'href');
-    for (var x in focus) {
-        var uid = "";
-        uid = focus[x].split('/');
-        casper.echo(uid[2]);
-    }
+    callback(focus);
+//    for (var x in focus) {
+//        var uid = "";
+//        uid = focus[x].split('/');
+//        casper.echo(uid[2]);
+//    }
 }
 
-var getMessagesCard = function (casper) {
+var getMessagesCard = function (casper, callback) {
 
         //casper.echo('GET CARDS');
         var cards = [];
@@ -179,9 +177,9 @@ var getMessagesCard = function (casper) {
                 cards[i].besend = isNaN(tbesend[i]) ? 0 : parseInt(tbesend[i]); //转发数
                 cards[i].like = isNaN(tlike[i]) ? 0 : parseInt(tlike[i]); //点赞数
                 cards[i].resend = tresend[i];
-                casper.echo(JSON.stringify(cards[i], null, '\t'));
+                //casper.echo(JSON.stringify(cards[i], null, '\t'));
             } //for
-
+            callback(cards);
             //fs.write('./data/info.json', temp, 644);
         });
 
@@ -242,7 +240,7 @@ var login = function (USER, PASS, casper) //微博登录
     } //caspWeibo.login
 exports.login = login;
 
-var getMsg = function (userID, casper) //获取微博消息
+var getMsg = function (userID, casper, callback) //获取微博消息
     {
         var url = 'http://m.weibo.cn/u/' + userID;
         //casper.echo(url);
@@ -264,7 +262,9 @@ var getMsg = function (userID, casper) //获取微博消息
         });
         try {
             casper.wait(2000, function () {
-                getMessagesCard(casper);
+                getMessagesCard(casper, function(info) {
+                    callback(info);
+                });
                 //casper.capture('./data/afterdetail.png');
             }).thenEvaluate(function () {
                 console.log('evaluate');
@@ -276,18 +276,22 @@ var getMsg = function (userID, casper) //获取微博消息
     }
 exports.getMsg = getMsg;
 
-var getUser = function (userID, casper) //获取用户信息
+var getUser = function (userID, casper, callback) //获取用户信息
     {
         var url = 'http://m.weibo.cn/users/' + userID;
+        var data;
         //casper.echo(url);
         casper.thenOpen(url);
         casper.then(function () {
-            getAvatarInfo(casper)
+            getAvatarInfo(casper,function(info) {
+                callback(info);
+            });
         });
+
     }
 exports.getUser = getUser;
 
-var getFocusUsers = function (userID, casper) {
+var getFocusUsers = function (userID, casper, callback) {
     var url = 'http://m.weibo.cn/u/' + userID;
     //casper.echo(url);
     casper.thenOpen(url);
@@ -296,10 +300,13 @@ var getFocusUsers = function (userID, casper) {
     }).wait(2000, function () {
         tryAndScroll(casper);
     }).then(function () {
-        getFocus(casper);
+        getFocus(casper, function(info) {
+            callback(info);
+        });
     });
 }
 exports.getFocusUsers = getFocusUsers;
+
 //
 //var getMsgComments = function() //获取微博评论
 //{

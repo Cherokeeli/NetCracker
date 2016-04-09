@@ -56,6 +56,8 @@ var NUM = 0;
 var fs = require('fs');
 var messages = [];
 //'1793285524';
+
+//事件绑定
 function bindThreadListener(casper) {
     casper.on('thread.completed', function () {
         if (NUM == 3)
@@ -63,9 +65,10 @@ function bindThreadListener(casper) {
     });
 }
 
+//检测其他两个线程是否完成
 function checkThreadExit(casper) {
     NUM++;
-    casper.echo(NUM);
+    //casper.echo(NUM);
     casper.emit('thread.completed');
 }
 
@@ -73,21 +76,31 @@ bindThreadListener(msgPage);
 bindThreadListener(focusPage);
 bindThreadListener(userPage);
 
-
+//三个线程开始运行
 msgPage.start(URL, function () {
     weibo.login(USER, PASS, msgPage);
 }).then(function () {
-    weibo.getMsg(UID, msgPage);
+    weibo.getMsg(UID, msgPage, function (info) {
+        for (var x in info) {
+            console.log(JSON.stringify(info[x], null, '\t'));
+        }
+    });
 }).run(checkThreadExit, msgPage);
 
 focusPage.start(URL, function () {
     weibo.login(USER, PASS, focusPage);
 }).then(function () {
-    weibo.getFocusUsers(UID, focusPage);
+    weibo.getFocusUsers(UID, focusPage, function (info) {
+        for (var x in info) {
+            console.log(info[x]);
+        }
+    });
 }).run(checkThreadExit, focusPage);
 
 userPage.start(URL, function () {
     weibo.login(USER, PASS, userPage);
 }).then(function () {
-    weibo.getUser(UID, userPage);
+    weibo.getUser(UID, userPage, function (info) {
+        console.log(JSON.stringify(info, null, '\t'));
+    });
 }).run(checkThreadExit, userPage);
