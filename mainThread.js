@@ -40,13 +40,11 @@ var userPage = require("casper").create({
 
 
 var x = require('casper').selectXPath;
-try {
-    var weibo = require('./tools/caspWeibo');
+var weibo = require('./tools/caspWeibo');
+var cookies = require('./tools/Cookies');
+var socketConnect = require('./tools/ioHub.js');
+var ws = new WebSocket("ws://127.0.0.1:2000/socket");
 
-    var cookies = require('./tools/Cookies');
-} catch (err) {
-    console.log(err);
-}
 var USER = '13267241477';
 var PASS = 'ql13530088648';
 var URL = 'http://m.weibo.cn/';
@@ -56,6 +54,7 @@ var NUM = 0;
 var fs = require('fs');
 var messages = [];
 //'1793285524';
+var _PID;
 
 //事件绑定
 function bindThreadListener(casper) {
@@ -72,18 +71,19 @@ function checkThreadExit(casper) {
     casper.emit('thread.completed');
 }
 
-bindThreadListener(msgPage);
+bindThreadListener(msgPage); //页面监听器绑定
 bindThreadListener(focusPage);
 bindThreadListener(userPage);
+socketConnect.sockMan(function(getpid) {
+    _PID = getpid;
+});  //socket监听器ban绑定
 
 //三个线程开始运行
 msgPage.start(URL, function () {
     weibo.login(USER, PASS, msgPage);
 }).then(function () {
     weibo.getMsg(UID, msgPage, function (info) {
-        for (var x in info) {
-            console.log(JSON.stringify(info[x], null, '\t'));
-        }
+        socketConnect.socketSend(info,"messages",_PID);
     });
 }).run(checkThreadExit, msgPage);
 
@@ -91,9 +91,7 @@ focusPage.start(URL, function () {
     weibo.login(USER, PASS, focusPage);
 }).then(function () {
     weibo.getFocusUsers(UID, focusPage, function (info) {
-        for (var x in info) {
-            console.log(info[x]);
-        }
+        socketConnect.socketSend(info,"focus",_PID);
     });
 }).run(checkThreadExit, focusPage);
 
@@ -101,6 +99,6 @@ userPage.start(URL, function () {
     weibo.login(USER, PASS, userPage);
 }).then(function () {
     weibo.getUser(UID, userPage, function (info) {
-        console.log(JSON.stringify(info, null, '\t'));
+        socketConnect.socketSend(info,"user",_PID);
     });
 }).run(checkThreadExit, userPage);
