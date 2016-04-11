@@ -1,4 +1,4 @@
-var socketMan = function (pid) {
+var socketMan = function (pid,callback) {
 
     ws.onopen = function (evt) {
         console.log("[WEBSOCKET]Thread socket opened.");

@@ -8,9 +8,9 @@ var msgPage = require("casper").create({
         loadPlugins: false,
         userAgent: 'Mozilla/5.0 (iPhone; CPU iPhone OS 7_0 like Mac OS X; en-us) AppleWebKit/537.51.1 (KHTML, like Gecko) Version/7.0 Mobile/11A465 Safari/9537.53'
     }
-//    ,
-//    verbose: true,
-//    logLevel: "debug"
+    //    ,
+    //    verbose: true,
+    //    logLevel: "debug"
 
 });
 
@@ -20,9 +20,9 @@ var focusPage = require("casper").create({
         loadPlugins: false,
         userAgent: 'Mozilla/5.0 (iPhone; CPU iPhone OS 7_0 like Mac OS X; en-us) AppleWebKit/537.51.1 (KHTML, like Gecko) Version/7.0 Mobile/11A465 Safari/9537.53'
     }
-//    ,
-//    verbose: true,
-//    logLevel: "debug"
+    //    ,
+    //    verbose: true,
+    //    logLevel: "debug"
 
 });
 
@@ -32,9 +32,9 @@ var userPage = require("casper").create({
         loadPlugins: false,
         userAgent: 'Mozilla/5.0 (iPhone; CPU iPhone OS 7_0 like Mac OS X; en-us) AppleWebKit/537.51.1 (KHTML, like Gecko) Version/7.0 Mobile/11A465 Safari/9537.53'
     }
-//    ,
-//    verbose: true,
-//    logLevel: "debug"
+    //    ,
+    //    verbose: true,
+    //    logLevel: "debug"
 
 });
 
@@ -61,6 +61,7 @@ var self_PID = 1;
 function bindThreadListener(casper) {
     casper.on('thread.completed', function () {
         if (NUM == 3)
+            this.echo("sending END signal");
             ws.send("{PID:" + pid + ",type:END");
     });
 }
@@ -68,42 +69,46 @@ function bindThreadListener(casper) {
 //检测其他两个线程是否完成
 function checkThreadExit(casper) {
     NUM++;
-    casper.echo("Thread:"+NUM);
+    casper.echo("Thread:" + NUM);
     casper.emit('thread.completed');
 }
 
 bindThreadListener(msgPage); //页面监听器绑定
 bindThreadListener(focusPage);
 bindThreadListener(userPage);
-try {
-    socketConnect.socketMan(self_PID); //socket监听器绑定
-} catch(err) {
-    console.log(err);
-}
+
 
 
 //三个线程开始运行
-msgPage.start(URL, function () {
-    weibo.login(USER, PASS, msgPage);
-}).then(function () {
-    weibo.getMsg(UID, msgPage, function (info) {
-        socketConnect.socketSend(info, "messages", self_PID);
-    });
-}).run(checkThreadExit, msgPage);
+function startScraping(UID) {
+    msgPage.start(URL, function () {
+        weibo.login(USER, PASS, msgPage);
+    }).then(function () {
+        weibo.getMsg(UID, msgPage, function (info) {
+            socketConnect.socketSend(info, "messages", self_PID);
+        });
+    }).run(checkThreadExit, msgPage);
 
-focusPage.start(URL, function () {
-    weibo.login(USER, PASS, focusPage);
-}).then(function () {
-    weibo.getFocusUsers(UID, focusPage, function (info) {
-        socketConnect.socketSend(info, "focus", self_PID);
-    });
-}).run(checkThreadExit, focusPage);
+    focusPage.start(URL, function () {
+        weibo.login(USER, PASS, focusPage);
+    }).then(function () {
+        weibo.getFocusUsers(UID, focusPage, function (info) {
+            socketConnect.socketSend(info, "focus", self_PID);
+        });
+    }).run(checkThreadExit, focusPage);
 
-userPage.start(URL, function () {
-    weibo.login(USER, PASS, userPage);
-}).then(function () {
-    weibo.getUser(UID, userPage, function (info) {
-        socketConnect.socketSend(info, "user", self_PID);
-        userPage.echo(JSON.stringify(info, null, '\t'));
-    });
-}).run(checkThreadExit, userPage);
+    userPage.start(URL, function () {
+        weibo.login(USER, PASS, userPage);
+    }).then(function () {
+        weibo.getUser(UID, userPage, function (info) {
+            socketConnect.socketSend(info, "user", self_PID);
+            //userPage.echo(JSON.stringify(info, null, '\t'));
+        });
+    }).run(checkThreadExit, userPage);
+}
+
+startScraping(UID);
+
+//socketConnect.socketMan(self_PID, function (UID) {
+//    startScraping(UID);
+//}); //socket监听器绑定

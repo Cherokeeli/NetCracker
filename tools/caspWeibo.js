@@ -91,8 +91,8 @@ var getAvatarInfo = function (casper,callback) {
 
     casper.then(function () {
         try {
-        cards = casper.evaluate(getInnerHTML, '.item-info-page span');
-        value = casper.evaluate(getInnerHTML, '.item-info-page p');
+        cards = casper.evaluate(getInnerHTML, 'div.item-info-page span');
+        value = casper.evaluate(getInnerHTML, 'div.item-info-page p');
         } catch(err) {
             this.echo(err);
         }
@@ -127,7 +127,7 @@ var getAvatarInfo = function (casper,callback) {
                 break;
             }
         }
-        //casper.echo(JSON.stringify(result, null, '\t'));
+        casper.echo(JSON.stringify(result, null, '\t'));
         callback(result);
     });
 }
