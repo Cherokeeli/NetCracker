@@ -56,13 +56,13 @@ function getAttriValue(selector, attribute) {
 
 var tryAndScroll = function (casper) {
         try {
-            //casper.echo('SCROLL!!');
+            casper.echo('SCROLL!!');
             casper.scrollToBottom();
             //var info = casper.getElementInfo();
             //casper.wait(500);
             if (casper.exists('div.loading')) {
                 var curItems = casper.evaluate(getCurrentInfosNum);
-                //casper.echo(curItems);
+                casper.echo(curItems);
                 casper.waitFor(function check() {
                     return curItems != casper.evaluate(getCurrentInfosNum);
                 }, function then() {
@@ -74,7 +74,7 @@ var tryAndScroll = function (casper) {
                     //casper.tryAndScroll();
                 }, 15000);
             } else {
-                //casper.echo("没有更多项目了");
+                casper.echo("没有更多项目了");
                 return true;
             }
         } catch (err) {
@@ -83,16 +83,20 @@ var tryAndScroll = function (casper) {
     } //casper.tryAndScroll
 
 var getAvatarInfo = function (casper,callback) {
-    //casper.echo('GET Avatar');
+    casper.echo('GET Avatar');
     casper.capture('./data/avaInfo.png');
     var cards = [],
         value = [];
     result = new Object();
 
     casper.then(function () {
+        try {
         cards = casper.evaluate(getInnerHTML, '.item-info-page span');
         value = casper.evaluate(getInnerHTML, '.item-info-page p');
-        result.isVerified = casper.exists('./yellow-v') ? 1 : 0;
+        } catch(err) {
+            this.echo(err);
+        }
+        result.isVerified = casper.exists('.yellow-v') ? 1 : 0;
     });
     casper.then(function () {
         for (x in cards) {
@@ -129,7 +133,7 @@ var getAvatarInfo = function (casper,callback) {
 }
 
 var getFocus = function (casper, callback) {
-    //casper.echo('GET FOCUS');
+    casper.echo('GET FOCUS');
     var focus = [];
     casper.capture('./data/focus.png');
     focus = casper.evaluate(getAttriValue, '.card.card10 a', 'href');
@@ -138,12 +142,13 @@ var getFocus = function (casper, callback) {
         var uid = "";
         uid = focus[x].split('/');
         focus[x] = uid[2];
+        casper.echo(focus[x]);
     }
 }
 
 var getMessagesCard = function (casper, callback) {
 
-        //casper.echo('GET CARDS');
+        casper.echo('GET CARDS');
         var cards = [];
         var tID = [];
         var tauthor = [];
@@ -177,7 +182,7 @@ var getMessagesCard = function (casper, callback) {
                 cards[i].besend = isNaN(tbesend[i]) ? 0 : parseInt(tbesend[i]); //转发数
                 cards[i].like = isNaN(tlike[i]) ? 0 : parseInt(tlike[i]); //点赞数
                 cards[i].resend = tresend[i];
-                //casper.echo(JSON.stringify(cards[i], null, '\t'));
+                casper.echo(JSON.stringify(cards[i], null, '\t'));
             } //for
             callback(cards);
             //fs.write('./data/info.json', temp, 644);
@@ -243,14 +248,14 @@ exports.login = login;
 var getMsg = function (userID, casper, callback) //获取微博消息
     {
         var url = 'http://m.weibo.cn/u/' + userID;
-        //casper.echo(url);
+        casper.echo(url);
         casper.thenOpen(url);
         casper.waitForText('查看更多微博', function () {
             casper.capture('./data/mainPage.png');
             casper.click('.more-detail a.mct-d');
             casper.wait(1000);
         }).then(function () {
-            //casper.echo('getmsg');
+            casper.echo('getmsg');
             casper.capture('./data/detail.png');
         });
         casper.then(function () {
@@ -280,7 +285,7 @@ var getUser = function (userID, casper, callback) //获取用户信息
     {
         var url = 'http://m.weibo.cn/users/' + userID;
         var data;
-        //casper.echo(url);
+        casper.echo(url);
         casper.thenOpen(url);
         casper.then(function () {
             getAvatarInfo(casper,function(info) {
@@ -293,7 +298,7 @@ exports.getUser = getUser;
 
 var getFocusUsers = function (userID, casper, callback) {
     var url = 'http://m.weibo.cn/u/' + userID;
-    //casper.echo(url);
+    casper.echo(url);
     casper.thenOpen(url);
     casper.waitForSelector('.card.card2 .layout-box', function () {
         casper.click('.card.card2 .layout-box a:nth-child(3)')
