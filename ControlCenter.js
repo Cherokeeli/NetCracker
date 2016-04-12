@@ -40,6 +40,7 @@ function myWorkerFork(num) {
         } // for
 
     } else {
+        console.log("create replace worker");
         for (var i = 0; i < num; i++) {
             (function (i) {
                 if (worker_list[i].isAlive == 0) {

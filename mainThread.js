@@ -58,13 +58,13 @@ var self_PID = msgPage.cli.get(0);
 
 
 //事件绑定
-function bindThreadListener(casper,UID) {
+function bindThreadListener(casper,PID) {
     casper.echo('begin listen');
     casper.on('thread.completed', function () {
         if (NUM == 3) {
             //this.exit(1);
             this.echo("[WEBSOCKET]sending END signal");
-            socket.sendWs(0,'END',UID);
+            socket.sendWs(0,'END',PID);
         }
     });
 }
@@ -111,9 +111,9 @@ function startScraping(UID) {
 
 
 socket.createWs(self_PID,function(UID) {
-    bindThreadListener(msgPage,UID); //页面监听器绑定
-    bindThreadListener(focusPage,UID);
-    bindThreadListener(userPage,UID);
+    bindThreadListener(msgPage,self_PID); //页面监听器绑定
+    bindThreadListener(focusPage,self_PID);
+    bindThreadListener(userPage,self_PID);
     startScraping(UID);
 });
 
