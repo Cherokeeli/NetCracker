@@ -212,7 +212,7 @@ var login = function (USER, PASS, casper) //微博登录
             casper.wait(2000, function () {
                 casper.capture('./data/weibo.png'); //网页打开页面截图
                 casper.echo(this.getTitle());
-                casper.click(x('/html/body/div/div/a[2]')); //点击登录
+                casper.click('.action a:nth-child(2)'); //点击登录
                 casper.displayCookies();
             });
 

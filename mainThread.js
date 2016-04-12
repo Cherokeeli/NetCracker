@@ -8,9 +8,9 @@ var msgPage = require("casper").create({
         loadPlugins: false,
         userAgent: 'Mozilla/5.0 (iPhone; CPU iPhone OS 7_0 like Mac OS X; en-us) AppleWebKit/537.51.1 (KHTML, like Gecko) Version/7.0 Mobile/11A465 Safari/9537.53'
     }
-    //    ,
-    //    verbose: true,
-    //    logLevel: "debug"
+        ,
+        verbose: true,
+        logLevel: "debug"
 
 });
 
@@ -20,9 +20,9 @@ var focusPage = require("casper").create({
         loadPlugins: false,
         userAgent: 'Mozilla/5.0 (iPhone; CPU iPhone OS 7_0 like Mac OS X; en-us) AppleWebKit/537.51.1 (KHTML, like Gecko) Version/7.0 Mobile/11A465 Safari/9537.53'
     }
-    //    ,
-    //    verbose: true,
-    //    logLevel: "debug"
+        ,
+        verbose: true,
+        logLevel: "debug"
 
 });
 
@@ -32,9 +32,9 @@ var userPage = require("casper").create({
         loadPlugins: false,
         userAgent: 'Mozilla/5.0 (iPhone; CPU iPhone OS 7_0 like Mac OS X; en-us) AppleWebKit/537.51.1 (KHTML, like Gecko) Version/7.0 Mobile/11A465 Safari/9537.53'
     }
-    //    ,
-    //    verbose: true,
-    //    logLevel: "debug"
+        ,
+        verbose: true,
+        logLevel: "debug"
 
 });
 
@@ -80,7 +80,6 @@ bindThreadListener(userPage);
 
 
 //三个线程开始运行
-function startScraping(UID) {
     msgPage.start(URL, function () {
         weibo.login(USER, PASS, msgPage);
     }).then(function () {
@@ -102,12 +101,11 @@ function startScraping(UID) {
     }).then(function () {
         weibo.getUser(UID, userPage, function (info) {
             socketConnect.socketSend(info, "user", self_PID);
-            //userPage.echo(JSON.stringify(info, null, '\t'));
+            console.log(JSON.stringify(info, null, '\t'));
         });
     }).run(checkThreadExit, userPage);
-}
 
-startScraping(UID);
+//startScraping(UID);
 
 //socketConnect.socketMan(self_PID, function (UID) {
 //    startScraping(UID);
