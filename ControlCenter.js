@@ -35,6 +35,7 @@ function myWorkerFork(num) {
                 worker_list[i] = new Object();
                 worker_list[i].worker = child;
                 worker_list[i].isAlive = 1;
+                console.log(worker_list[i].worker.pid);
             })(i);
         } // for
 
@@ -64,8 +65,8 @@ function taskDistribute(ws) {
 
 function taskKill(pid) {
     console.log("PID:" + pid + " killed");
-    worker_list[message.pid].worker.kill();
-    worker_list[message.pid].isAlive = 0;
+    worker_list[pid].worker.kill();
+    worker_list[pid].isAlive = 0;
 }
 
 function resolveMessages(message, ws) {
@@ -77,7 +78,7 @@ function resolveMessages(message, ws) {
         console.log("Worker:" + message.PID + " task got");
         break;
     case "END":
-        taskKill(message.pid);
+        taskKill(message.PID);
         break;
     case "messages":
         addDataPool(message);

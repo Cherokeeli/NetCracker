@@ -48,7 +48,7 @@ var socket = require('./tools/ioHub');
 var USER = '13267241477';
 var PASS = 'ql13530088648';
 var URL = 'http://m.weibo.cn/';
-var UID = '5745465725';
+var UID;
 var NUM = 0;
 
 var fs = require('fs');
@@ -58,11 +58,14 @@ var self_PID = msgPage.cli.get(0);
 
 
 //事件绑定
-function bindThreadListener(casper) {
+function bindThreadListener(casper,UID) {
+    casper.echo('begin listen');
     casper.on('thread.completed', function () {
-        if (NUM == 3)
-            this.echo("sending END signal");
-            ws.send("{PID:" + pid + ",type:END");
+        if (NUM == 3) {
+            //this.exit(1);
+            this.echo("[WEBSOCKET]sending END signal");
+            socket.sendWs(0,'END',UID);
+        }
     });
 }
 
@@ -73,9 +76,9 @@ function checkThreadExit(casper) {
     casper.emit('thread.completed');
 }
 
-bindThreadListener(msgPage); //页面监听器绑定
-bindThreadListener(focusPage);
-bindThreadListener(userPage);
+
+//bindThreadListener(focusPage);
+//bindThreadListener(userPage);
 
 
 
@@ -108,6 +111,9 @@ function startScraping(UID) {
 
 
 socket.createWs(self_PID,function(UID) {
+    bindThreadListener(msgPage,UID); //页面监听器绑定
+    bindThreadListener(focusPage,UID);
+    bindThreadListener(userPage,UID);
     startScraping(UID);
 });
 
