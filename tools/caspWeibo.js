@@ -137,14 +137,14 @@ var getFocus = function (casper, callback) {
     var focus = [];
     var final = [];
     casper.capture('./data/focus.png');
-    focus = casper.evaluate(getAttriValue, '.card.card10 a', 'href');
+    focus = casper.evaluate(getAttriValue, '.card.card10 a:nth-child(2)', 'href');
     for (var x in focus) {
         var uid = "";
         uid = focus[x].split('/');
         final[x] = uid[2];
-        casper.echo(focus[x]);
+        casper.echo(final[x]);
     }
-    callback(focus);
+    callback(final);
 }
 
 var getMessagesCard = function (casper, callback) {

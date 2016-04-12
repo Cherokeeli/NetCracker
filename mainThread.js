@@ -102,7 +102,6 @@ function startScraping(UID) {
     }).then(function () {
         weibo.getUser(UID, userPage, function (info) {
             socket.sendWs(info, "user", self_PID);
-            //console.log(JSON.stringify(info, null, '\t'));
         });
     }).run(checkThreadExit, userPage);
 }
