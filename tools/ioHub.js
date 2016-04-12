@@ -1,8 +1,10 @@
-var socketMan = function (pid,callback) {
+var ws = undefined
+var createWs = function (pid,callback) {
+    ws = new WebSocket("ws://localhost:2000/socket");
 
     ws.onopen = function (evt) {
         console.log("[WEBSOCKET]Thread socket opened.");
-        ws.send("{PID:"+pid+",type:OPEN");
+        ws.send('{"PID":'+pid+',"type":"OPEN"}');
     };
 
     ws.onclose = function (evt) {
@@ -13,16 +15,16 @@ var socketMan = function (pid,callback) {
         console.log("[WEBSOCKET]Received uid[" + evt.data + "]");
         //ws.send(evt.data);
         callback(evt.data);
-        ws.send("{PID:"+pid+",type:GET");
+        ws.send('{"PID":'+pid+',"type":"GET"}');
     };
 
     ws.onerror = function (evt) {
         console.log("[WEBSOCKET]Error." + evt.data);
     };
 };
-exports.socketMan = socketMan;
+exports.createWs = createWs;
 
-var socketSend = function (msg, options, pid) {
+var sendWs = function (msg, options, pid) {
     var Transporter = new Object();
     Transporter.PID = pid;
     Transporter.type = options;
@@ -30,4 +32,4 @@ var socketSend = function (msg, options, pid) {
     console.log("[WEBSOCKET]Begin to sending data...")
     ws.send(JSON.stringify(Transporter));
 }
-exports.socketSend = socketSend;
+exports.sendWs = sendWs;

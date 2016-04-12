@@ -135,15 +135,16 @@ var getAvatarInfo = function (casper,callback) {
 var getFocus = function (casper, callback) {
     casper.echo('GET FOCUS');
     var focus = [];
+    var final = [];
     casper.capture('./data/focus.png');
     focus = casper.evaluate(getAttriValue, '.card.card10 a', 'href');
-    callback(focus);
     for (var x in focus) {
         var uid = "";
         uid = focus[x].split('/');
-        focus[x] = uid[2];
+        final[x] = uid[2];
         casper.echo(focus[x]);
     }
+    callback(focus);
 }
 
 var getMessagesCard = function (casper, callback) {
