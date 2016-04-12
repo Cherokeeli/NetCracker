@@ -251,9 +251,9 @@ var getMsg = function (userID, casper, callback) //获取微博消息
         var url = 'http://m.weibo.cn/u/' + userID;
         casper.echo(url);
         casper.thenOpen(url);
-        casper.waitForText('查看更多微博', function () {
+        casper.waitForSelector('.card.card2 .layout-box', function () {
             casper.capture('./data/mainPage.png');
-            casper.click('.more-detail a.mct-d');
+            casper.click('.card.card2 .layout-box a:nth-child(2)');
             casper.wait(1000);
         }).then(function () {
             casper.echo('getmsg');
