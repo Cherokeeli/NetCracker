@@ -16,14 +16,11 @@ module.exports = {
 
     store: function(msg) {
         var length = msg.length;
-        Array.prototype.push.apply(uid_set, msg);
+        Array.prototype.push.apply(uid_set, msg); //合并两个数组
         for(var i = 0; i < length; i++)
             cann_restore.push(0);
-        //var zeroArray = new Int8Array(length);
-        //console.log(zeroArray);
-        //cann_restore.push(zeroArray);
-        console.log("push into pool");
-        console.log("now pool is");
-        console.log(cann_restore);
+        //console.log("push into pool");
+        //console.log("now pool is");
+        //console.log(cann_restore);
     }
 }

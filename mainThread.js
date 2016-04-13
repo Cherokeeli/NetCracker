@@ -38,6 +38,32 @@ var userPage = require("casper").create({
 
 });
 
+msgPage.options.onWaitTimeout = function(timeout, details) {
+    var selector = details.selector.type === 'xpath' ?
+            details.selector.path : details.selector;
+    this.echo("Wait timed out after " + timeout + " msec with selector: " + selector);
+    socket.sendWs(0, "TIMEOUT", self_PID);
+};
+
+focusPage.options.onWaitTimeout = function(timeout, details) {
+    var selector = details.selector.type === 'xpath' ?
+            details.selector.path : details.selector;
+    this.echo("Wait timed out after " + timeout + " msec with selector: " + selector);
+    socket.sendWs(0, "TIMEOUT", self_PID);
+
+};
+
+userPage.options.onWaitTimeout = function(timeout, details) {
+    var selector = details.selector.type === 'xpath' ?
+            details.selector.path : details.selector;
+    this.echo("Wait timed out after " + timeout + " msec with selector: " + selector);
+    socket.sendWs(0, "TIMEOUT", self_PID);
+};
+
+msgPage.options.onTimeout = function(timeout) {
+    socket.sendWs(0, "TIMEOUT", self_PID);
+}
+
 
 var x = require('casper').selectXPath;
 var weibo = require('./tools/caspWeibo');

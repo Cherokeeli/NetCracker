@@ -1,6 +1,7 @@
 var filter = require('./tools/uidFilter');
 var execFile = require('child_process').execFile;
 var log4js = require('log4js');
+var util = require('util');
 log4js.configure({
     "appenders": [
         {
@@ -22,8 +23,8 @@ log4js.configure({
     }
 });
 
-var state = 'casperjs'
-var thread = 'mainThread.js';
+var state = 'casperjs'; //启动命令
+var thread = 'mainThread.js'; //进程文件
 
 var fs = require('fs');
 var NUM_OF_WORKERS = 3;
@@ -62,11 +63,11 @@ function myWorkerFork(num) {
         } // for
 
     } else {
-        console.log("check fork");
+        //console.log("check fork");
         for (var i = 0; i < NUM_OF_WORKERS; i++) {
             (function (i) {
                 if (worker_list[i].isAlive == 0) {
-                    console.log("create replace worker PID:" + i);
+                    console.log("Create replace worker PID:" + i);
                     child = execFile(state, [thread, i]);
                     child.stdout.on('data', function (data) {
                         console.log('PID ' + i + ':' + data);
@@ -96,11 +97,11 @@ function addDataPool(message) {
 function taskDistribute(ws) {
     var task = filter.restore();
     if (task == undefined) {
-        setTimeout(function(){
+        setTimeout(function () {
             taskDistribute(ws);
         }, 30000);
     } else {
-        console.log("task distributed:" + task);
+        console.log("Task distributed:" + task);
         ws.send(task);
     }
     //return task;
@@ -108,7 +109,7 @@ function taskDistribute(ws) {
 
 function taskKill(pid) {
     console.log("PID:" + pid + " killed");
-    worker_list[pid].worker.kill();
+    worker_list[pid].worker.kill('SIGKILL');
     worker_list[pid].isAlive = 0;
 }
 
@@ -122,6 +123,8 @@ function resolveMessages(message, ws) {
         break;
     case "END":
         taskKill(message.PID);
+        break;
+    case "TIMEOUT":
         break;
     case "messages":
         addDataPool(message);
@@ -139,9 +142,13 @@ function resolveMessages(message, ws) {
 myWorkerFork(NUM_OF_WORKERS);
 
 wss.on('connection', function connection(ws) {
-    ws.on('message', function incoming(message) {
-        var parMessage = JSON.parse(message)
-        console.log('[WEBSOCKET]Received: %s', message);
+    ws.on('message', function incoming(messages) {
+        var parMessage = JSON.parse(messages);
+        if (util.isArray(parMessage.data)) {
+            console.log('[WEBSOCKET]Received: '+parMessage.data.length+' '+parMessage.type);
+        } else {
+            console.log('[WEBSOCKET]Received: '+parMessage.type);
+        }
         resolveMessages(parMessage, ws);
         myWorkerFork(0);
     });

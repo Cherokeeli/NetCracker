@@ -69,12 +69,11 @@ var tryAndScroll = function (casper) {
                     casper.wait(800);
                     tryAndScroll(casper);
                 }, function onTimeout() {
-                    casper.echo("Timout reached,reload");
-                    //casper.reload();
-                    //casper.tryAndScroll();
+                    casper.echo("Scroll Timout");
+                    socket.sendWs(0, "TIMEOUT", self_PID);
                 }, 15000);
             } else {
-                casper.echo("没有更多项目了");
+                casper.echo("No more items");
                 return true;
             }
         } catch (err) {
@@ -127,7 +126,7 @@ var getAvatarInfo = function (casper,callback) {
                 break;
             }
         }
-        casper.echo(JSON.stringify(result, null, '\t'));
+        //casper.echo(JSON.stringify(result, null, '\t'));
         callback(result);
     });
 }
@@ -142,7 +141,7 @@ var getFocus = function (casper, callback) {
         var uid = "";
         uid = focus[x].split('/');
         final[x] = uid[2];
-        casper.echo(final[x]);
+        //casper.echo(final[x]);
     }
     callback(final);
 }
@@ -183,7 +182,7 @@ var getMessagesCard = function (casper, callback) {
                 cards[i].besend = isNaN(tbesend[i]) ? 0 : parseInt(tbesend[i]); //转发数
                 cards[i].like = isNaN(tlike[i]) ? 0 : parseInt(tlike[i]); //点赞数
                 cards[i].resend = tresend[i];
-                casper.echo(JSON.stringify(cards[i], null, '\t'));
+                //casper.echo(JSON.stringify(cards[i], null, '\t'));
             } //for
             callback(cards);
             //fs.write('./data/info.json', temp, 644);
@@ -288,7 +287,7 @@ var getUser = function (userID, casper, callback) //获取用户信息
         var data;
         casper.echo(url);
         casper.thenOpen(url);
-        casper.then(function () {
+        casper.waitForSelector('.list-info-page',function () {
             getAvatarInfo(casper,function(info) {
                 callback(info);
             });
