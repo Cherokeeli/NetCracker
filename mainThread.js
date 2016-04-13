@@ -117,6 +117,3 @@ socket.createWs(self_PID,function(UID) {
     startScraping(UID);
 });
 
-//socketConnect.socketMan(self_PID, function (UID) {
-//    startScraping(UID);
-//}); //socket监听器绑定

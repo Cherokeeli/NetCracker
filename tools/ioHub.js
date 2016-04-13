@@ -31,5 +31,6 @@ var sendWs = function (msg, options, pid) {
     Transporter.data = msg;
     console.log("[WEBSOCKET]Begin to sending data...")
     ws.send(JSON.stringify(Transporter));
+    delete msg; //清空对象，释放内存
 }
 exports.sendWs = sendWs;

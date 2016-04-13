@@ -1,5 +1,5 @@
-var uid_set = ['5894256487','5428286619','5622122976','5684434457'];
-var cann_restore= [0,0,0,0];
+var uid_set = ['5894256487'];
+var cann_restore= [0];
 
 module.exports = {
     restore: function() {
@@ -16,12 +16,14 @@ module.exports = {
 
     store: function(msg) {
         var length = msg.length;
-        uid_set.push(msg);
-        var zeroArray = new Int8Array(length);
-        cann_restore.push(zeroArray);
+        Array.prototype.push.apply(uid_set, msg);
+        for(var i = 0; i < length; i++)
+            cann_restore.push(0);
+        //var zeroArray = new Int8Array(length);
+        //console.log(zeroArray);
+        //cann_restore.push(zeroArray);
         console.log("push into pool");
         console.log("now pool is");
-        for(var i = 0; i < uid_set.length; i++)
-            console.log(uid_set[i]+",");
+        console.log(cann_restore);
     }
 }

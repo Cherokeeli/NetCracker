@@ -1,9 +1,31 @@
 var filter = require('./tools/uidFilter');
 var execFile = require('child_process').execFile;
+var log4js = require('log4js');
+log4js.configure({
+    "appenders": [
+        {
+            "type": "console",
+            "category": "console"
+            },
+        {
+            "category": "log_file",
+            "type": "console",
+            "filename": "./log/workerEmitter.log",
+            "maxLogSize": 104800,
+            "backups": 100
+            }
+        ],
+    "replaceConsole": true,
+    "levels": {
+        "log_file": "ALL",
+        "console": "ALL",
+    }
+});
+
 var state = 'casperjs'
 var thread = 'mainThread.js';
 
-var fs=require('fs');
+var fs = require('fs');
 var NUM_OF_WORKERS = 3;
 var worker_list = [];
 
@@ -20,15 +42,15 @@ function myWorkerFork(num) {
             (function (i) {
                 child = execFile(state, [thread, i]);
                 child.stdout.on('data', function (data) {
-                    console.log('stdout PID ' + i + ':' + data);
+                    console.log('PID ' + i + ':' + data);
                     //Here is where the output goes
                 });
                 child.stderr.on('data', function (data) {
-                    console.log('stdout PID ' + i + ':' + data);
+                    console.log('PID ' + i + ':' + data);
                     //Here is where the error output goes
                 });
                 child.on('close', function (code) {
-                    console.log('stdout PID ' + i + ':' + code);
+                    console.log('PID ' + i + ':' + code);
                     //Here you can get the exit code of the script
                 });
                 console.log("spawn process " + i);
@@ -47,15 +69,15 @@ function myWorkerFork(num) {
                     console.log("create replace worker PID:" + i);
                     child = execFile(state, [thread, i]);
                     child.stdout.on('data', function (data) {
-                        console.log('stdout PID ' + i + ':' + data);
+                        console.log('PID ' + i + ':' + data);
                         //Here is where the output goes
                     });
                     child.stderr.on('data', function (data) {
-                        console.log('stdout PID ' + i + ':' + data);
+                        console.log('PID ' + i + ':' + data);
                         //Here is where the error output goes
                     });
                     child.on('close', function (code) {
-                        console.log('stdout PID ' + i + ':' + code);
+                        console.log('PID ' + i + ':' + code);
                         //Here you can get the exit code of the script
                     });
                     worker_list[i].worker = child;
@@ -73,9 +95,15 @@ function addDataPool(message) {
 
 function taskDistribute(ws) {
     var task = filter.restore();
-
-    console.log("task distributed:" + task);
-    ws.send(task);
+    if (task == undefined) {
+        setTimeout(function(){
+            taskDistribute(ws);
+        }, 30000);
+    } else {
+        console.log("task distributed:" + task);
+        ws.send(task);
+    }
+    //return task;
 }
 
 function taskKill(pid) {
