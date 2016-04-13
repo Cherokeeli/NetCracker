@@ -2,9 +2,9 @@ var filter = require('./tools/uidFilter');
 var execFile = require('child_process').execFile;
 var state = 'casperjs'
 var thread = 'mainThread.js';
-const cluster = require('cluster'); //负载均衡模块
-var numCPUs = require('os').cpus().length; //cpu核心数量
-var NUM_OF_WORKERS = 1;
+
+var fs=require('fs');
+var NUM_OF_WORKERS = 3;
 var worker_list = [];
 
 var WebSocketServer = require('ws').Server,
@@ -20,15 +20,15 @@ function myWorkerFork(num) {
             (function (i) {
                 child = execFile(state, [thread, i]);
                 child.stdout.on('data', function (data) {
-                    console.log('stdout: ' + data);
+                    console.log('stdout PID ' + i + ':' + data);
                     //Here is where the output goes
                 });
                 child.stderr.on('data', function (data) {
-                    console.log('stdout: ' + data);
+                    console.log('stdout PID ' + i + ':' + data);
                     //Here is where the error output goes
                 });
                 child.on('close', function (code) {
-                    console.log('closing code: ' + code);
+                    console.log('stdout PID ' + i + ':' + code);
                     //Here you can get the exit code of the script
                 });
                 console.log("spawn process " + i);
@@ -40,12 +40,26 @@ function myWorkerFork(num) {
         } // for
 
     } else {
-        console.log("create replace worker");
-        for (var i = 0; i < num; i++) {
+        console.log("check fork");
+        for (var i = 0; i < NUM_OF_WORKERS; i++) {
             (function (i) {
                 if (worker_list[i].isAlive == 0) {
+                    console.log("create replace worker PID:" + i);
                     child = execFile(state, [thread, i]);
+                    child.stdout.on('data', function (data) {
+                        console.log('stdout PID ' + i + ':' + data);
+                        //Here is where the output goes
+                    });
+                    child.stderr.on('data', function (data) {
+                        console.log('stdout PID ' + i + ':' + data);
+                        //Here is where the error output goes
+                    });
+                    child.on('close', function (code) {
+                        console.log('stdout PID ' + i + ':' + code);
+                        //Here you can get the exit code of the script
+                    });
                     worker_list[i].worker = child;
+                    worker_list[i].isAlive = 1;
                 }
             })(i);
         } // for
