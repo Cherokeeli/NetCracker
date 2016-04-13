@@ -1,5 +1,5 @@
 var filter = require('./tools/uidFilter');
-var execFile = require('child_process').execFile;
+var spawn = require('child_process').spawn;
 var log4js = require('log4js');
 var util = require('util');
 log4js.configure({
@@ -41,7 +41,7 @@ function myWorkerFork(num) {
 
         for (var i = 0; i < num; i++) {
             (function (i) {
-                child = execFile(state, [thread, i]);
+                child = spawn(state, [thread, i]);
                 child.stdout.on('data', function (data) {
                     console.log('PID ' + i + ':' + data);
                     //Here is where the output goes
@@ -54,7 +54,7 @@ function myWorkerFork(num) {
                     console.log('PID ' + i + ':' + code);
                     //Here you can get the exit code of the script
                 });
-                console.log("spawn process " + i);
+                console.log("Spawn process " + i);
                 worker_list[i] = new Object();
                 worker_list[i].worker = child;
                 worker_list[i].isAlive = 1;
@@ -68,7 +68,7 @@ function myWorkerFork(num) {
             (function (i) {
                 if (worker_list[i].isAlive == 0) {
                     console.log("Create replace worker PID:" + i);
-                    child = execFile(state, [thread, i]);
+                    child = spawn(state, [thread, i]);
                     child.stdout.on('data', function (data) {
                         console.log('PID ' + i + ':' + data);
                         //Here is where the output goes
@@ -109,7 +109,7 @@ function taskDistribute(ws) {
 
 function taskKill(pid) {
     console.log("PID:" + pid + " killed");
-    worker_list[pid].worker.kill('SIGKILL');
+    worker_list[pid].worker.kill();
     worker_list[pid].isAlive = 0;
 }
 
