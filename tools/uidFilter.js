@@ -1,5 +1,5 @@
-var uid_set = ['5894256487'];
-var cann_restore= [0];
+var uid_set = ['5894256487','5745465725','1914100420','1553184325','2138405303'];
+var cann_restore= [0,0,0,0,0];
 
 module.exports = {
     restore: function() {
