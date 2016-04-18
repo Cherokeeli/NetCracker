@@ -13,8 +13,9 @@
 //var cookies = require('./tool/Cookies');
 
 //**************************************************************
-//                       js DOM原型函数
+//                       js DOM原型函数 sync
 //**************************************************************
+
 
 function getCurrentInfosNum() {
     return document.querySelectorAll('.card-list div.card').length;
@@ -53,10 +54,16 @@ function getAttriValue(selector, attribute) {
 //**************************************************************
 //                       casper数据操作
 //**************************************************************
+var getRandomWait = function (casper, min, max) {
+    var time = 1000 * Math.random() * (max - min) + min;
+    casper.wait(time);
+}
+
 
 var tryAndScroll = function (casper) {
         try {
             casper.echo('SCROLL!!');
+            casper.echo(casper.getCurrentUrl());
             casper.scrollToBottom();
             //var info = casper.getElementInfo();
             //casper.wait(500);
@@ -66,12 +73,11 @@ var tryAndScroll = function (casper) {
                 casper.waitFor(function check() {
                     return curItems != casper.evaluate(getCurrentInfosNum);
                 }, function then() {
-                    casper.wait(800);
+                    getRandomWait(casper, 1, 5);
                     tryAndScroll(casper);
                 }, function onTimeout() {
-                    casper.echo("Scroll Timout");
-                    socket.sendWs(0, "TIMEOUT", self_PID);
-                }, 15000);
+                    casper.emit('scroll.timeout', curItems);
+                }, 40 * 1000);
             } else {
                 casper.echo("No more items");
                 return true;
@@ -81,7 +87,7 @@ var tryAndScroll = function (casper) {
         }
     } //casper.tryAndScroll
 
-var getAvatarInfo = function (casper,callback) {
+var getAvatarInfo = function (casper, callback) {
     casper.echo('GET Avatar');
     casper.capture('./data/avaInfo.png');
     var cards = [],
@@ -90,9 +96,9 @@ var getAvatarInfo = function (casper,callback) {
 
     casper.then(function () {
         try {
-        cards = casper.evaluate(getInnerHTML, 'div.item-info-page span');
-        value = casper.evaluate(getInnerHTML, 'div.item-info-page p');
-        } catch(err) {
+            cards = casper.evaluate(getInnerHTML, 'div.item-info-page span');
+            value = casper.evaluate(getInnerHTML, 'div.item-info-page p');
+        } catch (err) {
             this.echo(err);
         }
         result.isVerified = casper.exists('.yellow-v') ? 1 : 0;
@@ -203,8 +209,12 @@ var displayCookies = function () //显示当前cookies
     } //casper.displayCookies
 
 //**************************************************************
-//                       主进程调用方法(页面转换跳转操作)
+//                       主进程调用方法(页面转换跳转操作) async
 //**************************************************************
+function urlCheckout(url1, url2, callback) {
+    url1 == url2 ? callback(1) : callback(0);
+}
+
 var login = function (USER, PASS, casper) //微博登录
     {
 
@@ -248,36 +258,43 @@ exports.login = login;
 var getMsg = function (userID, casper, callback) //获取微博消息
     {
         var url = 'http://m.weibo.cn/u/' + userID;
+        var checkURL, totalMsg;
         casper.echo(url);
         casper.thenOpen(url);
-        casper.waitForSelector('.card.card2 .layout-box', function () {
+        getRandomWait(casper, 2, 16);
+        casper.waitForSelector('.card.card2 .layout-box', function then() {
             casper.capture('./data/mainPage.png');
+            checkURL = casper.evaluate(getAttriValue, '.card.card2.line-around .layout-box a:nth-child(2)', 'href');
+            totalMsg = casper.evaluate(getInnerHTML, '.card.card2.line-around .layout-box a:nth-child(2) div.mct-a.txt-s');
             casper.click('.card.card2 .layout-box a:nth-child(2)');
-            casper.wait(1000);
-        }).then(function () {
+            getRandomWait(casper, 1, 4);
+        }, function onTimeout() {
+            casper.emit('waitselector.timeout', self_PID);
+        }, 15000).then(function () {
             casper.echo('getmsg');
             casper.capture('./data/detail.png');
         });
         casper.then(function () {
-            try {
-                tryAndScroll(casper);
-            } catch (err) {
-                casper.echo(err);
-            }
-        });
-        try {
-            casper.wait(2000, function () {
-                getMessagesCard(casper, function(info) {
-                    callback(info);
-                });
-                //casper.capture('./data/afterdetail.png');
-            }).thenEvaluate(function () {
-                console.log('evaluate');
-                //getMessagesCard();
+            this.echo(this.getCurrentUrl() + " \t" + decodeURI(checkURL[0]));
+            urlCheckout(decodeURI(checkURL[0]), this.getCurrentUrl(), function (yes) {
+                if (yes)
+                    tryAndScroll(casper);
+                else
+                    casper.emit('url.jumpout', self_PID);
             });
-        } catch (err) {
-            casper.echo(err);
-        }
+
+        });
+
+        casper.then(function () {
+            getMessagesCard(casper, function (info) {
+                casper.echo("Get " + info.length + "/" + totalMsg + "Msg");
+                callback(info);
+            });
+            //casper.capture('./data/afterdetail.png');
+        }).thenEvaluate(function () {
+            console.log('evaluate');
+            //getMessagesCard();
+        });
     }
 exports.getMsg = getMsg;
 
@@ -285,27 +302,46 @@ var getUser = function (userID, casper, callback) //获取用户信息
     {
         var url = 'http://m.weibo.cn/users/' + userID;
         var data;
+        var checkURL;
         casper.echo(url);
         casper.thenOpen(url);
-        casper.waitForSelector('.list-info-page',function () {
-            getAvatarInfo(casper,function(info) {
+        getRandomWait(casper, 2, 16);
+        casper.waitForSelector('.list-info-page', function then() {
+            getAvatarInfo(casper, function (info) {
                 callback(info);
             });
-        });
+        }, function onTimeout() {
+            casper.emit('waitselector.timeout', self_PID);
+        }, 30 * 1000);
 
     }
 exports.getUser = getUser;
 
 var getFocusUsers = function (userID, casper, callback) {
     var url = 'http://m.weibo.cn/u/' + userID;
+    var checkURL, totalFocus;
     casper.echo(url);
     casper.thenOpen(url);
-    casper.waitForSelector('.card.card2 .layout-box', function () {
-        casper.click('.card.card2 .layout-box a:nth-child(3)')
-    }).wait(2000, function () {
-        tryAndScroll(casper);
+    getRandomWait(casper, 2, 16);
+    casper.waitForSelector('.card.card2 .layout-box', function then() {
+        checkURL = casper.evaluate(getAttriValue, '.card.card2 .layout-box a:nth-child(3)', 'href');
+        totalFocus = casper.evaluate(getInnerHTML, '.card.card2 .layout-box a:nth-child(3) div.mct-a.txt-s');
+        casper.click('.card.card2 .layout-box a:nth-child(3)');
+    }, function onTimeout() {
+        casper.emit('waitselector.timeout', self_PID);
+    }, 30 * 1000).wait(2000, function () {
+        this.echo(this.getCurrentUrl() + " \t" + checkURL[0]);
+        urlCheckout(checkURL[0], this.getCurrentUrl(), function (yes) {
+            if (yes)
+                tryAndScroll(casper);
+            else
+                casper.emit('url.jumpout', self_PID);
+        });
+
+
     }).then(function () {
-        getFocus(casper, function(info) {
+        getFocus(casper, function (info) {
+            casper.echo("Get " + info.length + "/" + totalFocus + "focus");
             callback(info);
         });
     });

@@ -26,7 +26,7 @@ log4js.configure({
 var state = 'casperjs'; //启动命令
 var thread = 'mainThread.js'; //进程文件
 
-var NUM_OF_WORKERS = 5;
+var NUM_OF_WORKERS = 4;
 var worker_list = [];
 
 var MongoClient = require('mongodb').MongoClient;
@@ -62,6 +62,7 @@ function myWorkerFork(num) {
                 worker_list[i] = new Object();
                 worker_list[i].worker = child;
                 worker_list[i].isAlive = 1;
+                worker_list[i].job = [];
                 console.log(worker_list[i].worker.pid);
             })(i);
         } // for
@@ -101,7 +102,7 @@ var insertDocument = function (db, message, callback) {
             console.log("Inserted a document into the Weibo_Messages collection.");
             callback();
         });
-    } else if (message.type == "user"){
+    } else if (message.type == "user") {
         db.collection('User_Info').insertOne(message.data, function (err, result) {
             assert.equal(err, null);
             console.log("Inserted a document into the User_Info collection.");
@@ -139,6 +140,7 @@ function taskKill(pid) {
     worker_list[pid].isAlive = 0;
 }
 
+
 function resolveMessages(message, ws) {
     switch (message.type) {
     case "OPEN":
@@ -146,11 +148,22 @@ function resolveMessages(message, ws) {
         break;
     case "GET":
         console.log("Worker:" + message.PID + " task got");
+        worker_list[message.PID].job.push(message.data);
         break;
     case "END":
         taskKill(message.PID);
         break;
-    case "TIMEOUT":
+    case "WTIMEOUT":
+        filter.store(worker_list[message.PID].job);
+        taskKill(message.PID);
+        break;
+    case "JUMPOUT":
+        setTimeout(function () {
+            filter.store(worker_list[message.PID].job);
+            taskKill(message.PID);
+        },60*60*1000);
+        break;
+    case "MSGNONE":
         break;
     case "messages":
         addDataPool(message);
