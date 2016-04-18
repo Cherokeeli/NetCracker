@@ -1,10 +1,10 @@
 var ws = undefined
-var createWs = function (pid,callback) {
+var createWs = function (pid, callback) {
     ws = new WebSocket("ws://localhost:2000/socket");
 
     ws.onopen = function (evt) {
         console.log("[WEBSOCKET]Thread socket opened.");
-        ws.send('{"PID":'+pid+',"type":"OPEN"}');
+        ws.send('{"PID":' + pid + ',"type":"OPEN"}');
     };
 
     ws.onclose = function (evt) {
@@ -15,7 +15,7 @@ var createWs = function (pid,callback) {
         console.log("[WEBSOCKET]Received uid[" + evt.data + "]");
         //ws.send(evt.data);
         callback(evt.data);
-        ws.send('{"PID":'+pid+',"type":"GET"}');
+        ws.send('{"PID":' + pid + ',"type":"GET","data":"'+evt.data+'"}');
     };
 
     ws.onerror = function (evt) {
@@ -25,12 +25,17 @@ var createWs = function (pid,callback) {
 exports.createWs = createWs;
 
 var sendWs = function (msg, options, pid) {
-    var Transporter = new Object();
-    Transporter.PID = pid;
-    Transporter.type = options;
-    Transporter.data = msg;
-    console.log("[WEBSOCKET]Begin to sending data...")
-    ws.send(JSON.stringify(Transporter));
-    delete msg; //清空对象，释放内存
+    if (msg != undefined && msg.length != 0) {
+        var Transporter = new Object();
+        Transporter.PID = pid;
+        Transporter.type = options;
+        Transporter.data = msg;
+        console.log("[WEBSOCKET]Begin to sending data...")
+        ws.send(JSON.stringify(Transporter));
+        delete msg; //清空对象，释放内存
+    } else {
+        console.log('Message receive none');
+        ws.send('{"PID":' + pid + ',"type":"END"}');
+    }
 }
 exports.sendWs = sendWs;
