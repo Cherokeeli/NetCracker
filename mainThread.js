@@ -3,11 +3,11 @@
 //*************************
 
 function getRandomArbitrary(min, max) {
-  return Math.random() * (max - min) + min;
+    return Math.random() * (max - min) + min;
 }
 
 function getRandomWait(min, max) {
-    return 1000*Math.random() * (max - min) + min;
+    return 1000 * Math.random() * (max - min) + min;
 }
 
 var userAgentPool = [
@@ -27,11 +27,9 @@ var msgPage = require("casper").create({
         loadPlugins: false,
         userAgent: userAgentPool[0]
     }
-        ,
-//        verbose: true,
-//        logLevel: "debug",
-    retryTimeout: 2000
-
+    //        ,
+    //        verbose: true,
+    //        logLevel: "debug"
 });
 
 var focusPage = require("casper").create({
@@ -40,11 +38,9 @@ var focusPage = require("casper").create({
         loadPlugins: false,
         userAgent: userAgentPool[0]
     }
-    ,
-//        verbose: true,
-//        logLevel: "debug",
-    retryTimeout: 2000
-
+    //    ,
+    //        verbose: true,
+    //        logLevel: "debug"
 });
 
 var userPage = require("casper").create({
@@ -53,10 +49,9 @@ var userPage = require("casper").create({
         loadPlugins: false,
         userAgent: userAgentPool[0]
     }
-        ,
-//        verbose: true,
-//        logLevel: "debug",
-    retryTimeout: 2000
+    //        ,
+    //        verbose: true,
+    //        logLevel: "debug"
 });
 
 //msgPage.options.onWaitTimeout = function(timeout, details) {
@@ -123,13 +118,13 @@ var self_PID = msgPage.cli.get(0);
 
 
 //事件绑定
-function bindThreadListener(casper,PID) {
+function bindThreadListener(casper, PID) {
     casper.echo('begin listen');
     casper.on('thread.completed', function () {
         if (NUM == 3) {
             //this.exit(1);
             this.echo("[WEBSOCKET]sending END signal");
-            socket.sendWs(0,'END',PID);
+            socket.sendWs(0, 'END', PID);
         }
     });
 }
@@ -178,10 +173,16 @@ function startScraping(UID) {
 }
 
 
-socket.createWs(self_PID,function(UID) {
-    bindThreadListener(msgPage,self_PID); //页面监听器绑定
-    bindThreadListener(focusPage,self_PID);
-    bindThreadListener(userPage,self_PID);
-    startScraping(UID);
+socket.createWs(self_PID, function (UID) {
+    if (UID == "COOL") {
+        msgPage.echo("COOL DOWNING, PLEASE WAIT FOR 15 MINUTES");
+        msgPage.wait(15*60*1000);
+        focusPage.wait(15*60*1000);
+        userPage.wait(15*60*1000);
+    } else {
+        bindThreadListener(msgPage, self_PID); //页面监听器绑定
+        bindThreadListener(focusPage, self_PID);
+        bindThreadListener(userPage, self_PID);
+        startScraping(UID);
+    }
 });
-

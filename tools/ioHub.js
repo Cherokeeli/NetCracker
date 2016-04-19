@@ -19,7 +19,10 @@ var createWs = function (pid, callback) {
     };
 
     ws.onerror = function (evt) {
-        console.log("[WEBSOCKET]Error." + evt.data);
+        console.log("[WEBSOCKET]Error. Retry connected" + evt.data);
+        setTimeout(function() {
+            createWs(pid);
+        },5000);
     };
 };
 exports.createWs = createWs;

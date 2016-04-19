@@ -47,20 +47,24 @@ var saveCookies = function () {
     return true;
 }
 
-casper.start('https://m.weibo.cn/', function () {
-    displayCookies();
-    this.then(function () {
-        this.click('.action a:nth-child(2)');
-    }).then(function () {
-        this.fillSelectors('form', {
-            'input[id="loginName"]': USER,
-            'input[id="loginPassword"]': PASS
-        }, false);
-    }).then(function () {
-        this.click(x('//*[@id="loginAction"]'));
-    }).then(function() {
-        saveCookies();
-    })
+var updateCookies = function () {
+    casper.start('https://m.weibo.cn/', function () {
+        displayCookies();
+        this.then(function () {
+            this.click('.action a:nth-child(2)');
+        }).then(function () {
+            this.fillSelectors('form', {
+                'input[id="loginName"]': USER,
+                'input[id="loginPassword"]': PASS
+            }, false);
+        }).then(function () {
+            this.click(x('//*[@id="loginAction"]'));
+        }).then(function () {
+            saveCookies();
+        })
 
-});
-casper.run(function () {});
+    });
+    casper.run(function () {});
+}
+
+updateCookies();

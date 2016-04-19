@@ -23,7 +23,7 @@ function getCurrentInfosNum() {
 
 
 function getInnerHTML(selector) {
-    console.log('getHTML');
+    //console.log('getHTML');
     try {
         var nodes = document.querySelectorAll(selector);
     } catch (err) {
@@ -38,7 +38,7 @@ function getInnerHTML(selector) {
 }
 
 function getAttriValue(selector, attribute) {
-    console.log('getAttributeValue');
+    //console.log('getAttributeValue');
     try {
         var nodes = document.querySelectorAll(selector);
     } catch (err) {
@@ -261,7 +261,7 @@ var getMsg = function (userID, casper, callback) //获取微博消息
         var checkURL, totalMsg;
         casper.echo(url);
         casper.thenOpen(url);
-        getRandomWait(casper, 2, 16);
+        getRandomWait(casper, 5, 16);
         casper.waitForSelector('.card.card2 .layout-box', function then() {
             casper.capture('./data/mainPage.png');
             checkURL = casper.evaluate(getAttriValue, '.card.card2.line-around .layout-box a:nth-child(2)', 'href');
@@ -275,7 +275,7 @@ var getMsg = function (userID, casper, callback) //获取微博消息
             casper.capture('./data/detail.png');
         });
         casper.then(function () {
-            this.echo(this.getCurrentUrl() + " \t" + decodeURI(checkURL[0]));
+            this.echo("CURRENT:" + this.getCurrentUrl() + " \t EXPECTED:" + decodeURI(checkURL[0]));
             urlCheckout(decodeURI(checkURL[0]), this.getCurrentUrl(), function (yes) {
                 if (yes)
                     tryAndScroll(casper);
@@ -305,7 +305,7 @@ var getUser = function (userID, casper, callback) //获取用户信息
         var checkURL;
         casper.echo(url);
         casper.thenOpen(url);
-        getRandomWait(casper, 2, 16);
+        getRandomWait(casper, 5, 16);
         casper.waitForSelector('.list-info-page', function then() {
             getAvatarInfo(casper, function (info) {
                 callback(info);
@@ -322,7 +322,7 @@ var getFocusUsers = function (userID, casper, callback) {
     var checkURL, totalFocus;
     casper.echo(url);
     casper.thenOpen(url);
-    getRandomWait(casper, 2, 16);
+    getRandomWait(casper, 5, 16);
     casper.waitForSelector('.card.card2 .layout-box', function then() {
         checkURL = casper.evaluate(getAttriValue, '.card.card2 .layout-box a:nth-child(3)', 'href');
         totalFocus = casper.evaluate(getInnerHTML, '.card.card2 .layout-box a:nth-child(3) div.mct-a.txt-s');
@@ -330,7 +330,7 @@ var getFocusUsers = function (userID, casper, callback) {
     }, function onTimeout() {
         casper.emit('waitselector.timeout', self_PID);
     }, 30 * 1000).wait(2000, function () {
-        this.echo(this.getCurrentUrl() + " \t" + checkURL[0]);
+        this.echo("CURRENT:" + this.getCurrentUrl() + " \t EXPECTED:" + checkURL[0]);
         urlCheckout(checkURL[0], this.getCurrentUrl(), function (yes) {
             if (yes)
                 tryAndScroll(casper);
