@@ -2,6 +2,17 @@ var filter = require('./tools/uidFilter');
 var spawn = require('child_process').spawn;
 var log4js = require('log4js');
 var util = require('util');
+//var cook = require('./CookieCollector');
+const EventEmitter = require('events');
+
+function CoolDown() {
+    EventEmitter.call(this);
+}
+util.inherits(CoolDown, EventEmitter);
+
+const cooldown = new CoolDown();
+
+
 log4js.configure({
     "appenders": [
         {
@@ -26,18 +37,32 @@ log4js.configure({
 var state = 'casperjs'; //启动命令
 var thread = 'mainThread.js'; //进程文件
 
-var NUM_OF_WORKERS = 4;
+var NUM_OF_WORKERS = 3;
 var worker_list = [];
+var NumOfUser = 1;
 
 var MongoClient = require('mongodb').MongoClient;
 var assert = require('assert');
-var url = 'mongodb://localhost:27017/Weibo';
+var url = 'mongodb://localhost:27017/WeiboTest';
 
 
 var WebSocketServer = require('ws').Server,
     wss = new WebSocketServer({
         port: 2000
     });
+
+wss.broadcast = function broadcast(data) {
+    wss.clients.forEach(function each(client) {
+        client.send(data);
+    });
+};
+
+cooldown.on('cool.down', () => {
+    if (NumOfUser % 20 == 1 && NumOfUser != 1) {
+        wss.broadcast("COOL");
+    }
+});
+
 
 function myWorkerFork(num) {
     var child;
@@ -145,6 +170,8 @@ function resolveMessages(message, ws) {
     switch (message.type) {
     case "OPEN":
         taskDistribute(ws);
+        NumOfUser++;
+        cooldown.emit('cool.down');
         break;
     case "GET":
         console.log("Worker:" + message.PID + " task got");
@@ -161,7 +188,7 @@ function resolveMessages(message, ws) {
         setTimeout(function () {
             filter.store(worker_list[message.PID].job);
             taskKill(message.PID);
-        },60*60*1000);
+        }, 5 * 60 * 1000);
         break;
     case "MSGNONE":
         break;
@@ -177,19 +204,24 @@ function resolveMessages(message, ws) {
         break;
     }
 }
-
+//cook.updateCookies();
 myWorkerFork(NUM_OF_WORKERS);
+//setInterval(cook.updateCookies,10*(60*60*1000));
+//module.exports = {
+    //start: function () {
+        wss.on('connection', function connection(ws) {
+            ws.on('message', function incoming(messages) {
+                var parMessage = JSON.parse(messages);
+                if (util.isArray(parMessage.data)) {
+                    console.log('[WEBSOCKET]Received: ' + parMessage.data.length + ' ' + parMessage.type);
+                } else {
+                    console.log('[WEBSOCKET]Received: ' + parMessage.type);
+                }
+                resolveMessages(parMessage, ws);
+                myWorkerFork(0);
+            });
+            //ws.send('something');
+        });
 
-wss.on('connection', function connection(ws) {
-    ws.on('message', function incoming(messages) {
-        var parMessage = JSON.parse(messages);
-        if (util.isArray(parMessage.data)) {
-            console.log('[WEBSOCKET]Received: ' + parMessage.data.length + ' ' + parMessage.type);
-        } else {
-            console.log('[WEBSOCKET]Received: ' + parMessage.type);
-        }
-        resolveMessages(parMessage, ws);
-        myWorkerFork(0);
-    });
-    //ws.send('something');
-});
+    //}//start
+//}
