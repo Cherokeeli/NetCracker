@@ -62,8 +62,7 @@ var getRandomWait = function (casper, min, max) {
 
 var tryAndScroll = function (casper) {
         try {
-            casper.echo('SCROLL!!');
-            casper.echo(casper.getCurrentUrl());
+            casper.echo('SCROLL '+casper.getCurrentUrl()+'!!');
             casper.scrollToBottom();
             //var info = casper.getElementInfo();
             //casper.wait(500);
@@ -261,7 +260,10 @@ var getMsg = function (userID, casper, callback) //获取微博消息
         var checkURL, totalMsg;
         casper.echo(url);
         casper.thenOpen(url);
-        getRandomWait(casper, 5, 16);
+
+        casper.then(function () {
+            getRandomWait(casper, 5, 16);
+        });
         casper.waitForSelector('.card.card2 .layout-box', function then() {
             casper.capture('./data/mainPage.png');
             checkURL = casper.evaluate(getAttriValue, '.card.card2.line-around .layout-box a:nth-child(2)', 'href');
@@ -305,7 +307,10 @@ var getUser = function (userID, casper, callback) //获取用户信息
         var checkURL;
         casper.echo(url);
         casper.thenOpen(url);
-        getRandomWait(casper, 5, 16);
+        casper.then(function () {
+            getRandomWait(casper, 5, 16);
+
+        });
         casper.waitForSelector('.list-info-page', function then() {
             getAvatarInfo(casper, function (info) {
                 callback(info);
@@ -322,8 +327,10 @@ var getFocusUsers = function (userID, casper, callback) {
     var checkURL, totalFocus;
     casper.echo(url);
     casper.thenOpen(url);
-    getRandomWait(casper, 5, 16);
-    casper.waitForSelector('.card.card2 .layout-box', function then() {
+    //getRandomWait(casper, 5, 16);
+    casper.then(function () {
+        getRandomWait(casper, 5, 16);
+    }).waitForSelector('.card.card2 .layout-box', function then() {
         checkURL = casper.evaluate(getAttriValue, '.card.card2 .layout-box a:nth-child(3)', 'href');
         totalFocus = casper.evaluate(getInnerHTML, '.card.card2 .layout-box a:nth-child(3) div.mct-a.txt-s');
         casper.click('.card.card2 .layout-box a:nth-child(3)');

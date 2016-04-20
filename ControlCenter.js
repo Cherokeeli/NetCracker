@@ -37,7 +37,7 @@ log4js.configure({
 var state = 'casperjs'; //启动命令
 var thread = 'mainThread.js'; //进程文件
 
-var NUM_OF_WORKERS = 3;
+var NUM_OF_WORKERS = 2;
 var worker_list = [];
 var NumOfUser = 1;
 
@@ -58,7 +58,7 @@ wss.broadcast = function broadcast(data) {
 };
 
 cooldown.on('cool.down', () => {
-    if (NumOfUser % 20 == 1 && NumOfUser != 1) {
+    if (NumOfUser % 30 == 0) {
         wss.broadcast("COOL");
     }
 });

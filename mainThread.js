@@ -174,15 +174,8 @@ function startScraping(UID) {
 
 
 socket.createWs(self_PID, function (UID) {
-    if (UID == "COOL") {
-        msgPage.echo("COOL DOWNING, PLEASE WAIT FOR 15 MINUTES");
-        msgPage.wait(15*60*1000);
-        focusPage.wait(15*60*1000);
-        userPage.wait(15*60*1000);
-    } else {
         bindThreadListener(msgPage, self_PID); //页面监听器绑定
         bindThreadListener(focusPage, self_PID);
         bindThreadListener(userPage, self_PID);
         startScraping(UID);
-    }
 });
