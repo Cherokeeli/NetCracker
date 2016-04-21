@@ -5,15 +5,14 @@ function getNowTime() {
     return d;
 }
 
+
 exports.configure = function (casper) {
 
 
     casper.on('scroll.timeout', function (NumOfLoaded) {
-        var now = casper.evaluate(getNowTime);
-        this.echo("Scroll Timeout,get " + NumOfLoaded + " items,reScroll");
-        this.wait(2000, function () {
+            var now = casper.evaluate(getNowTime);
+            this.echo("Scroll Timeout,get " + NumOfLoaded + " items");
             this.capture('./data/scrollTimeout ' + now + '.png');
-        });
     });
 
     casper.on('waitselector.timeout', function (self_PID) {
@@ -22,7 +21,7 @@ exports.configure = function (casper) {
         this.wait(2000, function () {
             this.capture('./data/waitSelectorTimeout ' + now + '.png');
         });
-        //socket.sendWs(0, "WTIMEOUT", self_PID);
+        socket.sendWs(0, "WTIMEOUT", self_PID);
 
     });
 
@@ -33,11 +32,11 @@ exports.configure = function (casper) {
             this.capture('./data/URLjumpout ' + now + '.png');
         });
 
-        //socket.sendWs(0, "JUMPOUT", self_PID);
+        socket.sendWs(0, "JUMPOUT", self_PID);
     });
 
     casper.on('message.none', function (self_PID) {
-        //socket.sendWs(0, "MSGNONE", self_PID);
+        socket.sendWs(0, "MSGNONE", self_PID);
         this.echo("Receive Msg length zero");
     });
 
@@ -45,13 +44,13 @@ exports.configure = function (casper) {
         this.echo("Console: " + msg);
     });
 
-    casper.on("page.error", function (msg, trace) {
-        this.echo("Error: " + msg);
-    });
-
-//    casper.on("resource.error", function (resourceError) {
-//        this.echo("ResourceError: " + JSON.stringify(resourceError, undefined, 4));
+//    casper.on("page.error", function (msg, trace) {
+//        this.echo("Error: " + msg);
 //    });
+
+    //    casper.on("resource.error", function (resourceError) {
+    //        this.echo("ResourceError: " + JSON.stringify(resourceError, undefined, 4));
+    //    });
 
     // http://docs.casperjs.org/en/latest/events-filters.html#page-initialized
     casper.on("page.initialized", function (page) {

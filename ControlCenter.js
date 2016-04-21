@@ -5,7 +5,7 @@ var util = require('util');
 //var cook = require('./CookieCollector');
 const EventEmitter = require('events');
 var fs = require('fs');
-var user_index = 0;
+var user_index = 1;
 
 function CoolDown() {
     EventEmitter.call(this);
@@ -39,13 +39,13 @@ log4js.configure({
 var state = 'casperjs'; //启动命令
 var thread = 'mainThread.js'; //进程文件
 
-var NUM_OF_WORKERS = 1;
+var NUM_OF_WORKERS = 2;
 var worker_list = [];
 var NumOfUser = 1;
 
 var MongoClient = require('mongodb').MongoClient;
 var assert = require('assert');
-var url = 'mongodb://localhost:27017/Weibo';
+var url = 'mongodb://localhost:27017/Weibo2';
 
 
 var WebSocketServer = require('ws').Server,
@@ -62,12 +62,16 @@ wss.broadcast = function broadcast(data) {
 cooldown.on('cool.down', () => {
     if (NumOfUser % 30 == 0) {
         wss.broadcast("COOL");
-        spawn('casperjs',['CookieCollector.js',user_index]);
-        user_index = user_index==1? 0:1;
+        updateCookie();
         filter.backup();
     }
 });
 
+function updateCookie() {
+    spawn('casperjs',['CookieCollector.js',user_index]);
+    user_index = user_index==1? 0:1;
+    console.log("Updating cookies");
+}
 
 function myWorkerFork(num) {
     var child;
@@ -77,15 +81,15 @@ function myWorkerFork(num) {
             (function (i) {
                 child = spawn(state, [thread, i]);
                 child.stdout.on('data', function (data) {
-                    console.log('PID ' + i + ':' + data);
+                    console.log('WORKER ' + i +' '+ child.pid +':' + data);
                     //Here is where the output goes
                 });
                 child.stderr.on('data', function (data) {
-                    console.log('PID ' + i + ':' + data);
+                    console.log('WORKER ' + i +' '+ child.pid +':' + data);
                     //Here is where the error output goes
                 });
                 child.on('close', function (code) {
-                    console.log('PID ' + i + ':' + code);
+                    console.log('WORKER ' + i +' '+ child.pid +':' + code);
                     //Here you can get the exit code of the script
                 });
                 console.log("Spawn process " + i);
@@ -105,15 +109,15 @@ function myWorkerFork(num) {
                     console.log("Create replace worker PID:" + i);
                     child = spawn(state, [thread, i]);
                     child.stdout.on('data', function (data) {
-                        console.log('PID ' + i + ':' + data);
+                        console.log('WORKER ' + i +' '+ child.pid +':' + data);
                         //Here is where the output goes
                     });
                     child.stderr.on('data', function (data) {
-                        console.log('PID ' + i + ':' + data);
+                        console.log('WORKER ' + i +' '+ child.pid +':' + data);
                         //Here is where the error output goes
                     });
                     child.on('close', function (code) {
-                        console.log('PID ' + i + ':' + code);
+                        console.log('WORKER ' + i +' '+ child.pid +':' + code);
                         //Here you can get the exit code of the script
                     });
                     worker_list[i].worker = child;
@@ -165,7 +169,7 @@ function taskDistribute(ws) {
 }
 
 function taskKill(pid) {
-    console.log("PID:" + pid + " killed");
+    console.log("WORKER " + pid + ": killed");
     worker_list[pid].worker.kill();
     worker_list[pid].isAlive = 0;
 }
@@ -190,10 +194,9 @@ function resolveMessages(message, ws) {
         taskKill(message.PID);
         break;
     case "JUMPOUT":
-        setTimeout(function () {
-            filter.store(worker_list[message.PID].job);
-            taskKill(message.PID);
-        }, 5 * 60 * 1000);
+        filter.store(worker_list[message.PID].job);
+        taskKill(message.PID);
+        updateCookie();
         break;
     case "MSGNONE":
         break;
