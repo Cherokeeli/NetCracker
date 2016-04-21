@@ -23,18 +23,19 @@ module.exports = {
     },
 
     backup: function () {
-        fs.writeFile('./data/uid_set.json',JSON.stringify(uid_set),'utf8',(err) => {
+        fs.writeFile('./data/uid_set.json', JSON.stringify(uid_set), 'utf8', (err) => {
             if (err) throw err;
             console.log('It\'s saved!');
         });
     },
 
-    readBuff: function () {
-        fs.readFile('./data/uid_set.json', 'utf8',(err, data) => {
+    readBuff: function (callback) {
+        fs.readFile('./data/uid_set.json', 'utf8', (err, data) => {
             if (err) throw err;
-            if (data.length!=0)
-            uid_set = data;
-            console.log(data);
+            if (data.length != 0)
+                uid_set = JSON.parse(data);
+            console.log(uid_set);
         });
+        callback();
     }
 }

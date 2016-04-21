@@ -27,9 +27,9 @@ var msgPage = require("casper").create({
         loadPlugins: false,
         userAgent: userAgentPool[0]
     }
-    //        ,
-    //        verbose: true,
-    //        logLevel: "debug"
+//            ,
+//            verbose: true,
+//            logLevel: "debug"
 });
 
 var focusPage = require("casper").create({

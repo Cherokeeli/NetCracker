@@ -39,7 +39,7 @@ log4js.configure({
 var state = 'casperjs'; //启动命令
 var thread = 'mainThread.js'; //进程文件
 
-var NUM_OF_WORKERS = 4;
+var NUM_OF_WORKERS = 1;
 var worker_list = [];
 var NumOfUser = 1;
 
@@ -210,8 +210,10 @@ function resolveMessages(message, ws) {
     }
 }
 //cook.updateCookies();
-filter.readBuff();
-myWorkerFork(NUM_OF_WORKERS);
+filter.readBuff(()=> {
+    myWorkerFork(NUM_OF_WORKERS);
+});
+
 //setInterval(cook.updateCookies,10*(60*60*1000));
 //module.exports = {
     //start: function () {
