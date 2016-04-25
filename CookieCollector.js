@@ -52,7 +52,7 @@ var saveCookies = function () {
     return true;
 }
 
-var updateCookies = function (USER,PASS) {
+var updateCookies = function (USER, PASS) {
     casper.start('https://m.weibo.cn/', function () {
         displayCookies();
         this.then(function () {
@@ -75,4 +75,4 @@ var updateCookies = function (USER,PASS) {
     });
 }
 
-updateCookies(USER[USER_INDEX],PASS[USER_INDEX]);
+updateCookies(USER[USER_INDEX], PASS[USER_INDEX]);

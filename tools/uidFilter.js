@@ -6,8 +6,8 @@ var bf = require("./bloomfilter"),
     fnv_1a = bf.fnv_1a,
     fnv_1a_b = bf.fnv_1a_b;
 var bloom = new BloomFilter(
-  32 * 256, // number of bits to allocate.
-  16        // number of hash functions.
+    32 * 256, // number of bits to allocate.
+    16 // number of hash functions.
 );
 
 
@@ -27,7 +27,7 @@ module.exports = {
     store: function (msg) {
         var length = msg.length;
         for (var x in msg) {
-            if(bloom.test(msg[x])) {
+            if (bloom.test(msg[x])) {
                 bloom.add(msg[x]);
                 uid_set.push(msg[x]);
                 cann_restore.push(0);

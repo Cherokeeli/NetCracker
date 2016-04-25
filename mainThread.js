@@ -27,9 +27,9 @@ var msgPage = require("casper").create({
         loadPlugins: false,
         userAgent: userAgentPool[0]
     }
-//            ,
-//            verbose: true,
-//            logLevel: "debug"
+    //            ,
+    //            verbose: true,
+    //            logLevel: "debug"
 });
 
 var focusPage = require("casper").create({
@@ -175,8 +175,8 @@ function startScraping(UID) {
 
 
 socket.createWs(self_PID, function (UID) {
-        bindThreadListener(msgPage, self_PID); //页面监听器绑定
-        bindThreadListener(focusPage, self_PID);
-        bindThreadListener(userPage, self_PID);
-        startScraping(UID);
+    bindThreadListener(msgPage, self_PID); //页面监听器绑定
+    bindThreadListener(focusPage, self_PID);
+    bindThreadListener(userPage, self_PID);
+    startScraping(UID);
 });

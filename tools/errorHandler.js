@@ -10,9 +10,9 @@ exports.configure = function (casper) {
 
 
     casper.on('scroll.timeout', function (NumOfLoaded) {
-            var now = casper.evaluate(getNowTime);
-            this.echo("Scroll Timeout,get " + NumOfLoaded + " items");
-            this.capture('./data/scrollTimeout ' + now + '.png');
+        var now = casper.evaluate(getNowTime);
+        this.echo("Scroll Timeout,get " + NumOfLoaded + " items");
+        this.capture('./data/scrollTimeout ' + now + '.png');
     });
 
     casper.on('waitselector.timeout', function (self_PID) {
@@ -44,9 +44,9 @@ exports.configure = function (casper) {
         this.echo("Console: " + msg);
     });
 
-//    casper.on("page.error", function (msg, trace) {
-//        this.echo("Error: " + msg);
-//    });
+    //    casper.on("page.error", function (msg, trace) {
+    //        this.echo("Error: " + msg);
+    //    });
 
     //    casper.on("resource.error", function (resourceError) {
     //        this.echo("ResourceError: " + JSON.stringify(resourceError, undefined, 4));

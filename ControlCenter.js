@@ -45,7 +45,7 @@ var NumOfUser = 0;
 
 var MongoClient = require('mongodb').MongoClient;
 var assert = require('assert');
-var url = 'mongodb://localhost:27017/'+config.dbName;
+var url = 'mongodb://localhost:27017/' + config.dbName;
 
 
 var WebSocketServer = require('ws').Server,
@@ -60,7 +60,7 @@ wss.broadcast = function broadcast(data) {
 };
 
 cooldown.on('cool.down', () => {
-    if (NumOfUser % config.coolLimitUser == 0 && NumOfUser!=0) {
+    if (NumOfUser % config.coolLimitUser == 0 && NumOfUser != 0) {
         wss.broadcast("COOL");
         updateCookie();
         filter.backup();
