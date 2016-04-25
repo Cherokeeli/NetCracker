@@ -52,7 +52,7 @@ module.exports = {
             if (err) throw err;
             if (data.length != 0)
                 uid_set = JSON.parse(data);
-            console.log(uid_set);
+            //console.log(uid_set);
             for (var x in uid_set)
                 bloom.add(uid_set[x]);
         });

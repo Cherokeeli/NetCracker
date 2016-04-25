@@ -71,7 +71,7 @@ var tryAndScroll = function (casper, success) {
                 return !casper.exists('div.loading');
             }, success, function onFail() {
                 //casper.emit('scroll.timeout', curItems);
-                if(curItems>=100)
+                if(curItems>=config.maxMessages)
                     return true;
                 tryAndScroll(casper);
             }, 2000);

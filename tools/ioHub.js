@@ -1,6 +1,6 @@
 var ws = undefined
 var createWs = function (pid, callback) {
-    ws = new WebSocket("ws://localhost:2000/socket");
+    ws = new WebSocket("ws://localhost:"+config.sockPort+"/socket");
 
     ws.onopen = function (evt) {
         console.log("[WEBSOCKET]Thread socket opened.");
@@ -15,12 +15,12 @@ var createWs = function (pid, callback) {
         console.log("[WEBSOCKET]Received uid[" + evt.data + "]");
         //ws.send(evt.data);
         if (evt.data == "COOL") {
-            msgPage.echo("COOL DOWNING, PLEASE WAIT FOR 15 MINUTES");
-            msgPage.wait(1*60*1000,function() {
+            msgPage.echo("COOL DOWNING, PLEASE WAIT FOR "+config.coolMinutes+" MINUTES");
+            msgPage.wait(config.coolMinutes*60*1000,function() {
                 this.echo("COMPLETE COOLDOWN, CONTINUE");
             });
-            focusPage.wait(1*60*1000);
-            userPage.wait(1*60*1000);
+            focusPage.wait(config.coolMinutes*60*1000);
+            userPage.wait(config.coolMinutes*60*1000);
         } else {
             callback(evt.data);
         }

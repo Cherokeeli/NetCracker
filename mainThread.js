@@ -115,6 +115,7 @@ var NUM = 0;
 var messages = [];
 //'1793285524';
 var self_PID = msgPage.cli.get(0);
+var config = require('./NetCrackerConfig');
 
 
 //事件绑定

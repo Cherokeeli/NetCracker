@@ -3,6 +3,7 @@ var spawn = require('child_process').spawn;
 var log4js = require('log4js');
 var util = require('util');
 const EventEmitter = require('events');
+var config = require('./NetCrackerConfig');
 var fs = require('fs');
 var user_index = 1;
 
@@ -38,18 +39,18 @@ log4js.configure({
 var state = 'casperjs'; //启动命令
 var thread = 'mainThread.js'; //进程文件
 
-var NUM_OF_WORKERS = 1;
+var NUM_OF_WORKERS = config.workerNum;
 var worker_list = [];
 var NumOfUser = 0;
 
 var MongoClient = require('mongodb').MongoClient;
 var assert = require('assert');
-var url = 'mongodb://localhost:27017/Weibo2';
+var url = 'mongodb://localhost:27017/'+config.dbName;
 
 
 var WebSocketServer = require('ws').Server,
     wss = new WebSocketServer({
-        port: 2000
+        port: config.sockPort
     });
 
 wss.broadcast = function broadcast(data) {
@@ -59,7 +60,7 @@ wss.broadcast = function broadcast(data) {
 };
 
 cooldown.on('cool.down', () => {
-    if (NumOfUser % 2 == 0 && NumOfUser!=0) {
+    if (NumOfUser % config.coolLimitUser == 0 && NumOfUser!=0) {
         wss.broadcast("COOL");
         updateCookie();
         filter.backup();
@@ -182,7 +183,7 @@ function resolveMessages(message, ws) {
         cooldown.emit('cool.down');
         break;
     case "GET":
-        console.log("WORKER" + message.PID + ": task got");
+        console.log("WORKER " + message.PID + ": task got");
         worker_list[message.PID].job.push(message.data);
         break;
     case "END":
