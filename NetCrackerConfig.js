@@ -5,6 +5,7 @@ module.exports = {
     coolLimitUser:  30,         //设置爬取了多少数量的用户后进行冷却
     dbName:         "Weibo3",   //微博数据库名称
     sockPort:       2000,       //IPC socket监听端口
+    scrollRetries:  10,         //当滚动没有载入新元素，重试的次数
     userFlow:                   //用户账号库，账号越多，被和谐的可能性越小
     [
         ['18938866425','13464451579'],

@@ -56,8 +56,8 @@ var getRandomWait = function (casper, min, max) {
     casper.wait(time);
 }
 
-var stepTime = 0;
-
+var scroll_time = 0;
+//var SCROLL_TIMEOUT = config.scrollRetries;
 var tryAndScroll = function (casper, success) {
         return casper.then(function () {
             casper.echo('SCROLL!!');
@@ -73,6 +73,15 @@ var tryAndScroll = function (casper, success) {
                 //casper.emit('scroll.timeout', curItems);
                 if (curItems >= config.maxMessages)
                     return true;
+                if ((curItems-casper.evaluate(getCurrentInfosNum)) <= 5) {
+                    scroll_time++;
+                    if (scroll_time > config.scrollRetries) {
+                        console.log("Reconnected Timeout");
+                        return true;
+                    }
+                } else {
+                    scroll_time = 0;
+                }
                 tryAndScroll(casper);
             }, 2000);
         });
