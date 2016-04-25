@@ -2,7 +2,6 @@ var filter = require('./tools/uidFilter');
 var spawn = require('child_process').spawn;
 var log4js = require('log4js');
 var util = require('util');
-//var cook = require('./CookieCollector');
 const EventEmitter = require('events');
 var fs = require('fs');
 var user_index = 1;
@@ -39,9 +38,9 @@ log4js.configure({
 var state = 'casperjs'; //启动命令
 var thread = 'mainThread.js'; //进程文件
 
-var NUM_OF_WORKERS = 2;
+var NUM_OF_WORKERS = 1;
 var worker_list = [];
-var NumOfUser = 1;
+var NumOfUser = 0;
 
 var MongoClient = require('mongodb').MongoClient;
 var assert = require('assert');
@@ -60,7 +59,7 @@ wss.broadcast = function broadcast(data) {
 };
 
 cooldown.on('cool.down', () => {
-    if (NumOfUser % 30 == 0) {
+    if (NumOfUser % 2 == 0 && NumOfUser!=0) {
         wss.broadcast("COOL");
         updateCookie();
         filter.backup();
@@ -68,8 +67,8 @@ cooldown.on('cool.down', () => {
 });
 
 function updateCookie() {
-    spawn('casperjs',['CookieCollector.js',user_index]);
-    user_index = user_index==1? 0:1;
+    spawn('casperjs', ['CookieCollector.js', user_index]);
+    user_index = user_index == 1 ? 0 : 1;
     console.log("Updating cookies");
 }
 
@@ -81,15 +80,15 @@ function myWorkerFork(num) {
             (function (i) {
                 child = spawn(state, [thread, i]);
                 child.stdout.on('data', function (data) {
-                    console.log('WORKER ' + i +' '+ child.pid +':' + data);
+                    console.log('WORKER ' + i + ' ' + child.pid + ':' + data);
                     //Here is where the output goes
                 });
                 child.stderr.on('data', function (data) {
-                    console.log('WORKER ' + i +' '+ child.pid +':' + data);
+                    console.log('WORKER ' + i + ' ' + child.pid + ':' + data);
                     //Here is where the error output goes
                 });
                 child.on('close', function (code) {
-                    console.log('WORKER ' + i +' '+ child.pid +':' + code);
+                    console.log('WORKER ' + i + ' ' + child.pid + ':' + code);
                     //Here you can get the exit code of the script
                 });
                 console.log("Spawn process " + i);
@@ -109,15 +108,15 @@ function myWorkerFork(num) {
                     console.log("Create replace worker PID:" + i);
                     child = spawn(state, [thread, i]);
                     child.stdout.on('data', function (data) {
-                        console.log('WORKER ' + i +' '+ child.pid +':' + data);
+                        console.log('WORKER ' + i + ' ' + child.pid + ':' + data);
                         //Here is where the output goes
                     });
                     child.stderr.on('data', function (data) {
-                        console.log('WORKER ' + i +' '+ child.pid +':' + data);
+                        console.log('WORKER ' + i + ' ' + child.pid + ':' + data);
                         //Here is where the error output goes
                     });
                     child.on('close', function (code) {
-                        console.log('WORKER ' + i +' '+ child.pid +':' + code);
+                        console.log('WORKER ' + i + ' ' + child.pid + ':' + code);
                         //Here you can get the exit code of the script
                     });
                     worker_list[i].worker = child;
@@ -183,7 +182,7 @@ function resolveMessages(message, ws) {
         cooldown.emit('cool.down');
         break;
     case "GET":
-        console.log("Worker:" + message.PID + " task got");
+        console.log("WORKER" + message.PID + ": task got");
         worker_list[message.PID].job.push(message.data);
         break;
     case "END":
@@ -213,26 +212,26 @@ function resolveMessages(message, ws) {
     }
 }
 //cook.updateCookies();
-filter.readBuff(()=> {
+filter.readBuff(() => {
     myWorkerFork(NUM_OF_WORKERS);
 });
 
 //setInterval(cook.updateCookies,10*(60*60*1000));
 //module.exports = {
-    //start: function () {
-        wss.on('connection', function connection(ws) {
-            ws.on('message', function incoming(messages) {
-                var parMessage = JSON.parse(messages);
-                if (util.isArray(parMessage.data)) {
-                    console.log('[WEBSOCKET]Received: ' + parMessage.data.length + ' ' + parMessage.type);
-                } else {
-                    console.log('[WEBSOCKET]Received: ' + parMessage.type);
-                }
-                resolveMessages(parMessage, ws);
-                myWorkerFork(0);
-            });
-            //ws.send('something');
-        });
+//start: function () {
+wss.on('connection', function connection(ws) {
+    ws.on('message', function incoming(messages) {
+        var parMessage = JSON.parse(messages);
+        if (util.isArray(parMessage.data)) {
+            console.log('[WEBSOCKET]MASTER Received: ' + parMessage.data.length + ' ' + parMessage.type);
+        } else {
+            console.log('[WEBSOCKET]MASTER Received: ' + parMessage.type);
+        }
+        resolveMessages(parMessage, ws);
+        myWorkerFork(0);
+    });
+    //ws.send('something');
+});
 
-    //}//start
+//}//start
 //}
