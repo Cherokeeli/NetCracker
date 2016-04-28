@@ -13,13 +13,14 @@ var cookies = require('./tools/Cookies');
 var socket = require('./tools/ioHub');
 var fs = require('fs');
 
-var USER = [];
-var PASS = [];
+
 var USER_INDEX = casper.cli.get(0);
-USER[0] = '18938866425';
-PASS[0] = '13464451579';
-USER[1] = '13267241477';
-PASS[1] = 'ql13530088648';
+//USER[0] = '18938866425';
+//PASS[0] = '13464451579';
+//USER[1] = '13267241477';
+//PASS[1] = 'ql13530088648';
+var USER = config.userFlow[USER_INDEX][0];
+var PASS = config.userFlow[USER_INDEX][1];
 
 var displayCookies = function () //显示当前cookies
     {
@@ -75,4 +76,4 @@ var updateCookies = function (USER, PASS) {
     });
 }
 
-updateCookies(USER[USER_INDEX], PASS[USER_INDEX]);
+updateCookies(USER, PASS);

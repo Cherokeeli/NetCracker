@@ -5,7 +5,7 @@ var util = require('util');
 const EventEmitter = require('events');
 var config = require('./NetCrackerConfig');
 var fs = require('fs');
-var user_index = 1;
+var user_index = 0;
 
 function CoolDown() {
     EventEmitter.call(this);
@@ -69,8 +69,9 @@ cooldown.on('cool.down', () => {
 
 function updateCookie() {
     spawn('casperjs', ['CookieCollector.js', user_index]);
-    user_index = user_index == 1 ? 0 : 1;
-    console.log("Updating cookies");
+    var len = config.userFlow.length;
+    console.log("Updating cookies " +user_index);
+    user_index == (len-1) ? user_index = 0 : user_index++;
 }
 
 function myWorkerFork(num) {
