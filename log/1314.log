@@ -1,0 +1,385 @@
+[32m[2016-04-20 14:50:41.976] [INFO] console - [39mSpawn process 0
+[32m[2016-04-20 14:50:41.982] [INFO] console - [39m6812
+[32m[2016-04-20 14:50:41.987] [INFO] console - [39mSpawn process 1
+[32m[2016-04-20 14:50:41.988] [INFO] console - [39m6813
+[32m[2016-04-20 14:50:43.125] [INFO] console - [39m[WEBSOCKET]Received: OPEN
+[32m[2016-04-20 14:50:43.125] [INFO] console - [39mrestore!!
+[32m[2016-04-20 14:50:43.126] [INFO] console - [39mTask distributed:5894256487
+[32m[2016-04-20 14:50:43.129] [INFO] console - [39mPID 1:[WEBSOCKET]Thread socket opened.
+[WEBSOCKET]Received uid[5894256487]
+
+[32m[2016-04-20 14:50:43.130] [INFO] console - [39mPID 1:begin listen
+begin listen
+begin listen
+
+[32m[2016-04-20 14:50:43.133] [INFO] console - [39m[WEBSOCKET]Received: OPEN
+[32m[2016-04-20 14:50:43.133] [INFO] console - [39mrestore!!
+[32m[2016-04-20 14:50:43.133] [INFO] console - [39mTask distributed:5745465725
+[32m[2016-04-20 14:50:43.134] [INFO] console - [39mPID 0:[WEBSOCKET]Thread socket opened.
+
+[32m[2016-04-20 14:50:43.137] [INFO] console - [39mPID 0:[WEBSOCKET]Received uid[5745465725]
+begin listen
+begin listen
+begin listen
+
+[32m[2016-04-20 14:50:43.159] [INFO] console - [39m[WEBSOCKET]Received: GET
+[32m[2016-04-20 14:50:43.159] [INFO] console - [39mWorker:1 task got
+[32m[2016-04-20 14:50:43.168] [INFO] console - [39m[WEBSOCKET]Received: GET
+[32m[2016-04-20 14:50:43.168] [INFO] console - [39mWorker:0 task got
+[32m[2016-04-20 14:50:50.150] [INFO] console - [39mPID 0:http://m.weibo.cn/users/5745465725
+
+[32m[2016-04-20 14:50:50.275] [INFO] console - [39mPID 1:http://m.weibo.cn/u/5894256487
+
+[32m[2016-04-20 14:50:50.443] [INFO] console - [39mPID 1:http://m.weibo.cn/users/5894256487
+
+[32m[2016-04-20 14:50:50.933] [INFO] console - [39mPID 1:http://m.weibo.cn/u/5894256487
+
+[32m[2016-04-20 14:50:51.239] [INFO] console - [39mPID 0:http://m.weibo.cn/u/5745465725
+
+[32m[2016-04-20 14:50:52.073] [INFO] console - [39mPID 0:http://m.weibo.cn/u/5745465725
+
+[32m[2016-04-20 14:50:53.599] [INFO] console - [39mPID 1:Console: 2
+
+[32m[2016-04-20 14:50:53.600] [INFO] console - [39mPID 1:Console: 3
+
+[32m[2016-04-20 14:50:53.610] [INFO] console - [39mPID 1:ResourceError: {
+    "errorCode": 5,
+    "errorString": "Operation canceled",
+    "id": 19,
+    "status": null,
+    "statusText": null,
+    "url": "http://h5.sinaimg.cn/weibocn/v6/js/act/acts-85bdb638d35c38be6df31da7a5c26021.js"
+}
+ResourceError: {
+    "errorCode": 5,
+    "errorString": "Operation canceled",
+    "id": 18,
+    "status": null,
+    "statusText": null,
+    "url": "http://h5.sinaimg.cn/weibocn/v6/js/card/cards-1307c16f29d70470194b967a0c66f00f.js"
+}
+
+[32m[2016-04-20 14:50:53.613] [INFO] console - [39mPID 1:Error: Error: 以下文件加载失败
+
+http://h5.sinaimg.cn/weibocn/v6/js/act/acts-85bdb638d35c38be6df31da7a5c26021.js
+http://h5.sinaimg.cn/weibocn/v6/js/card/cards-1307c16f29d70470194b967a0c66f00f.js
+
+
+
+[32m[2016-04-20 14:50:53.745] [INFO] console - [39mPID 1:GET Avatar
+
+[32m[2016-04-20 14:50:53.817] [INFO] console - [39mPID 1:Console: 4
+
+[32m[2016-04-20 14:50:53.818] [INFO] console - [39mPID 1:Console: 4
+
+[32m[2016-04-20 14:50:53.821] [INFO] console - [39mPID 1:[WEBSOCKET]Begin to sending data...
+
+[32m[2016-04-20 14:50:53.822] [INFO] console - [39m[WEBSOCKET]Received: user
+[32m[2016-04-20 14:50:53.823] [INFO] console - [39muser add Data pool
+[32m[2016-04-20 14:50:53.843] [INFO] console - [39mPID 1:Thread:1
+
+[32m[2016-04-20 14:50:53.896] [INFO] console - [39mInserted a document into the User_Info collection.
+[32m[2016-04-20 14:50:55.925] [INFO] console - [39mPID 1:Console: 1
+
+[32m[2016-04-20 14:50:55.926] [INFO] console - [39mPID 1:Console: 2
+
+[32m[2016-04-20 14:50:56.102] [INFO] console - [39mPID 0:Console: 1
+
+[32m[2016-04-20 14:50:56.103] [INFO] console - [39mPID 0:Console: 2
+
+[32m[2016-04-20 14:50:56.151] [INFO] console - [39mPID 0:Console: 1
+
+[32m[2016-04-20 14:50:56.153] [INFO] console - [39mPID 0:Console: 2
+
+[32m[2016-04-20 14:50:56.837] [INFO] console - [39mPID 1:getmsg
+
+[32m[2016-04-20 14:50:57.250] [INFO] console - [39mPID 0:getmsg
+
+[32m[2016-04-20 14:50:57.254] [INFO] console - [39mPID 0:CURRENT:http://m.weibo.cn/ 	 EXPECTED:http://m.weibo.cn/page/tpl?containerid=1005055745465725_-_WEIBO_SECOND_PROFILE_WEIBO&itemid=&title=全部微博
+
+[32m[2016-04-20 14:50:57.254] [INFO] console - [39mPID 0:URL check incorrect,waiting
+
+[32m[2016-04-20 14:50:57.342] [INFO] console - [39mPID 1:CURRENT:http://m.weibo.cn/ 	 EXPECTED:http://m.weibo.cn/page/tpl?containerid=1005055894256487_-_WEIBO_SECOND_PROFILE_WEIBO&itemid=&title=全部微博
+
+[32m[2016-04-20 14:50:57.343] [INFO] console - [39mPID 1:URL check incorrect,waiting
+
+[32m[2016-04-20 14:50:58.999] [INFO] console - [39mPID 0:CURRENT:http://m.weibo.cn/ 	 EXPECTED:http://m.weibo.cn/page/tpl?containerid=1005055745465725_-_FOLLOWERS
+
+[32m[2016-04-20 14:50:59.000] [INFO] console - [39mPID 0:URL check incorrect,waiting
+
+[32m[2016-04-20 14:50:59.746] [INFO] console - [39mPID 1:CURRENT:http://m.weibo.cn/ 	 EXPECTED:http://m.weibo.cn/page/tpl?containerid=1005055894256487_-_FOLLOWERS
+
+[32m[2016-04-20 14:50:59.747] [INFO] console - [39mPID 1:URL check incorrect,waiting
+
+[32m[2016-04-20 14:51:00.690] [INFO] console - [39mPID 1:GET CARDS
+
+[32m[2016-04-20 14:51:00.702] [INFO] console - [39mPID 1:Console: 1
+
+[32m[2016-04-20 14:51:00.702] [INFO] console - [39mPID 1:Console: 0
+
+[32m[2016-04-20 14:51:00.703] [INFO] console - [39mPID 1:Console: 0
+
+[32m[2016-04-20 14:51:00.703] [INFO] console - [39mPID 1:Console: 0
+
+[32m[2016-04-20 14:51:00.704] [INFO] console - [39mPID 1:Console: 0
+
+[32m[2016-04-20 14:51:00.706] [INFO] console - [39mPID 1:Console: 0
+
+[32m[2016-04-20 14:51:00.706] [INFO] console - [39mPID 1:Console: 0
+
+[32m[2016-04-20 14:51:00.707] [INFO] console - [39mPID 1:Console: 0
+
+[32m[2016-04-20 14:51:00.708] [INFO] console - [39mPID 1:Get 0/1,微博,游戏Msg
+
+[32m[2016-04-20 14:51:00.709] [INFO] console - [39mPID 1:Message receive none
+
+[32m[2016-04-20 14:51:00.709] [INFO] console - [39m[WEBSOCKET]Received: END
+[32m[2016-04-20 14:51:00.709] [INFO] console - [39mPID:1 killed
+[32m[2016-04-20 14:51:00.710] [INFO] console - [39mCreate replace worker PID:1
+[32m[2016-04-20 14:51:00.718] [INFO] console - [39mPID 1:1
+[32m[2016-04-20 14:51:00.870] [INFO] console - [39mPID 0:GET Avatar
+
+[32m[2016-04-20 14:51:00.961] [INFO] console - [39mPID 0:Console: 7
+
+[32m[2016-04-20 14:51:00.962] [INFO] console - [39mPID 0:Console: 7
+
+[32m[2016-04-20 14:51:00.966] [INFO] console - [39mPID 0:[WEBSOCKET]Begin to sending data...
+
+[32m[2016-04-20 14:51:00.966] [INFO] console - [39m[WEBSOCKET]Received: user
+[32m[2016-04-20 14:51:00.966] [INFO] console - [39muser add Data pool
+[32m[2016-04-20 14:51:00.972] [INFO] console - [39mPID 0:Thread:1
+
+[32m[2016-04-20 14:51:00.984] [INFO] console - [39mInserted a document into the User_Info collection.
+[32m[2016-04-20 14:51:01.762] [INFO] console - [39m[WEBSOCKET]Received: OPEN
+[32m[2016-04-20 14:51:01.762] [INFO] console - [39mrestore!!
+[32m[2016-04-20 14:51:01.762] [INFO] console - [39mTask distributed:1914100420
+[32m[2016-04-20 14:51:01.764] [INFO] console - [39mPID 1:[WEBSOCKET]Thread socket opened.
+
+[32m[2016-04-20 14:51:01.765] [INFO] console - [39mPID 1:[WEBSOCKET]Received uid[1914100420]
+begin listen
+begin listen
+begin listen
+
+[32m[2016-04-20 14:51:01.790] [INFO] console - [39m[WEBSOCKET]Received: GET
+[32m[2016-04-20 14:51:01.790] [INFO] console - [39mWorker:1 task got
+[32m[2016-04-20 14:51:01.882] [INFO] console - [39mPID 0:GET CARDS
+
+[32m[2016-04-20 14:51:01.894] [INFO] console - [39mPID 0:Console: 1
+
+[32m[2016-04-20 14:51:01.895] [INFO] console - [39mPID 0:Console: 0
+
+[32m[2016-04-20 14:51:01.895] [INFO] console - [39mPID 0:Console: 0
+
+[32m[2016-04-20 14:51:01.896] [INFO] console - [39mPID 0:Console: 0
+
+[32m[2016-04-20 14:51:01.897] [INFO] console - [39mPID 0:Console: 0
+
+[32m[2016-04-20 14:51:01.900] [INFO] console - [39mPID 0:Console: 0
+Console: 0
+
+[32m[2016-04-20 14:51:01.902] [INFO] console - [39mPID 0:Console: 0
+
+[32m[2016-04-20 14:51:01.903] [INFO] console - [39m[WEBSOCKET]Received: END
+[32m[2016-04-20 14:51:01.903] [INFO] console - [39mPID:0 killed
+[32m[2016-04-20 14:51:01.904] [INFO] console - [39mCreate replace worker PID:0
+[32m[2016-04-20 14:51:01.908] [INFO] console - [39mPID 0:Get 0/196,微博Msg
+Message receive none
+
+[32m[2016-04-20 14:51:01.912] [INFO] console - [39mPID 0:1
+[32m[2016-04-20 14:51:02.952] [INFO] console - [39m[WEBSOCKET]Received: OPEN
+[32m[2016-04-20 14:51:02.952] [INFO] console - [39mrestore!!
+[32m[2016-04-20 14:51:02.952] [INFO] console - [39mTask distributed:1553184325
+[32m[2016-04-20 14:51:02.954] [INFO] console - [39mPID 0:[WEBSOCKET]Thread socket opened.
+
+[32m[2016-04-20 14:51:02.955] [INFO] console - [39mPID 0:[WEBSOCKET]Received uid[1553184325]
+begin listen
+begin listen
+begin listen
+
+[32m[2016-04-20 14:51:02.980] [INFO] console - [39m[WEBSOCKET]Received: GET
+[32m[2016-04-20 14:51:02.980] [INFO] console - [39mWorker:0 task got
+[32m[2016-04-20 14:51:07.897] [INFO] console - [39mPID 1:http://m.weibo.cn/u/1914100420
+
+[32m[2016-04-20 14:51:07.973] [INFO] console - [39mPID 1:http://m.weibo.cn/u/1914100420
+
+[32m[2016-04-20 14:51:08.451] [INFO] console - [39mPID 1:http://m.weibo.cn/users/1914100420
+
+[32m[2016-04-20 14:51:08.860] [INFO] console - [39mPID 0:http://m.weibo.cn/users/1553184325
+
+[32m[2016-04-20 14:51:08.861] [INFO] console - [39mPID 0:http://m.weibo.cn/u/1553184325
+
+[32m[2016-04-20 14:51:09.387] [INFO] console - [39mPID 0:http://m.weibo.cn/u/1553184325
+
+[32m[2016-04-20 14:51:11.050] [INFO] console - [39mPID 0:GET Avatar
+
+[32m[2016-04-20 14:51:11.145] [INFO] console - [39mPID 0:Console: 7
+
+[32m[2016-04-20 14:51:11.146] [INFO] console - [39mPID 0:Console: 7
+
+[32m[2016-04-20 14:51:11.149] [INFO] console - [39mPID 0:[WEBSOCKET]Begin to sending data...
+
+[32m[2016-04-20 14:51:11.152] [INFO] console - [39m[WEBSOCKET]Received: user
+[32m[2016-04-20 14:51:11.153] [INFO] console - [39muser add Data pool
+[32m[2016-04-20 14:51:11.155] [INFO] console - [39mPID 0:Thread:1
+
+[32m[2016-04-20 14:51:11.163] [INFO] console - [39mInserted a document into the User_Info collection.
+[32m[2016-04-20 14:51:12.529] [INFO] console - [39mPID 1:Console: 1
+
+[32m[2016-04-20 14:51:12.531] [INFO] console - [39mPID 1:Console: 2
+
+[32m[2016-04-20 14:51:13.543] [INFO] console - [39mPID 1:Console: 1
+
+[32m[2016-04-20 14:51:13.544] [INFO] console - [39mPID 1:Console: 2
+
+[32m[2016-04-20 14:51:15.900] [INFO] console - [39mPID 1:CURRENT:http://m.weibo.cn/ 	 EXPECTED:http://m.weibo.cn/page/tpl?containerid=1005051914100420_-_FOLLOWERS
+URL check incorrect,waiting
+
+[32m[2016-04-20 14:51:16.575] [INFO] console - [39mPID 1:getmsg
+
+[32m[2016-04-20 14:51:16.934] [INFO] console - [39mPID 1:CURRENT:http://m.weibo.cn/ 	 EXPECTED:http://m.weibo.cn/page/tpl?containerid=1005051914100420_-_WEIBO_SECOND_PROFILE_WEIBO&itemid=&title=全部微博
+
+[32m[2016-04-20 14:51:16.935] [INFO] console - [39mPID 1:URL check incorrect,waiting
+
+[32m[2016-04-20 14:51:17.787] [INFO] console - [39mPID 0:Console: 1
+
+[32m[2016-04-20 14:51:17.788] [INFO] console - [39mPID 0:Console: 2
+
+[32m[2016-04-20 14:51:18.967] [INFO] console - [39mPID 1:GET Avatar
+
+[32m[2016-04-20 14:51:19.038] [INFO] console - [39mPID 1:Console: 7
+
+[32m[2016-04-20 14:51:19.038] [INFO] console - [39mPID 1:Console: 7
+
+[32m[2016-04-20 14:51:19.042] [INFO] console - [39mPID 1:[WEBSOCKET]Begin to sending data...
+
+[32m[2016-04-20 14:51:19.042] [INFO] console - [39m[WEBSOCKET]Received: user
+[32m[2016-04-20 14:51:19.043] [INFO] console - [39muser add Data pool
+[32m[2016-04-20 14:51:19.049] [INFO] console - [39mPID 1:Thread:1
+
+[32m[2016-04-20 14:51:19.055] [INFO] console - [39mInserted a document into the User_Info collection.
+[32m[2016-04-20 14:51:19.478] [INFO] console - [39mPID 0:Console: 1
+
+[32m[2016-04-20 14:51:19.478] [INFO] console - [39mPID 0:Console: 2
+
+[32m[2016-04-20 14:51:19.942] [INFO] console - [39mPID 1:GET FOCUS
+
+[32m[2016-04-20 14:51:19.944] [INFO] console - [39mPID 1:Console: 0
+
+[32m[2016-04-20 14:51:19.944] [INFO] console - [39mPID 1:Get 0/332,关注focus
+
+[32m[2016-04-20 14:51:19.945] [INFO] console - [39mPID 1:Message receive none
+
+[32m[2016-04-20 14:51:19.957] [INFO] console - [39m[WEBSOCKET]Received: END
+[32m[2016-04-20 14:51:19.957] [INFO] console - [39mPID:1 killed
+[32m[2016-04-20 14:51:19.957] [INFO] console - [39mCreate replace worker PID:1
+[32m[2016-04-20 14:51:19.961] [INFO] console - [39mPID 1:Thread:2
+
+[32m[2016-04-20 14:51:19.964] [INFO] console - [39mPID 1:1
+[32m[2016-04-20 14:51:20.475] [INFO] console - [39mPID 0:CURRENT:http://m.weibo.cn/ 	 EXPECTED:http://m.weibo.cn/page/tpl?containerid=1005051553184325_-_FOLLOWERS
+
+[32m[2016-04-20 14:51:20.476] [INFO] console - [39mPID 0:URL check incorrect,waiting
+
+[32m[2016-04-20 14:51:21.100] [INFO] console - [39mPID 0:getmsg
+
+[32m[2016-04-20 14:51:21.141] [INFO] console - [39m[WEBSOCKET]Received: OPEN
+[32m[2016-04-20 14:51:21.141] [INFO] console - [39mrestore!!
+[32m[2016-04-20 14:51:21.142] [INFO] console - [39mTask distributed:2138405303
+[32m[2016-04-20 14:51:21.144] [INFO] console - [39mPID 1:[WEBSOCKET]Thread socket opened.
+
+[32m[2016-04-20 14:51:21.150] [INFO] console - [39mPID 1:[WEBSOCKET]Received uid[2138405303]
+begin listen
+begin listen
+begin listen
+
+[32m[2016-04-20 14:51:21.193] [INFO] console - [39m[WEBSOCKET]Received: GET
+[32m[2016-04-20 14:51:21.193] [INFO] console - [39mWorker:1 task got
+[32m[2016-04-20 14:51:21.485] [INFO] console - [39mPID 0:CURRENT:http://m.weibo.cn/ 	 EXPECTED:http://m.weibo.cn/page/tpl?containerid=1005051553184325_-_WEIBO_SECOND_PROFILE_WEIBO&itemid=&title=全部微博
+
+[32m[2016-04-20 14:51:21.486] [INFO] console - [39mPID 0:URL check incorrect,waiting
+
+[32m[2016-04-20 14:51:24.440] [INFO] console - [39mPID 0:GET FOCUS
+
+[32m[2016-04-20 14:51:24.442] [INFO] console - [39mPID 0:Console: 0
+
+[32m[2016-04-20 14:51:24.442] [INFO] console - [39mPID 0:Get 0/9,关注focus
+
+[32m[2016-04-20 14:51:24.442] [INFO] console - [39mPID 0:Message receive none
+
+[32m[2016-04-20 14:51:24.452] [INFO] console - [39m[WEBSOCKET]Received: END
+[32m[2016-04-20 14:51:24.453] [INFO] console - [39mPID:0 killed
+[32m[2016-04-20 14:51:24.453] [INFO] console - [39mCreate replace worker PID:0
+[32m[2016-04-20 14:51:24.458] [INFO] console - [39mPID 0:Thread:2
+
+[32m[2016-04-20 14:51:24.459] [INFO] console - [39mPID 0:1
+[32m[2016-04-20 14:51:25.473] [INFO] console - [39m[WEBSOCKET]Received: OPEN
+[32m[2016-04-20 14:51:25.473] [INFO] console - [39mrestore!!
+[32m[2016-04-20 14:51:25.475] [INFO] console - [39mPID 0:[WEBSOCKET]Thread socket opened.
+
+[32m[2016-04-20 14:51:26.652] [INFO] console - [39mPID 1:http://m.weibo.cn/users/2138405303
+
+[32m[2016-04-20 14:51:26.701] [INFO] console - [39mPID 1:http://m.weibo.cn/u/2138405303
+
+[32m[2016-04-20 14:51:28.092] [INFO] console - [39mPID 1:http://m.weibo.cn/u/2138405303
+
+[32m[2016-04-20 14:51:30.608] [INFO] console - [39mPID 1:Console: 2
+
+[32m[2016-04-20 14:51:30.609] [INFO] console - [39mPID 1:Console: 4
+
+[32m[2016-04-20 14:51:30.616] [INFO] console - [39mPID 1:ResourceError: {
+    "errorCode": 5,
+    "errorString": "Operation canceled",
+    "id": 23,
+    "status": null,
+    "statusText": null,
+    "url": "http://m.weibo.cn/unread?t=1461135090382"
+}
+
+[32m[2016-04-20 14:51:32.495] [INFO] console - [39mPID 1:GET Avatar
+
+[32m[2016-04-20 14:51:32.573] [INFO] console - [39mPID 1:Console: 7
+
+[32m[2016-04-20 14:51:32.574] [INFO] console - [39mPID 1:Console: 7
+
+[32m[2016-04-20 14:51:32.578] [INFO] console - [39mPID 1:[WEBSOCKET]Begin to sending data...
+
+[32m[2016-04-20 14:51:32.578] [INFO] console - [39m[WEBSOCKET]Received: user
+[32m[2016-04-20 14:51:32.578] [INFO] console - [39muser add Data pool
+[32m[2016-04-20 14:51:32.583] [INFO] console - [39mPID 1:Thread:1
+
+[32m[2016-04-20 14:51:32.586] [INFO] console - [39mPID 1:getmsg
+
+[32m[2016-04-20 14:51:32.593] [INFO] console - [39mInserted a document into the User_Info collection.
+[32m[2016-04-20 14:51:33.065] [INFO] console - [39mPID 1:CURRENT:http://m.weibo.cn/ 	 EXPECTED:http://m.weibo.cn/page/tpl?containerid=1005052138405303_-_WEIBO_SECOND_PROFILE_WEIBO&itemid=&title=全部微博
+
+[32m[2016-04-20 14:51:33.065] [INFO] console - [39mPID 1:URL check incorrect,waiting
+
+[32m[2016-04-20 14:51:36.439] [INFO] console - [39mPID 1:GET CARDS
+
+[32m[2016-04-20 14:51:36.454] [INFO] console - [39mPID 1:Console: 1
+
+[32m[2016-04-20 14:51:36.454] [INFO] console - [39mPID 1:Console: 0
+
+[32m[2016-04-20 14:51:36.455] [INFO] console - [39mPID 1:Console: 0
+
+[32m[2016-04-20 14:51:36.456] [INFO] console - [39mPID 1:Console: 0
+
+[32m[2016-04-20 14:51:36.457] [INFO] console - [39mPID 1:Console: 0
+
+[32m[2016-04-20 14:51:36.457] [INFO] console - [39mPID 1:Console: 0
+
+[32m[2016-04-20 14:51:36.458] [INFO] console - [39mPID 1:Console: 0
+
+[32m[2016-04-20 14:51:36.458] [INFO] console - [39mPID 1:Console: 0
+
+[32m[2016-04-20 14:51:36.459] [INFO] console - [39mPID 1:Get 0/851,微博,0,话题Msg
+
+[32m[2016-04-20 14:51:36.459] [INFO] console - [39mPID 1:Message receive none
+
+[32m[2016-04-20 14:51:36.460] [INFO] console - [39m[WEBSOCKET]Received: END
+[32m[2016-04-20 14:51:36.461] [INFO] console - [39mPID:1 killed
+[32m[2016-04-20 14:51:36.461] [INFO] console - [39mCreate replace worker PID:1
+[32m[2016-04-20 14:51:36.467] [INFO] console - [39mPID 1:1
+[32m[2016-04-20 14:51:37.532] [INFO] console - [39m[WEBSOCKET]Received: OPEN
+[32m[2016-04-20 14:51:37.532] [INFO] console - [39mrestore!!
+[32m[2016-04-20 14:51:37.534] [INFO] console - [39mPID 1:[WEBSOCKET]Thread socket opened.
+

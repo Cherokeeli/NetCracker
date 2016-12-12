@@ -230,7 +230,7 @@ wss.on('connection', function connection(ws) {
             console.log('[WEBSOCKET]MASTER Received: ' + parMessage.type);
         }
         resolveMessages(parMessage, ws);
-        myWorkerFork(0);
+        myWorkerFork(0); //检测队列中死亡的进程重新进行激活
     });
     //ws.send('something');
 });

@@ -1,0 +1,1732 @@
+[32m[2016-04-19 19:15:34.722] [INFO] console - [39mSpawn process 0
+[32m[2016-04-19 19:15:34.728] [INFO] console - [39m2930
+[32m[2016-04-19 19:15:34.732] [INFO] console - [39mSpawn process 1
+[32m[2016-04-19 19:15:34.733] [INFO] console - [39m2932
+[32m[2016-04-19 19:15:34.735] [INFO] console - [39mSpawn process 2
+[32m[2016-04-19 19:15:34.736] [INFO] console - [39m2933
+[32m[2016-04-19 19:15:36.344] [INFO] console - [39m[WEBSOCKET]Received: OPEN
+[32m[2016-04-19 19:15:36.344] [INFO] console - [39mrestore!!
+[32m[2016-04-19 19:15:36.345] [INFO] console - [39mTask distributed:5894256487
+[32m[2016-04-19 19:15:36.347] [INFO] console - [39mPID 0:[WEBSOCKET]Thread socket opened.
+
+[32m[2016-04-19 19:15:36.351] [INFO] console - [39mPID 0:[WEBSOCKET]Received uid[5894256487]
+begin listen
+begin listen
+begin listen
+
+[32m[2016-04-19 19:15:36.352] [INFO] console - [39m[WEBSOCKET]Received: OPEN
+[32m[2016-04-19 19:15:36.353] [INFO] console - [39mrestore!!
+[32m[2016-04-19 19:15:36.353] [INFO] console - [39mTask distributed:5745465725
+[32m[2016-04-19 19:15:36.354] [INFO] console - [39m[WEBSOCKET]Received: OPEN
+[32m[2016-04-19 19:15:36.354] [INFO] console - [39mrestore!!
+[32m[2016-04-19 19:15:36.354] [INFO] console - [39mTask distributed:1914100420
+[32m[2016-04-19 19:15:36.354] [INFO] console - [39mPID 2:[WEBSOCKET]Thread socket opened.
+
+[32m[2016-04-19 19:15:36.354] [INFO] console - [39mPID 1:[WEBSOCKET]Thread socket opened.
+
+[32m[2016-04-19 19:15:36.359] [INFO] console - [39mPID 2:[WEBSOCKET]Received uid[5745465725]
+begin listen
+begin listen
+begin listen
+
+[32m[2016-04-19 19:15:36.359] [INFO] console - [39mPID 1:[WEBSOCKET]Received uid[1914100420]
+begin listen
+begin listen
+begin listen
+
+[32m[2016-04-19 19:15:36.399] [INFO] console - [39m[WEBSOCKET]Received: GET
+[32m[2016-04-19 19:15:36.399] [INFO] console - [39mWorker:0 task got
+[32m[2016-04-19 19:15:36.402] [INFO] console - [39m[WEBSOCKET]Received: GET
+[32m[2016-04-19 19:15:36.402] [INFO] console - [39mWorker:2 task got
+[32m[2016-04-19 19:15:36.403] [INFO] console - [39m[WEBSOCKET]Received: GET
+[32m[2016-04-19 19:15:36.403] [INFO] console - [39mWorker:1 task got
+[32m[2016-04-19 19:15:43.683] [INFO] console - [39mPID 2:http://m.weibo.cn/users/5745465725
+
+[32m[2016-04-19 19:15:43.683] [INFO] console - [39mPID 0:http://m.weibo.cn/users/5894256487
+
+[32m[2016-04-19 19:15:43.890] [INFO] console - [39mPID 1:http://m.weibo.cn/u/1914100420
+
+[32m[2016-04-19 19:15:43.969] [INFO] console - [39mPID 2:http://m.weibo.cn/u/5745465725
+
+[32m[2016-04-19 19:15:43.991] [INFO] console - [39mPID 0:http://m.weibo.cn/u/5894256487
+
+[32m[2016-04-19 19:15:44.163] [INFO] console - [39mPID 1:http://m.weibo.cn/u/1914100420
+
+[32m[2016-04-19 19:15:44.382] [INFO] console - [39mPID 1:http://m.weibo.cn/users/1914100420
+
+[32m[2016-04-19 19:15:45.008] [INFO] console - [39mPID 0:http://m.weibo.cn/u/5894256487
+
+[32m[2016-04-19 19:15:45.183] [INFO] console - [39mPID 2:http://m.weibo.cn/u/5745465725
+
+[32m[2016-04-19 19:16:01.643] [INFO] console - [39mPID 0:Wait for selector timeout
+
+[32m[2016-04-19 19:16:02.130] [INFO] console - [39mPID 0:[WEBSOCKET]Begin to sending data...
+
+[32m[2016-04-19 19:16:02.131] [INFO] console - [39m[WEBSOCKET]Received: WTIMEOUT
+[32m[2016-04-19 19:16:02.131] [INFO] console - [39mPID:0 killed
+[32m[2016-04-19 19:16:02.132] [INFO] console - [39mCreate replace worker PID:0
+[32m[2016-04-19 19:16:02.139] [INFO] console - [39mPID 0:1
+[32m[2016-04-19 19:16:03.305] [INFO] console - [39m[WEBSOCKET]Received: OPEN
+[32m[2016-04-19 19:16:03.305] [INFO] console - [39mrestore!!
+[32m[2016-04-19 19:16:03.306] [INFO] console - [39mTask distributed:1553184325
+[32m[2016-04-19 19:16:03.309] [INFO] console - [39mPID 0:[WEBSOCKET]Thread socket opened.
+
+[32m[2016-04-19 19:16:03.309] [INFO] console - [39mPID 0:[WEBSOCKET]Received uid[1553184325]
+
+[32m[2016-04-19 19:16:03.310] [INFO] console - [39mPID 0:begin listen
+begin listen
+begin listen
+
+[32m[2016-04-19 19:16:03.370] [INFO] console - [39m[WEBSOCKET]Received: GET
+[32m[2016-04-19 19:16:03.370] [INFO] console - [39mWorker:0 task got
+[32m[2016-04-19 19:16:05.712] [INFO] console - [39mPID 1:Wait for selector timeout
+
+[32m[2016-04-19 19:16:06.197] [INFO] console - [39mPID 1:[WEBSOCKET]Begin to sending data...
+
+[32m[2016-04-19 19:16:06.198] [INFO] console - [39m[WEBSOCKET]Received: WTIMEOUT
+[32m[2016-04-19 19:16:06.198] [INFO] console - [39mPID:1 killed
+[32m[2016-04-19 19:16:06.198] [INFO] console - [39mCreate replace worker PID:1
+[32m[2016-04-19 19:16:06.204] [INFO] console - [39mPID 1:1
+[32m[2016-04-19 19:16:06.847] [INFO] console - [39mPID 2:Wait for selector timeout
+
+[32m[2016-04-19 19:16:07.376] [INFO] console - [39m[WEBSOCKET]Received: OPEN
+[32m[2016-04-19 19:16:07.377] [INFO] console - [39mrestore!!
+[32m[2016-04-19 19:16:07.377] [INFO] console - [39mTask distributed:2138405303
+[32m[2016-04-19 19:16:07.379] [INFO] console - [39mPID 1:[WEBSOCKET]Thread socket opened.
+
+[32m[2016-04-19 19:16:07.381] [INFO] console - [39mPID 1:[WEBSOCKET]Received uid[2138405303]
+begin listen
+begin listen
+begin listen
+
+[32m[2016-04-19 19:16:07.419] [INFO] console - [39m[WEBSOCKET]Received: GET
+[32m[2016-04-19 19:16:07.420] [INFO] console - [39mWorker:1 task got
+[32m[2016-04-19 19:16:07.459] [INFO] console - [39mPID 2:[WEBSOCKET]Begin to sending data...
+
+[32m[2016-04-19 19:16:07.460] [INFO] console - [39m[WEBSOCKET]Received: WTIMEOUT
+[32m[2016-04-19 19:16:07.461] [INFO] console - [39mPID:2 killed
+[32m[2016-04-19 19:16:07.462] [INFO] console - [39mCreate replace worker PID:2
+[32m[2016-04-19 19:16:07.476] [INFO] console - [39mPID 2:1
+[32m[2016-04-19 19:16:08.671] [INFO] console - [39mPID 0:http://m.weibo.cn/users/1553184325
+
+[32m[2016-04-19 19:16:08.724] [INFO] console - [39m[WEBSOCKET]Received: OPEN
+[32m[2016-04-19 19:16:08.725] [INFO] console - [39mrestore!!
+[32m[2016-04-19 19:16:08.725] [INFO] console - [39mTask distributed:5894256487
+[32m[2016-04-19 19:16:08.734] [INFO] console - [39mPID 0:http://m.weibo.cn/u/1553184325
+
+[32m[2016-04-19 19:16:08.737] [INFO] console - [39mPID 2:[WEBSOCKET]Thread socket opened.
+[WEBSOCKET]Received uid[5894256487]
+begin listen
+begin listen
+begin listen
+
+[32m[2016-04-19 19:16:08.766] [INFO] console - [39m[WEBSOCKET]Received: GET
+[32m[2016-04-19 19:16:08.766] [INFO] console - [39mWorker:2 task got
+[32m[2016-04-19 19:16:09.489] [INFO] console - [39mPID 0:http://m.weibo.cn/u/1553184325
+
+[32m[2016-04-19 19:16:12.958] [INFO] console - [39mPID 1:http://m.weibo.cn/u/2138405303
+
+[32m[2016-04-19 19:16:13.122] [INFO] console - [39mPID 1:http://m.weibo.cn/users/2138405303
+
+[32m[2016-04-19 19:16:13.577] [INFO] console - [39mPID 1:http://m.weibo.cn/u/2138405303
+
+[32m[2016-04-19 19:16:14.237] [INFO] console - [39mPID 2:http://m.weibo.cn/users/5894256487
+
+[32m[2016-04-19 19:16:14.542] [INFO] console - [39mPID 2:http://m.weibo.cn/u/5894256487
+
+[32m[2016-04-19 19:16:14.752] [INFO] console - [39mPID 2:http://m.weibo.cn/u/5894256487
+
+[32m[2016-04-19 19:16:33.326] [INFO] console - [39mPID 1:Wait for selector timeout
+
+[32m[2016-04-19 19:16:33.792] [INFO] console - [39mPID 1:[WEBSOCKET]Begin to sending data...
+
+[32m[2016-04-19 19:16:33.793] [INFO] console - [39m[WEBSOCKET]Received: WTIMEOUT
+[32m[2016-04-19 19:16:33.793] [INFO] console - [39mPID:1 killed
+[32m[2016-04-19 19:16:33.793] [INFO] console - [39mCreate replace worker PID:1
+[32m[2016-04-19 19:16:33.799] [INFO] console - [39mPID 1:1
+[32m[2016-04-19 19:16:34.884] [INFO] console - [39m[WEBSOCKET]Received: OPEN
+[32m[2016-04-19 19:16:34.884] [INFO] console - [39mrestore!!
+[32m[2016-04-19 19:16:34.884] [INFO] console - [39mTask distributed:1914100420
+[32m[2016-04-19 19:16:34.888] [INFO] console - [39mPID 1:[WEBSOCKET]Thread socket opened.
+[WEBSOCKET]Received uid[1914100420]
+begin listen
+begin listen
+begin listen
+
+[32m[2016-04-19 19:16:34.919] [INFO] console - [39m[WEBSOCKET]Received: GET
+[32m[2016-04-19 19:16:34.919] [INFO] console - [39mWorker:1 task got
+[32m[2016-04-19 19:16:37.991] [INFO] console - [39mPID 0:Wait for selector timeout
+
+[32m[2016-04-19 19:16:38.441] [INFO] console - [39mPID 0:[WEBSOCKET]Begin to sending data...
+
+[32m[2016-04-19 19:16:38.441] [INFO] console - [39m[WEBSOCKET]Received: WTIMEOUT
+[32m[2016-04-19 19:16:38.442] [INFO] console - [39mPID:0 killed
+[32m[2016-04-19 19:16:38.442] [INFO] console - [39mCreate replace worker PID:0
+[32m[2016-04-19 19:16:38.448] [INFO] console - [39mPID 0:1
+[32m[2016-04-19 19:16:39.524] [INFO] console - [39m[WEBSOCKET]Received: OPEN
+[32m[2016-04-19 19:16:39.524] [INFO] console - [39mrestore!!
+[32m[2016-04-19 19:16:39.525] [INFO] console - [39mTask distributed:5745465725
+[32m[2016-04-19 19:16:39.526] [INFO] console - [39mPID 0:[WEBSOCKET]Thread socket opened.
+
+[32m[2016-04-19 19:16:39.527] [INFO] console - [39mPID 0:[WEBSOCKET]Received uid[5745465725]
+begin listen
+begin listen
+begin listen
+
+[32m[2016-04-19 19:16:39.555] [INFO] console - [39m[WEBSOCKET]Received: GET
+[32m[2016-04-19 19:16:39.555] [INFO] console - [39mWorker:0 task got
+[32m[2016-04-19 19:16:39.755] [INFO] console - [39mPID 2:Wait for selector timeout
+
+[32m[2016-04-19 19:16:40.208] [INFO] console - [39mPID 2:[WEBSOCKET]Begin to sending data...
+
+[32m[2016-04-19 19:16:40.209] [INFO] console - [39m[WEBSOCKET]Received: WTIMEOUT
+[32m[2016-04-19 19:16:40.209] [INFO] console - [39mPID:2 killed
+[32m[2016-04-19 19:16:40.209] [INFO] console - [39mCreate replace worker PID:2
+[32m[2016-04-19 19:16:40.216] [INFO] console - [39mPID 2:1
+[32m[2016-04-19 19:16:40.524] [INFO] console - [39mPID 1:http://m.weibo.cn/users/1914100420
+
+[32m[2016-04-19 19:16:40.732] [INFO] console - [39mPID 1:http://m.weibo.cn/u/1914100420
+
+[32m[2016-04-19 19:16:40.826] [INFO] console - [39mPID 1:http://m.weibo.cn/u/1914100420
+
+[32m[2016-04-19 19:16:41.360] [INFO] console - [39m[WEBSOCKET]Received: OPEN
+[32m[2016-04-19 19:16:41.360] [INFO] console - [39mrestore!!
+[32m[2016-04-19 19:16:41.360] [INFO] console - [39mTask distributed:1914100420
+[32m[2016-04-19 19:16:41.362] [INFO] console - [39mPID 2:[WEBSOCKET]Thread socket opened.
+
+[32m[2016-04-19 19:16:41.363] [INFO] console - [39mPID 2:[WEBSOCKET]Received uid[1914100420]
+begin listen
+begin listen
+begin listen
+
+[32m[2016-04-19 19:16:41.389] [INFO] console - [39m[WEBSOCKET]Received: GET
+[32m[2016-04-19 19:16:41.389] [INFO] console - [39mWorker:2 task got
+[32m[2016-04-19 19:16:46.213] [INFO] console - [39mPID 0:http://m.weibo.cn/u/5745465725
+
+[32m[2016-04-19 19:16:46.509] [INFO] console - [39mPID 0:http://m.weibo.cn/u/5745465725
+
+[32m[2016-04-19 19:16:47.444] [INFO] console - [39mPID 2:http://m.weibo.cn/u/1914100420
+
+[32m[2016-04-19 19:16:47.496] [INFO] console - [39mPID 2:http://m.weibo.cn/u/1914100420
+
+[32m[2016-04-19 19:16:48.012] [INFO] console - [39mPID 0:http://m.weibo.cn/users/5745465725
+
+[32m[2016-04-19 19:16:48.807] [INFO] console - [39mPID 2:http://m.weibo.cn/users/1914100420
+
+[32m[2016-04-19 19:16:59.353] [INFO] console - [39mPID 1:Wait for selector timeout
+
+[32m[2016-04-19 19:16:59.817] [INFO] console - [39mPID 1:[WEBSOCKET]Begin to sending data...
+
+[32m[2016-04-19 19:16:59.818] [INFO] console - [39m[WEBSOCKET]Received: WTIMEOUT
+[32m[2016-04-19 19:16:59.818] [INFO] console - [39mPID:1 killed
+[32m[2016-04-19 19:16:59.818] [INFO] console - [39mCreate replace worker PID:1
+[32m[2016-04-19 19:16:59.825] [INFO] console - [39mPID 1:1
+[32m[2016-04-19 19:17:01.035] [INFO] console - [39m[WEBSOCKET]Received: OPEN
+[32m[2016-04-19 19:17:01.036] [INFO] console - [39mrestore!!
+[32m[2016-04-19 19:17:01.036] [INFO] console - [39mTask distributed:2138405303
+[32m[2016-04-19 19:17:01.039] [INFO] console - [39mPID 1:[WEBSOCKET]Thread socket opened.
+
+[32m[2016-04-19 19:17:01.039] [INFO] console - [39mPID 1:[WEBSOCKET]Received uid[2138405303]
+begin listen
+begin listen
+begin listen
+
+[32m[2016-04-19 19:17:01.070] [INFO] console - [39m[WEBSOCKET]Received: GET
+[32m[2016-04-19 19:17:01.070] [INFO] console - [39mWorker:1 task got
+[32m[2016-04-19 19:17:06.550] [INFO] console - [39mPID 1:http://m.weibo.cn/users/2138405303
+
+[32m[2016-04-19 19:17:06.856] [INFO] console - [39mPID 1:http://m.weibo.cn/u/2138405303
+
+[32m[2016-04-19 19:17:06.909] [INFO] console - [39mPID 1:http://m.weibo.cn/u/2138405303
+
+[32m[2016-04-19 19:17:11.736] [INFO] console - [39mPID 2:Wait for selector timeout
+
+[32m[2016-04-19 19:17:12.317] [INFO] console - [39mPID 0:Wait for selector timeout
+
+[32m[2016-04-19 19:17:12.423] [INFO] console - [39m[WEBSOCKET]Received: WTIMEOUT
+[32m[2016-04-19 19:17:12.423] [INFO] console - [39mPID:2 killed
+[32m[2016-04-19 19:17:12.423] [INFO] console - [39mCreate replace worker PID:2
+[32m[2016-04-19 19:17:12.433] [INFO] console - [39mPID 2:[WEBSOCKET]Begin to sending data...
+
+[32m[2016-04-19 19:17:12.434] [INFO] console - [39mPID 2:1
+[32m[2016-04-19 19:17:13.196] [INFO] console - [39mPID 0:[WEBSOCKET]Begin to sending data...
+
+[32m[2016-04-19 19:17:13.198] [INFO] console - [39m[WEBSOCKET]Received: WTIMEOUT
+[32m[2016-04-19 19:17:13.198] [INFO] console - [39mPID:0 killed
+[32m[2016-04-19 19:17:13.198] [INFO] console - [39mCreate replace worker PID:0
+[32m[2016-04-19 19:17:13.205] [INFO] console - [39mPID 0:1
+[32m[2016-04-19 19:17:14.292] [INFO] console - [39m[WEBSOCKET]Received: OPEN
+[32m[2016-04-19 19:17:14.292] [INFO] console - [39mrestore!!
+[32m[2016-04-19 19:17:14.292] [INFO] console - [39mTask distributed:5894256487
+[32m[2016-04-19 19:17:14.294] [INFO] console - [39mPID 2:[WEBSOCKET]Thread socket opened.
+
+[32m[2016-04-19 19:17:14.296] [INFO] console - [39mPID 2:[WEBSOCKET]Received uid[5894256487]
+begin listen
+
+[32m[2016-04-19 19:17:14.297] [INFO] console - [39mPID 2:begin listen
+begin listen
+
+[32m[2016-04-19 19:17:14.351] [INFO] console - [39m[WEBSOCKET]Received: GET
+[32m[2016-04-19 19:17:14.351] [INFO] console - [39mWorker:2 task got
+[32m[2016-04-19 19:17:14.818] [INFO] console - [39m[WEBSOCKET]Received: OPEN
+[32m[2016-04-19 19:17:14.819] [INFO] console - [39mrestore!!
+[32m[2016-04-19 19:17:14.819] [INFO] console - [39mTask distributed:1553184325
+[32m[2016-04-19 19:17:14.823] [INFO] console - [39mPID 0:[WEBSOCKET]Thread socket opened.
+
+[32m[2016-04-19 19:17:14.825] [INFO] console - [39mPID 0:[WEBSOCKET]Received uid[1553184325]
+begin listen
+begin listen
+begin listen
+
+[32m[2016-04-19 19:17:14.869] [INFO] console - [39m[WEBSOCKET]Received: GET
+[32m[2016-04-19 19:17:14.869] [INFO] console - [39mWorker:0 task got
+[32m[2016-04-19 19:17:19.913] [INFO] console - [39mPID 2:http://m.weibo.cn/users/5894256487
+
+[32m[2016-04-19 19:17:20.033] [INFO] console - [39mPID 2:http://m.weibo.cn/u/5894256487
+
+[32m[2016-04-19 19:17:20.330] [INFO] console - [39mPID 0:http://m.weibo.cn/users/1553184325
+
+[32m[2016-04-19 19:17:20.436] [INFO] console - [39mPID 0:http://m.weibo.cn/u/1553184325
+
+[32m[2016-04-19 19:17:20.702] [INFO] console - [39mPID 2:http://m.weibo.cn/u/5894256487
+
+[32m[2016-04-19 19:17:21.572] [INFO] console - [39mPID 0:http://m.weibo.cn/u/1553184325
+
+[32m[2016-04-19 19:17:32.587] [INFO] console - [39mPID 1:Wait for selector timeout
+
+[32m[2016-04-19 19:17:33.065] [INFO] console - [39mPID 1:[WEBSOCKET]Begin to sending data...
+
+[32m[2016-04-19 19:17:33.066] [INFO] console - [39m[WEBSOCKET]Received: WTIMEOUT
+[32m[2016-04-19 19:17:33.066] [INFO] console - [39mPID:1 killed
+[32m[2016-04-19 19:17:33.067] [INFO] console - [39mCreate replace worker PID:1
+[32m[2016-04-19 19:17:33.072] [INFO] console - [39mPID 1:1
+[32m[2016-04-19 19:17:34.204] [INFO] console - [39m[WEBSOCKET]Received: OPEN
+[32m[2016-04-19 19:17:34.204] [INFO] console - [39mrestore!!
+[32m[2016-04-19 19:17:34.204] [INFO] console - [39mTask distributed:5745465725
+[32m[2016-04-19 19:17:34.208] [INFO] console - [39mPID 1:[WEBSOCKET]Thread socket opened.
+[WEBSOCKET]Received uid[5745465725]
+begin listen
+begin listen
+begin listen
+
+[32m[2016-04-19 19:17:34.239] [INFO] console - [39m[WEBSOCKET]Received: GET
+[32m[2016-04-19 19:17:34.239] [INFO] console - [39mWorker:1 task got
+[32m[2016-04-19 19:17:39.813] [INFO] console - [39mPID 0:Wait for selector timeout
+
+[32m[2016-04-19 19:17:40.124] [INFO] console - [39mPID 2:Wait for selector timeout
+
+[32m[2016-04-19 19:17:40.314] [INFO] console - [39mPID 0:[WEBSOCKET]Begin to sending data...
+
+[32m[2016-04-19 19:17:40.314] [INFO] console - [39m[WEBSOCKET]Received: WTIMEOUT
+[32m[2016-04-19 19:17:40.314] [INFO] console - [39mPID:0 killed
+[32m[2016-04-19 19:17:40.316] [INFO] console - [39mCreate replace worker PID:0
+[32m[2016-04-19 19:17:40.322] [INFO] console - [39mPID 0:1
+[32m[2016-04-19 19:17:40.726] [INFO] console - [39mPID 2:[WEBSOCKET]Begin to sending data...
+
+[32m[2016-04-19 19:17:40.727] [INFO] console - [39m[WEBSOCKET]Received: WTIMEOUT
+[32m[2016-04-19 19:17:40.727] [INFO] console - [39mPID:2 killed
+[32m[2016-04-19 19:17:40.727] [INFO] console - [39mCreate replace worker PID:2
+[32m[2016-04-19 19:17:40.735] [INFO] console - [39mPID 2:1
+[32m[2016-04-19 19:17:40.989] [INFO] console - [39mPID 1:http://m.weibo.cn/users/5745465725
+
+[32m[2016-04-19 19:17:41.085] [INFO] console - [39mPID 1:http://m.weibo.cn/u/5745465725
+
+[32m[2016-04-19 19:17:41.623] [INFO] console - [39mPID 1:http://m.weibo.cn/u/5745465725
+
+[32m[2016-04-19 19:17:41.736] [INFO] console - [39m[WEBSOCKET]Received: OPEN
+[32m[2016-04-19 19:17:41.737] [INFO] console - [39mrestore!!
+[32m[2016-04-19 19:17:41.737] [INFO] console - [39mTask distributed:5894256487
+[32m[2016-04-19 19:17:41.739] [INFO] console - [39mPID 0:[WEBSOCKET]Thread socket opened.
+
+[32m[2016-04-19 19:17:41.740] [INFO] console - [39mPID 0:[WEBSOCKET]Received uid[5894256487]
+
+[32m[2016-04-19 19:17:41.741] [INFO] console - [39mPID 0:begin listen
+begin listen
+begin listen
+
+[32m[2016-04-19 19:17:41.793] [INFO] console - [39m[WEBSOCKET]Received: GET
+[32m[2016-04-19 19:17:41.793] [INFO] console - [39mWorker:0 task got
+[32m[2016-04-19 19:17:42.247] [INFO] console - [39m[WEBSOCKET]Received: OPEN
+[32m[2016-04-19 19:17:42.247] [INFO] console - [39mrestore!!
+[32m[2016-04-19 19:17:42.247] [INFO] console - [39mTask distributed:1914100420
+[32m[2016-04-19 19:17:42.250] [INFO] console - [39mPID 2:[WEBSOCKET]Thread socket opened.
+
+[32m[2016-04-19 19:17:42.252] [INFO] console - [39mPID 2:[WEBSOCKET]Received uid[1914100420]
+begin listen
+begin listen
+begin listen
+
+[32m[2016-04-19 19:17:42.289] [INFO] console - [39m[WEBSOCKET]Received: GET
+[32m[2016-04-19 19:17:42.289] [INFO] console - [39mWorker:2 task got
+[32m[2016-04-19 19:17:47.172] [INFO] console - [39mPID 0:http://m.weibo.cn/u/5894256487
+
+[32m[2016-04-19 19:17:47.215] [INFO] console - [39mPID 0:http://m.weibo.cn/users/5894256487
+
+[32m[2016-04-19 19:17:47.855] [INFO] console - [39mPID 2:http://m.weibo.cn/u/1914100420
+
+[32m[2016-04-19 19:17:47.870] [INFO] console - [39mPID 0:http://m.weibo.cn/u/5894256487
+
+[32m[2016-04-19 19:17:47.901] [INFO] console - [39mPID 2:http://m.weibo.cn/u/1914100420
+
+[32m[2016-04-19 19:17:48.612] [INFO] console - [39mPID 2:http://m.weibo.cn/users/1914100420
+
+[32m[2016-04-19 19:18:04.440] [INFO] console - [39mPID 0:Wait for selector timeout
+
+[32m[2016-04-19 19:18:04.902] [INFO] console - [39mPID 0:[WEBSOCKET]Begin to sending data...
+
+[32m[2016-04-19 19:18:04.902] [INFO] console - [39m[WEBSOCKET]Received: WTIMEOUT
+[32m[2016-04-19 19:18:04.902] [INFO] console - [39mPID:0 killed
+[32m[2016-04-19 19:18:04.902] [INFO] console - [39mCreate replace worker PID:0
+[32m[2016-04-19 19:18:04.907] [INFO] console - [39mPID 0:1
+[32m[2016-04-19 19:18:04.980] [INFO] console - [39mPID 1:Wait for selector timeout
+
+[32m[2016-04-19 19:18:05.028] [INFO] console - [39mPID 1:[WEBSOCKET]Begin to sending data...
+
+[32m[2016-04-19 19:18:05.029] [INFO] console - [39m[WEBSOCKET]Received: WTIMEOUT
+[32m[2016-04-19 19:18:05.029] [INFO] console - [39mPID:1 killed
+[32m[2016-04-19 19:18:05.029] [INFO] console - [39mCreate replace worker PID:1
+[32m[2016-04-19 19:18:05.041] [INFO] console - [39mPID 1:1
+[32m[2016-04-19 19:18:06.225] [INFO] console - [39m[WEBSOCKET]Received: OPEN
+[32m[2016-04-19 19:18:06.225] [INFO] console - [39mrestore!!
+[32m[2016-04-19 19:18:06.226] [INFO] console - [39mTask distributed:2138405303
+[32m[2016-04-19 19:18:06.226] [INFO] console - [39mPID 0:[WEBSOCKET]Thread socket opened.
+
+[32m[2016-04-19 19:18:06.228] [INFO] console - [39mPID 0:[WEBSOCKET]Received uid[2138405303]
+begin listen
+begin listen
+begin listen
+
+[32m[2016-04-19 19:18:06.257] [INFO] console - [39m[WEBSOCKET]Received: GET
+[32m[2016-04-19 19:18:06.257] [INFO] console - [39mWorker:0 task got
+[32m[2016-04-19 19:18:06.345] [INFO] console - [39m[WEBSOCKET]Received: OPEN
+[32m[2016-04-19 19:18:06.345] [INFO] console - [39mrestore!!
+[32m[2016-04-19 19:18:06.345] [INFO] console - [39mTask distributed:1914100420
+[32m[2016-04-19 19:18:06.347] [INFO] console - [39mPID 1:[WEBSOCKET]Thread socket opened.
+
+[32m[2016-04-19 19:18:06.348] [INFO] console - [39mPID 1:[WEBSOCKET]Received uid[1914100420]
+begin listen
+begin listen
+begin listen
+
+[32m[2016-04-19 19:18:06.376] [INFO] console - [39m[WEBSOCKET]Received: GET
+[32m[2016-04-19 19:18:06.376] [INFO] console - [39mWorker:1 task got
+[32m[2016-04-19 19:18:11.221] [INFO] console - [39mPID 2:Wait for selector timeout
+
+[32m[2016-04-19 19:18:11.656] [INFO] console - [39mPID 2:[WEBSOCKET]Begin to sending data...
+
+[32m[2016-04-19 19:18:11.657] [INFO] console - [39m[WEBSOCKET]Received: WTIMEOUT
+[32m[2016-04-19 19:18:11.657] [INFO] console - [39mPID:2 killed
+[32m[2016-04-19 19:18:11.657] [INFO] console - [39mCreate replace worker PID:2
+[32m[2016-04-19 19:18:11.664] [INFO] console - [39mPID 2:1
+[32m[2016-04-19 19:18:12.693] [INFO] console - [39m[WEBSOCKET]Received: OPEN
+[32m[2016-04-19 19:18:12.693] [INFO] console - [39mrestore!!
+[32m[2016-04-19 19:18:12.694] [INFO] console - [39mTask distributed:5745465725
+[32m[2016-04-19 19:18:12.694] [INFO] console - [39mPID 2:[WEBSOCKET]Thread socket opened.
+
+[32m[2016-04-19 19:18:12.695] [INFO] console - [39mPID 2:[WEBSOCKET]Received uid[5745465725]
+
+[32m[2016-04-19 19:18:12.696] [INFO] console - [39mPID 2:begin listen
+begin listen
+begin listen
+
+[32m[2016-04-19 19:18:12.725] [INFO] console - [39m[WEBSOCKET]Received: GET
+[32m[2016-04-19 19:18:12.725] [INFO] console - [39mWorker:2 task got
+[32m[2016-04-19 19:18:12.828] [INFO] console - [39mPID 0:http://m.weibo.cn/u/2138405303
+
+[32m[2016-04-19 19:18:13.202] [INFO] console - [39mPID 0:http://m.weibo.cn/u/2138405303
+
+[32m[2016-04-19 19:18:13.273] [INFO] console - [39mPID 1:http://m.weibo.cn/users/1914100420
+
+[32m[2016-04-19 19:18:13.327] [INFO] console - [39mPID 1:http://m.weibo.cn/u/1914100420
+
+[32m[2016-04-19 19:18:13.531] [INFO] console - [39mPID 1:http://m.weibo.cn/u/1914100420
+
+[32m[2016-04-19 19:18:13.813] [INFO] console - [39mPID 0:http://m.weibo.cn/users/2138405303
+
+[32m[2016-04-19 19:18:18.281] [INFO] console - [39mPID 2:http://m.weibo.cn/users/5745465725
+
+[32m[2016-04-19 19:18:18.338] [INFO] console - [39mPID 2:http://m.weibo.cn/u/5745465725
+
+[32m[2016-04-19 19:18:18.495] [INFO] console - [39mPID 2:http://m.weibo.cn/u/5745465725
+
+[32m[2016-04-19 19:18:34.684] [INFO] console - [39mPID 1:Wait for selector timeout
+
+[32m[2016-04-19 19:18:35.253] [INFO] console - [39m[WEBSOCKET]Received: WTIMEOUT
+[32m[2016-04-19 19:18:35.254] [INFO] console - [39mPID:1 killed
+[32m[2016-04-19 19:18:35.254] [INFO] console - [39mCreate replace worker PID:1
+[32m[2016-04-19 19:18:35.258] [INFO] console - [39mPID 1:[WEBSOCKET]Begin to sending data...
+
+[32m[2016-04-19 19:18:35.259] [INFO] console - [39mPID 1:1
+[32m[2016-04-19 19:18:36.320] [INFO] console - [39m[WEBSOCKET]Received: OPEN
+[32m[2016-04-19 19:18:36.320] [INFO] console - [39mrestore!!
+[32m[2016-04-19 19:18:36.320] [INFO] console - [39mTask distributed:5894256487
+[32m[2016-04-19 19:18:36.323] [INFO] console - [39mPID 1:[WEBSOCKET]Thread socket opened.
+
+[32m[2016-04-19 19:18:36.324] [INFO] console - [39mPID 1:[WEBSOCKET]Received uid[5894256487]
+begin listen
+begin listen
+begin listen
+
+[32m[2016-04-19 19:18:36.358] [INFO] console - [39m[WEBSOCKET]Received: GET
+[32m[2016-04-19 19:18:36.358] [INFO] console - [39mWorker:1 task got
+[32m[2016-04-19 19:18:36.742] [INFO] console - [39mPID 0:Wait for selector timeout
+
+[32m[2016-04-19 19:18:37.255] [INFO] console - [39mPID 0:[WEBSOCKET]Begin to sending data...
+
+[32m[2016-04-19 19:18:37.255] [INFO] console - [39m[WEBSOCKET]Received: WTIMEOUT
+[32m[2016-04-19 19:18:37.256] [INFO] console - [39mPID:0 killed
+[32m[2016-04-19 19:18:37.256] [INFO] console - [39mCreate replace worker PID:0
+[32m[2016-04-19 19:18:37.261] [INFO] console - [39mPID 0:1
+[32m[2016-04-19 19:18:38.418] [INFO] console - [39m[WEBSOCKET]Received: OPEN
+[32m[2016-04-19 19:18:38.418] [INFO] console - [39mrestore!!
+[32m[2016-04-19 19:18:38.418] [INFO] console - [39mTask distributed:1914100420
+[32m[2016-04-19 19:18:38.420] [INFO] console - [39mPID 0:[WEBSOCKET]Thread socket opened.
+
+[32m[2016-04-19 19:18:38.422] [INFO] console - [39mPID 0:[WEBSOCKET]Received uid[1914100420]
+begin listen
+begin listen
+begin listen
+
+[32m[2016-04-19 19:18:38.454] [INFO] console - [39m[WEBSOCKET]Received: GET
+[32m[2016-04-19 19:18:38.455] [INFO] console - [39mWorker:0 task got
+[32m[2016-04-19 19:18:42.132] [INFO] console - [39mPID 1:http://m.weibo.cn/u/5894256487
+
+[32m[2016-04-19 19:18:42.133] [INFO] console - [39mPID 1:http://m.weibo.cn/users/5894256487
+
+[32m[2016-04-19 19:18:42.891] [INFO] console - [39mPID 2:Wait for selector timeout
+
+[32m[2016-04-19 19:18:42.930] [INFO] console - [39mPID 2:[WEBSOCKET]Begin to sending data...
+
+[32m[2016-04-19 19:18:42.931] [INFO] console - [39m[WEBSOCKET]Received: WTIMEOUT
+[32m[2016-04-19 19:18:42.931] [INFO] console - [39mPID:2 killed
+[32m[2016-04-19 19:18:42.931] [INFO] console - [39mCreate replace worker PID:2
+[32m[2016-04-19 19:18:42.948] [INFO] console - [39mPID 2:1
+[32m[2016-04-19 19:18:42.968] [INFO] console - [39mPID 1:http://m.weibo.cn/u/5894256487
+
+[32m[2016-04-19 19:18:44.056] [INFO] console - [39m[WEBSOCKET]Received: OPEN
+[32m[2016-04-19 19:18:44.056] [INFO] console - [39mrestore!!
+[32m[2016-04-19 19:18:44.056] [INFO] console - [39mTask distributed:5894256487
+[32m[2016-04-19 19:18:44.059] [INFO] console - [39mPID 2:[WEBSOCKET]Thread socket opened.
+
+[32m[2016-04-19 19:18:44.060] [INFO] console - [39mPID 2:[WEBSOCKET]Received uid[5894256487]
+begin listen
+begin listen
+begin listen
+
+[32m[2016-04-19 19:18:44.096] [INFO] console - [39m[WEBSOCKET]Received: GET
+[32m[2016-04-19 19:18:44.096] [INFO] console - [39mWorker:2 task got
+[32m[2016-04-19 19:18:44.120] [INFO] console - [39mPID 0:http://m.weibo.cn/users/1914100420
+
+[32m[2016-04-19 19:18:44.175] [INFO] console - [39mPID 0:http://m.weibo.cn/u/1914100420
+
+[32m[2016-04-19 19:18:44.729] [INFO] console - [39mPID 0:http://m.weibo.cn/u/1914100420
+
+[32m[2016-04-19 19:18:50.824] [INFO] console - [39mPID 2:http://m.weibo.cn/u/5894256487
+
+[32m[2016-04-19 19:18:50.825] [INFO] console - [39mPID 2:http://m.weibo.cn/users/5894256487
+
+[32m[2016-04-19 19:18:51.522] [INFO] console - [39mPID 2:http://m.weibo.cn/u/5894256487
+
+[32m[2016-04-19 19:19:12.700] [INFO] console - [39mPID 0:Wait for selector timeout
+
+[32m[2016-04-19 19:19:13.232] [INFO] console - [39mPID 0:[WEBSOCKET]Begin to sending data...
+
+[32m[2016-04-19 19:19:13.233] [INFO] console - [39m[WEBSOCKET]Received: WTIMEOUT
+[32m[2016-04-19 19:19:13.233] [INFO] console - [39mPID:0 killed
+[32m[2016-04-19 19:19:13.233] [INFO] console - [39mCreate replace worker PID:0
+[32m[2016-04-19 19:19:13.240] [INFO] console - [39mPID 0:1
+[32m[2016-04-19 19:19:14.072] [INFO] console - [39mPID 1:Wait for selector timeout
+
+[32m[2016-04-19 19:19:14.445] [INFO] console - [39m[WEBSOCKET]Received: OPEN
+[32m[2016-04-19 19:19:14.445] [INFO] console - [39mrestore!!
+[32m[2016-04-19 19:19:14.445] [INFO] console - [39mTask distributed:1553184325
+[32m[2016-04-19 19:19:14.447] [INFO] console - [39mPID 0:[WEBSOCKET]Thread socket opened.
+
+[32m[2016-04-19 19:19:14.449] [INFO] console - [39mPID 0:[WEBSOCKET]Received uid[1553184325]
+begin listen
+begin listen
+begin listen
+
+[32m[2016-04-19 19:19:14.488] [INFO] console - [39m[WEBSOCKET]Received: GET
+[32m[2016-04-19 19:19:14.488] [INFO] console - [39mWorker:0 task got
+[32m[2016-04-19 19:19:14.782] [INFO] console - [39mPID 1:[WEBSOCKET]Begin to sending data...
+
+[32m[2016-04-19 19:19:14.782] [INFO] console - [39m[WEBSOCKET]Received: WTIMEOUT
+[32m[2016-04-19 19:19:14.782] [INFO] console - [39mPID:1 killed
+[32m[2016-04-19 19:19:14.783] [INFO] console - [39mCreate replace worker PID:1
+[32m[2016-04-19 19:19:14.788] [INFO] console - [39mPID 1:1
+[32m[2016-04-19 19:19:15.935] [INFO] console - [39m[WEBSOCKET]Received: OPEN
+[32m[2016-04-19 19:19:15.935] [INFO] console - [39mrestore!!
+[32m[2016-04-19 19:19:15.935] [INFO] console - [39mTask distributed:5745465725
+[32m[2016-04-19 19:19:15.938] [INFO] console - [39mPID 1:[WEBSOCKET]Thread socket opened.
+
+[32m[2016-04-19 19:19:15.940] [INFO] console - [39mPID 1:[WEBSOCKET]Received uid[5745465725]
+begin listen
+begin listen
+begin listen
+
+[32m[2016-04-19 19:19:15.967] [INFO] console - [39m[WEBSOCKET]Received: GET
+[32m[2016-04-19 19:19:15.967] [INFO] console - [39mWorker:1 task got
+[32m[2016-04-19 19:19:19.166] [INFO] console - [39mPID 2:Wait for selector timeout
+
+[32m[2016-04-19 19:19:19.665] [INFO] console - [39mPID 2:[WEBSOCKET]Begin to sending data...
+
+[32m[2016-04-19 19:19:19.665] [INFO] console - [39m[WEBSOCKET]Received: WTIMEOUT
+[32m[2016-04-19 19:19:19.666] [INFO] console - [39mPID:2 killed
+[32m[2016-04-19 19:19:19.666] [INFO] console - [39mCreate replace worker PID:2
+[32m[2016-04-19 19:19:19.674] [INFO] console - [39mPID 2:1
+[32m[2016-04-19 19:19:19.968] [INFO] console - [39mPID 0:http://m.weibo.cn/u/1553184325
+
+[32m[2016-04-19 19:19:20.462] [INFO] console - [39mPID 0:http://m.weibo.cn/u/1553184325
+
+[32m[2016-04-19 19:19:20.740] [INFO] console - [39m[WEBSOCKET]Received: OPEN
+[32m[2016-04-19 19:19:20.740] [INFO] console - [39mrestore!!
+[32m[2016-04-19 19:19:20.741] [INFO] console - [39mTask distributed:1914100420
+[32m[2016-04-19 19:19:20.743] [INFO] console - [39mPID 2:[WEBSOCKET]Thread socket opened.
+
+[32m[2016-04-19 19:19:20.745] [INFO] console - [39mPID 2:[WEBSOCKET]Received uid[1914100420]
+begin listen
+begin listen
+begin listen
+
+[32m[2016-04-19 19:19:20.772] [INFO] console - [39m[WEBSOCKET]Received: GET
+[32m[2016-04-19 19:19:20.772] [INFO] console - [39mWorker:2 task got
+[32m[2016-04-19 19:19:21.123] [INFO] console - [39mPID 0:http://m.weibo.cn/users/1553184325
+
+[32m[2016-04-19 19:19:21.574] [INFO] console - [39mPID 1:http://m.weibo.cn/u/5745465725
+
+[32m[2016-04-19 19:19:21.721] [INFO] console - [39mPID 1:http://m.weibo.cn/u/5745465725
+
+[32m[2016-04-19 19:19:21.774] [INFO] console - [39mPID 1:http://m.weibo.cn/users/5745465725
+
+[32m[2016-04-19 19:19:27.151] [INFO] console - [39mPID 2:http://m.weibo.cn/u/1914100420
+
+[32m[2016-04-19 19:19:27.389] [INFO] console - [39mPID 2:http://m.weibo.cn/users/1914100420
+
+[32m[2016-04-19 19:19:28.315] [INFO] console - [39mPID 2:http://m.weibo.cn/u/1914100420
+
+[32m[2016-04-19 19:19:43.968] [INFO] console - [39mPID 0:Wait for selector timeout
+
+[32m[2016-04-19 19:19:44.462] [INFO] console - [39mPID 0:[WEBSOCKET]Begin to sending data...
+
+[32m[2016-04-19 19:19:44.463] [INFO] console - [39m[WEBSOCKET]Received: WTIMEOUT
+[32m[2016-04-19 19:19:44.463] [INFO] console - [39mPID:0 killed
+[32m[2016-04-19 19:19:44.464] [INFO] console - [39mCreate replace worker PID:0
+[32m[2016-04-19 19:19:44.469] [INFO] console - [39mPID 0:1
+[32m[2016-04-19 19:19:44.511] [INFO] console - [39mPID 1:Wait for selector timeout
+
+[32m[2016-04-19 19:19:45.162] [INFO] console - [39mPID 1:[WEBSOCKET]Begin to sending data...
+
+[32m[2016-04-19 19:19:45.163] [INFO] console - [39m[WEBSOCKET]Received: WTIMEOUT
+[32m[2016-04-19 19:19:45.163] [INFO] console - [39mPID:1 killed
+[32m[2016-04-19 19:19:45.163] [INFO] console - [39mCreate replace worker PID:1
+[32m[2016-04-19 19:19:45.169] [INFO] console - [39mPID 1:1
+[32m[2016-04-19 19:19:45.894] [INFO] console - [39mPID 0:[WEBSOCKET]Thread socket opened.
+
+[32m[2016-04-19 19:19:45.895] [INFO] console - [39m[WEBSOCKET]Received: OPEN
+[32m[2016-04-19 19:19:45.896] [INFO] console - [39mrestore!!
+[32m[2016-04-19 19:19:45.896] [INFO] console - [39mTask distributed:2138405303
+[32m[2016-04-19 19:19:45.897] [INFO] console - [39mPID 0:[WEBSOCKET]Received uid[2138405303]
+
+[32m[2016-04-19 19:19:45.899] [INFO] console - [39mPID 0:begin listen
+begin listen
+begin listen
+
+[32m[2016-04-19 19:19:45.960] [INFO] console - [39m[WEBSOCKET]Received: GET
+[32m[2016-04-19 19:19:45.960] [INFO] console - [39mWorker:0 task got
+[32m[2016-04-19 19:19:46.488] [INFO] console - [39m[WEBSOCKET]Received: OPEN
+[32m[2016-04-19 19:19:46.489] [INFO] console - [39mrestore!!
+[32m[2016-04-19 19:19:46.489] [INFO] console - [39mTask distributed:1914100420
+[32m[2016-04-19 19:19:46.491] [INFO] console - [39mPID 1:[WEBSOCKET]Thread socket opened.
+
+[32m[2016-04-19 19:19:46.494] [INFO] console - [39mPID 1:[WEBSOCKET]Received uid[1914100420]
+
+[32m[2016-04-19 19:19:46.494] [INFO] console - [39mPID 1:begin listen
+begin listen
+begin listen
+
+[32m[2016-04-19 19:19:46.525] [INFO] console - [39m[WEBSOCKET]Received: GET
+[32m[2016-04-19 19:19:46.526] [INFO] console - [39mWorker:1 task got
+[32m[2016-04-19 19:19:48.047] [INFO] console - [39mPID 2:Wait for selector timeout
+
+[32m[2016-04-19 19:19:48.085] [INFO] console - [39m[WEBSOCKET]Received: WTIMEOUT
+[32m[2016-04-19 19:19:48.085] [INFO] console - [39mPID:2 killed
+[32m[2016-04-19 19:19:48.086] [INFO] console - [39mCreate replace worker PID:2
+[32m[2016-04-19 19:19:48.092] [INFO] console - [39mPID 2:[WEBSOCKET]Begin to sending data...
+
+[32m[2016-04-19 19:19:48.093] [INFO] console - [39mPID 2:1
+[32m[2016-04-19 19:19:49.197] [INFO] console - [39m[WEBSOCKET]Received: OPEN
+[32m[2016-04-19 19:19:49.197] [INFO] console - [39mrestore!!
+[32m[2016-04-19 19:19:49.197] [INFO] console - [39mTask distributed:2138405303
+[32m[2016-04-19 19:19:49.198] [INFO] console - [39mPID 2:[WEBSOCKET]Thread socket opened.
+
+[32m[2016-04-19 19:19:49.200] [INFO] console - [39mPID 2:[WEBSOCKET]Received uid[2138405303]
+begin listen
+begin listen
+begin listen
+
+[32m[2016-04-19 19:19:49.226] [INFO] console - [39m[WEBSOCKET]Received: GET
+[32m[2016-04-19 19:19:49.226] [INFO] console - [39mWorker:2 task got
+[32m[2016-04-19 19:19:52.259] [INFO] console - [39mPID 0:http://m.weibo.cn/u/2138405303
+
+[32m[2016-04-19 19:19:52.309] [INFO] console - [39mPID 0:http://m.weibo.cn/users/2138405303
+
+[32m[2016-04-19 19:19:53.106] [INFO] console - [39mPID 1:http://m.weibo.cn/users/1914100420
+
+[32m[2016-04-19 19:19:53.155] [INFO] console - [39mPID 1:http://m.weibo.cn/u/1914100420
+
+[32m[2016-04-19 19:19:53.648] [INFO] console - [39mPID 1:http://m.weibo.cn/u/1914100420
+
+[32m[2016-04-19 19:19:54.074] [INFO] console - [39mPID 0:http://m.weibo.cn/u/2138405303
+
+[32m[2016-04-19 19:19:54.885] [INFO] console - [39mPID 2:http://m.weibo.cn/u/2138405303
+
+[32m[2016-04-19 19:19:55.182] [INFO] console - [39mPID 2:http://m.weibo.cn/users/2138405303
+
+[32m[2016-04-19 19:19:55.242] [INFO] console - [39mPID 2:http://m.weibo.cn/u/2138405303
+
+[32m[2016-04-19 19:20:16.134] [INFO] console - [39mPID 0:Wait for selector timeout
+
+[32m[2016-04-19 19:20:16.651] [INFO] console - [39mPID 0:[WEBSOCKET]Begin to sending data...
+
+[32m[2016-04-19 19:20:16.651] [INFO] console - [39m[WEBSOCKET]Received: WTIMEOUT
+[32m[2016-04-19 19:20:16.651] [INFO] console - [39mPID:0 killed
+[32m[2016-04-19 19:20:16.651] [INFO] console - [39mCreate replace worker PID:0
+[32m[2016-04-19 19:20:16.659] [INFO] console - [39mPID 0:1
+[32m[2016-04-19 19:20:17.742] [INFO] console - [39m[WEBSOCKET]Received: OPEN
+[32m[2016-04-19 19:20:17.742] [INFO] console - [39mrestore!!
+[32m[2016-04-19 19:20:17.742] [INFO] console - [39mTask distributed:5894256487
+[32m[2016-04-19 19:20:17.744] [INFO] console - [39mPID 0:[WEBSOCKET]Thread socket opened.
+
+[32m[2016-04-19 19:20:17.746] [INFO] console - [39mPID 0:[WEBSOCKET]Received uid[5894256487]
+begin listen
+begin listen
+begin listen
+
+[32m[2016-04-19 19:20:17.773] [INFO] console - [39m[WEBSOCKET]Received: GET
+[32m[2016-04-19 19:20:17.773] [INFO] console - [39mWorker:0 task got
+[32m[2016-04-19 19:20:20.262] [INFO] console - [39mPID 2:Wait for selector timeout
+
+[32m[2016-04-19 19:20:20.763] [INFO] console - [39mPID 2:[WEBSOCKET]Begin to sending data...
+
+[32m[2016-04-19 19:20:20.763] [INFO] console - [39m[WEBSOCKET]Received: WTIMEOUT
+[32m[2016-04-19 19:20:20.764] [INFO] console - [39mPID:2 killed
+[32m[2016-04-19 19:20:20.764] [INFO] console - [39mCreate replace worker PID:2
+[32m[2016-04-19 19:20:20.768] [INFO] console - [39mPID 2:1
+[32m[2016-04-19 19:20:21.790] [INFO] console - [39m[WEBSOCKET]Received: OPEN
+[32m[2016-04-19 19:20:21.790] [INFO] console - [39mrestore!!
+[32m[2016-04-19 19:20:21.790] [INFO] console - [39mTask distributed:1553184325
+[32m[2016-04-19 19:20:21.792] [INFO] console - [39mPID 2:[WEBSOCKET]Thread socket opened.
+
+[32m[2016-04-19 19:20:21.793] [INFO] console - [39mPID 2:[WEBSOCKET]Received uid[1553184325]
+begin listen
+begin listen
+begin listen
+
+[32m[2016-04-19 19:20:21.816] [INFO] console - [39m[WEBSOCKET]Received: GET
+[32m[2016-04-19 19:20:21.816] [INFO] console - [39mWorker:2 task got
+[32m[2016-04-19 19:20:22.683] [INFO] console - [39mPID 1:Wait for selector timeout
+
+[32m[2016-04-19 19:20:23.183] [INFO] console - [39m[WEBSOCKET]Received: WTIMEOUT
+[32m[2016-04-19 19:20:23.183] [INFO] console - [39mPID:1 killed
+[32m[2016-04-19 19:20:23.183] [INFO] console - [39mCreate replace worker PID:1
+[32m[2016-04-19 19:20:23.188] [INFO] console - [39mPID 1:[WEBSOCKET]Begin to sending data...
+
+[32m[2016-04-19 19:20:23.192] [INFO] console - [39mPID 1:1
+[32m[2016-04-19 19:20:23.835] [INFO] console - [39mPID 0:http://m.weibo.cn/users/5894256487
+
+[32m[2016-04-19 19:20:23.947] [INFO] console - [39mPID 0:http://m.weibo.cn/u/5894256487
+
+[32m[2016-04-19 19:20:24.009] [INFO] console - [39mPID 0:http://m.weibo.cn/u/5894256487
+
+[32m[2016-04-19 19:20:24.587] [INFO] console - [39m[WEBSOCKET]Received: OPEN
+[32m[2016-04-19 19:20:24.587] [INFO] console - [39mrestore!!
+[32m[2016-04-19 19:20:24.588] [INFO] console - [39mTask distributed:5745465725
+[32m[2016-04-19 19:20:24.590] [INFO] console - [39mPID 1:[WEBSOCKET]Thread socket opened.
+
+[32m[2016-04-19 19:20:24.592] [INFO] console - [39mPID 1:[WEBSOCKET]Received uid[5745465725]
+begin listen
+begin listen
+begin listen
+
+[32m[2016-04-19 19:20:24.620] [INFO] console - [39m[WEBSOCKET]Received: GET
+[32m[2016-04-19 19:20:24.621] [INFO] console - [39mWorker:1 task got
+[32m[2016-04-19 19:20:27.813] [INFO] console - [39mPID 2:http://m.weibo.cn/u/1553184325
+
+[32m[2016-04-19 19:20:27.942] [INFO] console - [39mPID 2:http://m.weibo.cn/u/1553184325
+
+[32m[2016-04-19 19:20:27.993] [INFO] console - [39mPID 2:http://m.weibo.cn/users/1553184325
+
+[32m[2016-04-19 19:20:29.979] [INFO] console - [39mPID 1:http://m.weibo.cn/u/5745465725
+
+[32m[2016-04-19 19:20:30.025] [INFO] console - [39mPID 1:http://m.weibo.cn/users/5745465725
+
+[32m[2016-04-19 19:20:30.769] [INFO] console - [39mPID 1:http://m.weibo.cn/u/5745465725
+
+[32m[2016-04-19 19:20:50.568] [INFO] console - [39mPID 1:Wait for selector timeout
+
+[32m[2016-04-19 19:20:51.385] [INFO] console - [39mPID 1:[WEBSOCKET]Begin to sending data...
+
+[32m[2016-04-19 19:20:51.385] [INFO] console - [39m[WEBSOCKET]Received: WTIMEOUT
+[32m[2016-04-19 19:20:51.385] [INFO] console - [39mPID:1 killed
+[32m[2016-04-19 19:20:51.386] [INFO] console - [39mCreate replace worker PID:1
+[32m[2016-04-19 19:20:51.391] [INFO] console - [39mPID 1:1
+[32m[2016-04-19 19:20:52.434] [INFO] console - [39m[WEBSOCKET]Received: OPEN
+[32m[2016-04-19 19:20:52.434] [INFO] console - [39mrestore!!
+[32m[2016-04-19 19:20:52.434] [INFO] console - [39mTask distributed:1553184325
+[32m[2016-04-19 19:20:52.436] [INFO] console - [39mPID 1:[WEBSOCKET]Thread socket opened.
+
+[32m[2016-04-19 19:20:52.438] [INFO] console - [39mPID 1:[WEBSOCKET]Received uid[1553184325]
+begin listen
+begin listen
+begin listen
+
+[32m[2016-04-19 19:20:52.466] [INFO] console - [39m[WEBSOCKET]Received: GET
+[32m[2016-04-19 19:20:52.466] [INFO] console - [39mWorker:1 task got
+[32m[2016-04-19 19:20:53.141] [INFO] console - [39mPID 0:Wait for selector timeout
+
+[32m[2016-04-19 19:20:53.621] [INFO] console - [39mPID 0:[WEBSOCKET]Begin to sending data...
+
+[32m[2016-04-19 19:20:53.621] [INFO] console - [39m[WEBSOCKET]Received: WTIMEOUT
+[32m[2016-04-19 19:20:53.621] [INFO] console - [39mPID:0 killed
+[32m[2016-04-19 19:20:53.622] [INFO] console - [39mCreate replace worker PID:0
+[32m[2016-04-19 19:20:53.627] [INFO] console - [39mPID 0:1
+[32m[2016-04-19 19:20:55.142] [INFO] console - [39m[WEBSOCKET]Received: OPEN
+[32m[2016-04-19 19:20:55.143] [INFO] console - [39mrestore!!
+[32m[2016-04-19 19:20:55.143] [INFO] console - [39mTask distributed:5745465725
+[32m[2016-04-19 19:20:55.143] [INFO] console - [39mPID 0:[WEBSOCKET]Thread socket opened.
+
+[32m[2016-04-19 19:20:55.144] [INFO] console - [39mPID 0:[WEBSOCKET]Received uid[5745465725]
+
+[32m[2016-04-19 19:20:55.145] [INFO] console - [39mPID 0:begin listen
+begin listen
+begin listen
+
+[32m[2016-04-19 19:20:55.184] [INFO] console - [39m[WEBSOCKET]Received: GET
+[32m[2016-04-19 19:20:55.185] [INFO] console - [39mWorker:0 task got
+[32m[2016-04-19 19:20:57.900] [INFO] console - [39mPID 1:http://m.weibo.cn/users/1553184325
+
+[32m[2016-04-19 19:20:57.954] [INFO] console - [39mPID 1:http://m.weibo.cn/u/1553184325
+
+[32m[2016-04-19 19:20:58.022] [INFO] console - [39mPID 2:Wait for selector timeout
+
+[32m[2016-04-19 19:20:58.630] [INFO] console - [39mPID 2:[WEBSOCKET]Begin to sending data...
+
+[32m[2016-04-19 19:20:58.630] [INFO] console - [39m[WEBSOCKET]Received: WTIMEOUT
+[32m[2016-04-19 19:20:58.631] [INFO] console - [39mPID:2 killed
+[32m[2016-04-19 19:20:58.631] [INFO] console - [39mCreate replace worker PID:2
+[32m[2016-04-19 19:20:58.637] [INFO] console - [39mPID 2:1
+[32m[2016-04-19 19:20:58.728] [INFO] console - [39mPID 1:http://m.weibo.cn/u/1553184325
+
+[32m[2016-04-19 19:20:59.972] [INFO] console - [39m[WEBSOCKET]Received: OPEN
+[32m[2016-04-19 19:20:59.972] [INFO] console - [39mrestore!!
+[32m[2016-04-19 19:20:59.972] [INFO] console - [39mTask distributed:5894256487
+[32m[2016-04-19 19:20:59.980] [INFO] console - [39mPID 2:[WEBSOCKET]Thread socket opened.
+[WEBSOCKET]Received uid[5894256487]
+begin listen
+begin listen
+begin listen
+
+[32m[2016-04-19 19:21:00.025] [INFO] console - [39m[WEBSOCKET]Received: GET
+[32m[2016-04-19 19:21:00.025] [INFO] console - [39mWorker:2 task got
+[32m[2016-04-19 19:21:00.487] [INFO] console - [39mPID 0:http://m.weibo.cn/users/5745465725
+
+[32m[2016-04-19 19:21:00.546] [INFO] console - [39mPID 0:http://m.weibo.cn/u/5745465725
+
+[32m[2016-04-19 19:21:01.246] [INFO] console - [39mPID 0:http://m.weibo.cn/u/5745465725
+
+[32m[2016-04-19 19:21:06.925] [INFO] console - [39mPID 2:http://m.weibo.cn/users/5894256487
+
+[32m[2016-04-19 19:21:07.371] [INFO] console - [39mPID 2:http://m.weibo.cn/u/5894256487
+
+[32m[2016-04-19 19:21:08.331] [INFO] console - [39mPID 2:http://m.weibo.cn/u/5894256487
+
+[32m[2016-04-19 19:21:22.101] [INFO] console - [39mPID 1:Wait for selector timeout
+
+[32m[2016-04-19 19:21:22.728] [INFO] console - [39m[WEBSOCKET]Received: WTIMEOUT
+[32m[2016-04-19 19:21:22.728] [INFO] console - [39mPID:1 killed
+[32m[2016-04-19 19:21:22.729] [INFO] console - [39mCreate replace worker PID:1
+[32m[2016-04-19 19:21:22.733] [INFO] console - [39mPID 1:[WEBSOCKET]Begin to sending data...
+
+[32m[2016-04-19 19:21:22.735] [INFO] console - [39mPID 1:1
+[32m[2016-04-19 19:21:24.130] [INFO] console - [39m[WEBSOCKET]Received: OPEN
+[32m[2016-04-19 19:21:24.131] [INFO] console - [39mrestore!!
+[32m[2016-04-19 19:21:24.131] [INFO] console - [39mTask distributed:1914100420
+[32m[2016-04-19 19:21:24.132] [INFO] console - [39mPID 1:[WEBSOCKET]Thread socket opened.
+
+[32m[2016-04-19 19:21:24.134] [INFO] console - [39mPID 1:[WEBSOCKET]Received uid[1914100420]
+begin listen
+begin listen
+begin listen
+
+[32m[2016-04-19 19:21:24.171] [INFO] console - [39m[WEBSOCKET]Received: GET
+[32m[2016-04-19 19:21:24.172] [INFO] console - [39mWorker:1 task got
+[32m[2016-04-19 19:21:28.026] [INFO] console - [39mPID 2:Wait for selector timeout
+
+[32m[2016-04-19 19:21:28.100] [INFO] console - [39mPID 2:[WEBSOCKET]Begin to sending data...
+
+[32m[2016-04-19 19:21:28.101] [INFO] console - [39m[WEBSOCKET]Received: WTIMEOUT
+[32m[2016-04-19 19:21:28.101] [INFO] console - [39mPID:2 killed
+[32m[2016-04-19 19:21:28.101] [INFO] console - [39mCreate replace worker PID:2
+[32m[2016-04-19 19:21:28.108] [INFO] console - [39mPID 2:1
+[32m[2016-04-19 19:21:29.755] [INFO] console - [39m[WEBSOCKET]Received: OPEN
+[32m[2016-04-19 19:21:29.755] [INFO] console - [39mrestore!!
+[32m[2016-04-19 19:21:29.755] [INFO] console - [39mTask distributed:5894256487
+[32m[2016-04-19 19:21:29.757] [INFO] console - [39mPID 2:[WEBSOCKET]Thread socket opened.
+
+[32m[2016-04-19 19:21:29.759] [INFO] console - [39mPID 2:[WEBSOCKET]Received uid[5894256487]
+begin listen
+begin listen
+
+[32m[2016-04-19 19:21:29.760] [INFO] console - [39mPID 2:begin listen
+
+[32m[2016-04-19 19:21:29.838] [INFO] console - [39m[WEBSOCKET]Received: GET
+[32m[2016-04-19 19:21:29.838] [INFO] console - [39mWorker:2 task got
+[32m[2016-04-19 19:21:29.899] [INFO] console - [39mPID 0:Wait for selector timeout
+
+[32m[2016-04-19 19:21:30.427] [INFO] console - [39mPID 1:http://m.weibo.cn/users/1914100420
+
+[32m[2016-04-19 19:21:30.501] [INFO] console - [39mPID 1:http://m.weibo.cn/u/1914100420
+
+[32m[2016-04-19 19:21:30.612] [INFO] console - [39m[WEBSOCKET]Received: WTIMEOUT
+[32m[2016-04-19 19:21:30.613] [INFO] console - [39mPID:0 killed
+[32m[2016-04-19 19:21:30.613] [INFO] console - [39mCreate replace worker PID:0
+[32m[2016-04-19 19:21:30.619] [INFO] console - [39mPID 0:[WEBSOCKET]Begin to sending data...
+
+[32m[2016-04-19 19:21:30.620] [INFO] console - [39mPID 0:1
+[32m[2016-04-19 19:21:31.230] [INFO] console - [39mPID 1:http://m.weibo.cn/u/1914100420
+
+[32m[2016-04-19 19:21:31.984] [INFO] console - [39m[WEBSOCKET]Received: OPEN
+[32m[2016-04-19 19:21:31.984] [INFO] console - [39mrestore!!
+[32m[2016-04-19 19:21:31.984] [INFO] console - [39mTask distributed:5894256487
+[32m[2016-04-19 19:21:31.989] [INFO] console - [39mPID 0:[WEBSOCKET]Thread socket opened.
+
+[32m[2016-04-19 19:21:31.989] [INFO] console - [39mPID 0:[WEBSOCKET]Received uid[5894256487]
+begin listen
+begin listen
+begin listen
+
+[32m[2016-04-19 19:21:32.023] [INFO] console - [39m[WEBSOCKET]Received: GET
+[32m[2016-04-19 19:21:32.029] [INFO] console - [39mWorker:0 task got
+[32m[2016-04-19 19:21:35.462] [INFO] console - [39mPID 2:http://m.weibo.cn/users/5894256487
+
+[32m[2016-04-19 19:21:35.728] [INFO] console - [39mPID 2:http://m.weibo.cn/u/5894256487
+
+[32m[2016-04-19 19:21:36.085] [INFO] console - [39mPID 2:http://m.weibo.cn/u/5894256487
+
+[32m[2016-04-19 19:21:37.478] [INFO] console - [39mPID 0:http://m.weibo.cn/users/5894256487
+
+[32m[2016-04-19 19:21:37.690] [INFO] console - [39mPID 0:http://m.weibo.cn/u/5894256487
+
+[32m[2016-04-19 19:21:37.905] [INFO] console - [39mPID 0:http://m.weibo.cn/u/5894256487
+
+[32m[2016-04-19 19:21:53.047] [INFO] console - [39mPID 2:Wait for selector timeout
+
+[32m[2016-04-19 19:21:54.131] [INFO] console - [39m[WEBSOCKET]Received: WTIMEOUT
+[32m[2016-04-19 19:21:54.131] [INFO] console - [39mPID:2 killed
+[32m[2016-04-19 19:21:54.131] [INFO] console - [39mCreate replace worker PID:2
+[32m[2016-04-19 19:21:54.138] [INFO] console - [39mPID 2:[WEBSOCKET]Begin to sending data...
+
+[32m[2016-04-19 19:21:54.139] [INFO] console - [39mPID 2:1
+[32m[2016-04-19 19:21:55.432] [INFO] console - [39mPID 1:Wait for selector timeout
+
+[32m[2016-04-19 19:21:56.131] [INFO] console - [39m[WEBSOCKET]Received: OPEN
+[32m[2016-04-19 19:21:56.131] [INFO] console - [39mrestore!!
+[32m[2016-04-19 19:21:56.132] [INFO] console - [39mTask distributed:1553184325
+[32m[2016-04-19 19:21:56.133] [INFO] console - [39mPID 2:[WEBSOCKET]Thread socket opened.
+
+[32m[2016-04-19 19:21:56.136] [INFO] console - [39mPID 2:[WEBSOCKET]Received uid[1553184325]
+begin listen
+begin listen
+begin listen
+
+[32m[2016-04-19 19:21:56.194] [INFO] console - [39m[WEBSOCKET]Received: GET
+[32m[2016-04-19 19:21:56.194] [INFO] console - [39mWorker:2 task got
+[32m[2016-04-19 19:21:56.477] [INFO] console - [39mPID 1:[WEBSOCKET]Begin to sending data...
+
+[32m[2016-04-19 19:21:56.480] [INFO] console - [39m[WEBSOCKET]Received: WTIMEOUT
+[32m[2016-04-19 19:21:56.480] [INFO] console - [39mPID:1 killed
+[32m[2016-04-19 19:21:56.480] [INFO] console - [39mCreate replace worker PID:1
+[32m[2016-04-19 19:21:56.485] [INFO] console - [39mPID 1:1
+[32m[2016-04-19 19:21:57.959] [INFO] console - [39m[WEBSOCKET]Received: OPEN
+[32m[2016-04-19 19:21:57.960] [INFO] console - [39mrestore!!
+[32m[2016-04-19 19:21:57.960] [INFO] console - [39mTask distributed:5745465725
+[32m[2016-04-19 19:21:57.960] [INFO] console - [39mPID 1:[WEBSOCKET]Thread socket opened.
+
+[32m[2016-04-19 19:21:57.963] [INFO] console - [39mPID 1:[WEBSOCKET]Received uid[5745465725]
+
+[32m[2016-04-19 19:21:57.963] [INFO] console - [39mPID 1:begin listen
+begin listen
+begin listen
+
+[32m[2016-04-19 19:21:58.004] [INFO] console - [39m[WEBSOCKET]Received: GET
+[32m[2016-04-19 19:21:58.004] [INFO] console - [39mWorker:1 task got
+[32m[2016-04-19 19:22:02.085] [INFO] console - [39mPID 2:http://m.weibo.cn/u/1553184325
+
+[32m[2016-04-19 19:22:02.135] [INFO] console - [39mPID 2:http://m.weibo.cn/users/1553184325
+
+[32m[2016-04-19 19:22:02.282] [INFO] console - [39mPID 2:http://m.weibo.cn/u/1553184325
+
+[32m[2016-04-19 19:22:03.751] [INFO] console - [39mPID 1:http://m.weibo.cn/u/5745465725
+
+[32m[2016-04-19 19:22:03.830] [INFO] console - [39mPID 1:http://m.weibo.cn/u/5745465725
+
+[32m[2016-04-19 19:22:03.922] [INFO] console - [39mPID 1:http://m.weibo.cn/users/5745465725
+
+[32m[2016-04-19 19:22:04.616] [INFO] console - [39mPID 0:Wait for selector timeout
+
+[32m[2016-04-19 19:22:05.374] [INFO] console - [39mPID 0:[WEBSOCKET]Begin to sending data...
+
+[32m[2016-04-19 19:22:05.375] [INFO] console - [39m[WEBSOCKET]Received: WTIMEOUT
+[32m[2016-04-19 19:22:05.375] [INFO] console - [39mPID:0 killed
+[32m[2016-04-19 19:22:05.375] [INFO] console - [39mCreate replace worker PID:0
+[32m[2016-04-19 19:22:05.391] [INFO] console - [39mPID 0:1
+[32m[2016-04-19 19:22:07.462] [INFO] console - [39m[WEBSOCKET]Received: OPEN
+[32m[2016-04-19 19:22:07.462] [INFO] console - [39mrestore!!
+[32m[2016-04-19 19:22:07.462] [INFO] console - [39mTask distributed:1553184325
+[32m[2016-04-19 19:22:07.466] [INFO] console - [39mPID 0:[WEBSOCKET]Thread socket opened.
+
+[32m[2016-04-19 19:22:07.467] [INFO] console - [39mPID 0:[WEBSOCKET]Received uid[1553184325]
+begin listen
+
+[32m[2016-04-19 19:22:07.467] [INFO] console - [39mPID 0:begin listen
+begin listen
+
+[32m[2016-04-19 19:22:07.547] [INFO] console - [39m[WEBSOCKET]Received: GET
+[32m[2016-04-19 19:22:07.547] [INFO] console - [39mWorker:0 task got
+[32m[2016-04-19 19:22:14.319] [INFO] console - [39mPID 0:http://m.weibo.cn/u/1553184325
+
+[32m[2016-04-19 19:22:14.622] [INFO] console - [39mPID 0:http://m.weibo.cn/u/1553184325
+
+[32m[2016-04-19 19:22:15.635] [INFO] console - [39mPID 0:http://m.weibo.cn/users/1553184325
+
+[32m[2016-04-19 19:22:24.361] [INFO] console - [39mPID 1:Wait for selector timeout
+
+[32m[2016-04-19 19:22:24.884] [INFO] console - [39mPID 1:[WEBSOCKET]Begin to sending data...
+
+[32m[2016-04-19 19:22:24.884] [INFO] console - [39m[WEBSOCKET]Received: WTIMEOUT
+[32m[2016-04-19 19:22:24.884] [INFO] console - [39mPID:1 killed
+[32m[2016-04-19 19:22:24.885] [INFO] console - [39mCreate replace worker PID:1
+[32m[2016-04-19 19:22:24.891] [INFO] console - [39mPID 1:1
+[32m[2016-04-19 19:22:25.986] [INFO] console - [39m[WEBSOCKET]Received: OPEN
+[32m[2016-04-19 19:22:25.986] [INFO] console - [39mrestore!!
+[32m[2016-04-19 19:22:25.986] [INFO] console - [39mTask distributed:5894256487
+[32m[2016-04-19 19:22:25.987] [INFO] console - [39mPID 1:[WEBSOCKET]Thread socket opened.
+
+[32m[2016-04-19 19:22:25.990] [INFO] console - [39mPID 1:[WEBSOCKET]Received uid[5894256487]
+begin listen
+begin listen
+begin listen
+
+[32m[2016-04-19 19:22:26.019] [INFO] console - [39m[WEBSOCKET]Received: GET
+[32m[2016-04-19 19:22:26.019] [INFO] console - [39mWorker:1 task got
+[32m[2016-04-19 19:22:30.487] [INFO] console - [39mPID 0:GET Avatar
+
+[32m[2016-04-19 19:22:30.591] [INFO] console - [39mPID 0:Console: getHTML
+
+[32m[2016-04-19 19:22:30.592] [INFO] console - [39mPID 0:Console: 7
+
+[32m[2016-04-19 19:22:30.599] [INFO] console - [39mPID 0:Console: getHTML
+
+[32m[2016-04-19 19:22:30.599] [INFO] console - [39mPID 0:Console: 7
+
+[32m[2016-04-19 19:22:30.602] [INFO] console - [39mPID 0:[WEBSOCKET]Begin to sending data...
+
+[32m[2016-04-19 19:22:30.602] [INFO] console - [39m[WEBSOCKET]Received: user
+[32m[2016-04-19 19:22:30.603] [INFO] console - [39muser add Data pool
+[32m[2016-04-19 19:22:30.631] [INFO] console - [39mPID 0:Thread:1
+
+[32m[2016-04-19 19:22:30.680] [INFO] console - [39mInserted a document into the User_Info collection.
+[32m[2016-04-19 19:22:32.639] [INFO] console - [39mPID 1:http://m.weibo.cn/users/5894256487
+
+[32m[2016-04-19 19:22:32.694] [INFO] console - [39mPID 1:http://m.weibo.cn/u/5894256487
+
+[32m[2016-04-19 19:22:33.798] [INFO] console - [39mPID 1:http://m.weibo.cn/u/5894256487
+
+[32m[2016-04-19 19:22:36.921] [INFO] console - [39mPID 2:Wait for selector timeout
+
+[32m[2016-04-19 19:22:36.966] [INFO] console - [39mPID 2:[WEBSOCKET]Begin to sending data...
+
+[32m[2016-04-19 19:22:36.967] [INFO] console - [39m[WEBSOCKET]Received: WTIMEOUT
+[32m[2016-04-19 19:22:36.967] [INFO] console - [39mPID:2 killed
+[32m[2016-04-19 19:22:36.967] [INFO] console - [39mCreate replace worker PID:2
+[32m[2016-04-19 19:22:36.978] [INFO] console - [39mPID 2:1
+[32m[2016-04-19 19:22:37.454] [INFO] console - [39mPID 0:Wait for selector timeout
+
+[32m[2016-04-19 19:22:38.460] [INFO] console - [39m[WEBSOCKET]Received: WTIMEOUT
+[32m[2016-04-19 19:22:38.461] [INFO] console - [39mPID:0 killed
+[32m[2016-04-19 19:22:38.461] [INFO] console - [39mCreate replace worker PID:0
+[32m[2016-04-19 19:22:38.467] [INFO] console - [39mPID 0:[WEBSOCKET]Begin to sending data...
+
+[32m[2016-04-19 19:22:38.470] [INFO] console - [39mPID 0:1
+[32m[2016-04-19 19:22:38.781] [INFO] console - [39m[WEBSOCKET]Received: OPEN
+[32m[2016-04-19 19:22:38.782] [INFO] console - [39mrestore!!
+[32m[2016-04-19 19:22:38.782] [INFO] console - [39mTask distributed:1914100420
+[32m[2016-04-19 19:22:38.782] [INFO] console - [39mPID 2:[WEBSOCKET]Thread socket opened.
+
+[32m[2016-04-19 19:22:38.791] [INFO] console - [39mPID 2:[WEBSOCKET]Received uid[1914100420]
+
+[32m[2016-04-19 19:22:38.794] [INFO] console - [39mPID 2:begin listen
+
+[32m[2016-04-19 19:22:38.797] [INFO] console - [39mPID 2:begin listen
+
+[32m[2016-04-19 19:22:38.798] [INFO] console - [39mPID 2:begin listen
+
+[32m[2016-04-19 19:22:38.880] [INFO] console - [39m[WEBSOCKET]Received: GET
+[32m[2016-04-19 19:22:38.881] [INFO] console - [39mWorker:2 task got
+[32m[2016-04-19 19:22:39.857] [INFO] console - [39mPID 1:Console: getAttributeValue
+
+[32m[2016-04-19 19:22:39.857] [INFO] console - [39mPID 1:Console: 2
+
+[32m[2016-04-19 19:22:39.858] [INFO] console - [39mPID 1:Console: getHTML
+
+[32m[2016-04-19 19:22:39.858] [INFO] console - [39mPID 1:Console: 3
+
+[32m[2016-04-19 19:22:39.952] [INFO] console - [39m[WEBSOCKET]Received: OPEN
+[32m[2016-04-19 19:22:39.952] [INFO] console - [39mrestore!!
+[32m[2016-04-19 19:22:39.952] [INFO] console - [39mTask distributed:2138405303
+[32m[2016-04-19 19:22:39.955] [INFO] console - [39mPID 0:[WEBSOCKET]Thread socket opened.
+
+[32m[2016-04-19 19:22:39.956] [INFO] console - [39mPID 0:[WEBSOCKET]Received uid[2138405303]
+begin listen
+begin listen
+begin listen
+
+[32m[2016-04-19 19:22:39.983] [INFO] console - [39m[WEBSOCKET]Received: GET
+[32m[2016-04-19 19:22:39.983] [INFO] console - [39mWorker:0 task got
+[32m[2016-04-19 19:22:43.076] [INFO] console - [39mPID 1:getmsg
+
+[32m[2016-04-19 19:22:43.128] [INFO] console - [39mPID 1:CURRENT:http://m.weibo.cn/page/tpl?containerid=1005055894256487_-_WEIBO_SECOND_PROFILE_WEIBO&itemid=&title=全部微博 	 EXPECTED:http://m.weibo.cn/page/tpl?containerid=1005055894256487_-_WEIBO_SECOND_PROFILE_WEIBO&itemid=&title=全部微博
+
+[32m[2016-04-19 19:22:43.128] [INFO] console - [39mPID 1:SCROLL!!
+
+[32m[2016-04-19 19:22:43.129] [INFO] console - [39mPID 1:http://m.weibo.cn/page/tpl?containerid=1005055894256487_-_WEIBO_SECOND_PROFILE_WEIBO&itemid=&title=全部微博
+
+[32m[2016-04-19 19:22:43.130] [INFO] console - [39mPID 1:No more items
+
+[32m[2016-04-19 19:22:43.132] [INFO] console - [39mPID 1:GET CARDS
+
+[32m[2016-04-19 19:22:43.138] [INFO] console - [39mPID 1:Console: getHTML
+
+[32m[2016-04-19 19:22:43.138] [INFO] console - [39mPID 1:Console: 1
+
+[32m[2016-04-19 19:22:43.139] [INFO] console - [39mPID 1:Console: getHTML
+Console: 1
+
+[32m[2016-04-19 19:22:43.140] [INFO] console - [39mPID 1:Console: getHTML
+
+[32m[2016-04-19 19:22:43.140] [INFO] console - [39mPID 1:Console: 1
+
+[32m[2016-04-19 19:22:43.141] [INFO] console - [39mPID 1:Console: getHTML
+
+[32m[2016-04-19 19:22:43.141] [INFO] console - [39mPID 1:Console: 1
+
+[32m[2016-04-19 19:22:43.142] [INFO] console - [39mPID 1:Console: getHTML
+
+[32m[2016-04-19 19:22:43.142] [INFO] console - [39mPID 1:Console: 1
+
+[32m[2016-04-19 19:22:43.142] [INFO] console - [39mPID 1:Console: getHTML
+
+[32m[2016-04-19 19:22:43.143] [INFO] console - [39mPID 1:Console: 1
+
+[32m[2016-04-19 19:22:43.143] [INFO] console - [39mPID 1:Console: getAttributeValue
+Console: 0
+
+[32m[2016-04-19 19:22:43.144] [INFO] console - [39mPID 1:Console: getAttributeValue
+
+[32m[2016-04-19 19:22:43.144] [INFO] console - [39mPID 1:Console: 1
+
+[32m[2016-04-19 19:22:43.146] [INFO] console - [39mPID 1:Get 1/1,微博,游戏Msg
+
+[32m[2016-04-19 19:22:43.147] [INFO] console - [39mPID 1:[WEBSOCKET]Begin to sending data...
+
+[32m[2016-04-19 19:22:43.147] [INFO] console - [39m[WEBSOCKET]Received: 1 messages
+[32m[2016-04-19 19:22:43.148] [INFO] console - [39mmessages add Data pool
+[32m[2016-04-19 19:22:43.153] [INFO] console - [39mPID 1:Console: evaluate
+Thread:1
+
+[32m[2016-04-19 19:22:43.169] [INFO] console - [39mInserted a document into the Weibo_Messages collection.
+[32m[2016-04-19 19:22:44.480] [INFO] console - [39mPID 2:http://m.weibo.cn/users/1914100420
+
+[32m[2016-04-19 19:22:44.527] [INFO] console - [39mPID 2:http://m.weibo.cn/u/1914100420
+
+[32m[2016-04-19 19:22:44.616] [INFO] console - [39mPID 2:http://m.weibo.cn/u/1914100420
+
+[32m[2016-04-19 19:22:45.397] [INFO] console - [39mPID 0:http://m.weibo.cn/u/2138405303
+
+[32m[2016-04-19 19:22:45.465] [INFO] console - [39mPID 0:http://m.weibo.cn/users/2138405303
+
+[32m[2016-04-19 19:22:46.162] [INFO] console - [39mPID 0:http://m.weibo.cn/u/2138405303
+
+[32m[2016-04-19 19:22:48.611] [INFO] console - [39mPID 2:Console: getAttributeValue
+
+[32m[2016-04-19 19:22:48.612] [INFO] console - [39mPID 2:Console: 2
+
+[32m[2016-04-19 19:22:48.613] [INFO] console - [39mPID 2:Console: getHTML
+Console: 4
+
+[32m[2016-04-19 19:22:48.616] [INFO] console - [39mPID 2:ResourceError: {
+    "errorCode": 5,
+    "errorString": "Operation canceled",
+    "id": 26,
+    "status": null,
+    "statusText": null,
+    "url": "http://m.weibo.cn/"
+}
+
+[32m[2016-04-19 19:22:48.620] [INFO] console - [39mPID 2:Error: Error: 以下文件加载失败
+
+http://h5.sinaimg.cn/weibocn/v6/js/card/cards-1307c16f29d70470194b967a0c66f00f.js
+http://h5.sinaimg.cn/weibocn/v6/js/act/acts-85bdb638d35c38be6df31da7a5c26021.js
+
+
+
+[32m[2016-04-19 19:22:48.621] [INFO] console - [39mPID 2:Error: Error: 以下文件加载失败
+
+http://m.weibo.cn/page/card?itemid=1005051914100420_-_WEIBO_INDEX_PROFILE_MAY_INTERESTED&callback=_1461064966317_9
+
+
+
+[32m[2016-04-19 19:22:51.292] [INFO] console - [39mPID 2:getmsg
+
+[32m[2016-04-19 19:22:52.266] [INFO] console - [39mPID 2:CURRENT:http://m.weibo.cn/page/tpl?containerid=1005051914100420_-_WEIBO_SECOND_PROFILE_WEIBO&itemid=&title=全部微博 	 EXPECTED:http://m.weibo.cn/page/tpl?containerid=1005051914100420_-_WEIBO_SECOND_PROFILE_WEIBO&itemid=&title=全部微博
+
+[32m[2016-04-19 19:22:52.267] [INFO] console - [39mPID 2:SCROLL!!
+
+[32m[2016-04-19 19:22:52.268] [INFO] console - [39mPID 2:http://m.weibo.cn/page/tpl?containerid=1005051914100420_-_WEIBO_SECOND_PROFILE_WEIBO&itemid=&title=全部微博
+
+[32m[2016-04-19 19:22:52.274] [INFO] console - [39mPID 2:10
+
+[32m[2016-04-19 19:22:52.622] [INFO] console - [39mPID 2:SCROLL!!
+http://m.weibo.cn/page/tpl?containerid=1005051914100420_-_WEIBO_SECOND_PROFILE_WEIBO&itemid=&title=全部微博
+
+[32m[2016-04-19 19:22:52.624] [INFO] console - [39mPID 2:24
+
+[32m[2016-04-19 19:22:56.613] [INFO] console - [39mPID 2:Console: getAttributeValue
+
+[32m[2016-04-19 19:22:56.614] [INFO] console - [39mPID 2:Console: 2
+
+[32m[2016-04-19 19:22:56.615] [INFO] console - [39mPID 2:Console: getHTML
+Console: 3
+
+[32m[2016-04-19 19:22:57.336] [INFO] console - [39mPID 2:GET Avatar
+
+[32m[2016-04-19 19:22:57.418] [INFO] console - [39mPID 2:Console: getHTML
+
+[32m[2016-04-19 19:22:57.418] [INFO] console - [39mPID 2:Console: 7
+
+[32m[2016-04-19 19:22:57.418] [INFO] console - [39mPID 2:Console: getHTML
+Console: 7
+
+[32m[2016-04-19 19:22:57.421] [INFO] console - [39mPID 2:[WEBSOCKET]Begin to sending data...
+
+[32m[2016-04-19 19:22:57.421] [INFO] console - [39m[WEBSOCKET]Received: user
+[32m[2016-04-19 19:22:57.421] [INFO] console - [39muser add Data pool
+[32m[2016-04-19 19:22:57.425] [INFO] console - [39mPID 2:Thread:1
+
+[32m[2016-04-19 19:22:57.432] [INFO] console - [39mInserted a document into the User_Info collection.
+[32m[2016-04-19 19:22:58.933] [INFO] console - [39mPID 2:CURRENT:http://m.weibo.cn/page/tpl?containerid=1005051914100420_-_FOLLOWERS 	 EXPECTED:http://m.weibo.cn/page/tpl?containerid=1005051914100420_-_FOLLOWERS
+
+[32m[2016-04-19 19:22:58.933] [INFO] console - [39mPID 2:SCROLL!!
+
+[32m[2016-04-19 19:22:58.934] [INFO] console - [39mPID 2:http://m.weibo.cn/page/tpl?containerid=1005051914100420_-_FOLLOWERS
+
+[32m[2016-04-19 19:22:58.935] [INFO] console - [39mPID 2:10
+
+[32m[2016-04-19 19:23:06.683] [INFO] console - [39mPID 0:Wait for selector timeout
+
+[32m[2016-04-19 19:23:06.746] [INFO] console - [39mPID 1:Wait for selector timeout
+
+[32m[2016-04-19 19:23:07.501] [INFO] console - [39mPID 0:[WEBSOCKET]Begin to sending data...
+
+[32m[2016-04-19 19:23:07.503] [INFO] console - [39m[WEBSOCKET]Received: WTIMEOUT
+[32m[2016-04-19 19:23:07.503] [INFO] console - [39mPID:0 killed
+[32m[2016-04-19 19:23:07.503] [INFO] console - [39mCreate replace worker PID:0
+[32m[2016-04-19 19:23:07.508] [INFO] console - [39mPID 0:1
+[32m[2016-04-19 19:23:07.559] [INFO] console - [39mPID 1:[WEBSOCKET]Begin to sending data...
+
+[32m[2016-04-19 19:23:07.562] [INFO] console - [39m[WEBSOCKET]Received: WTIMEOUT
+[32m[2016-04-19 19:23:07.563] [INFO] console - [39mPID:1 killed
+[32m[2016-04-19 19:23:07.563] [INFO] console - [39mCreate replace worker PID:1
+[32m[2016-04-19 19:23:07.570] [INFO] console - [39mPID 1:1
+[32m[2016-04-19 19:23:09.334] [INFO] console - [39m[WEBSOCKET]Received: OPEN
+[32m[2016-04-19 19:23:09.334] [INFO] console - [39mrestore!!
+[32m[2016-04-19 19:23:09.334] [INFO] console - [39mTask distributed:1914100420
+[32m[2016-04-19 19:23:09.337] [INFO] console - [39mPID 0:[WEBSOCKET]Thread socket opened.
+
+[32m[2016-04-19 19:23:09.339] [INFO] console - [39mPID 0:[WEBSOCKET]Received uid[1914100420]
+begin listen
+begin listen
+begin listen
+
+[32m[2016-04-19 19:23:09.368] [INFO] console - [39m[WEBSOCKET]Received: OPEN
+[32m[2016-04-19 19:23:09.368] [INFO] console - [39mrestore!!
+[32m[2016-04-19 19:23:09.368] [INFO] console - [39mTask distributed:2138405303
+[32m[2016-04-19 19:23:09.372] [INFO] console - [39mPID 1:[WEBSOCKET]Thread socket opened.
+
+[32m[2016-04-19 19:23:09.374] [INFO] console - [39mPID 1:[WEBSOCKET]Received uid[2138405303]
+
+[32m[2016-04-19 19:23:09.374] [INFO] console - [39mPID 1:begin listen
+begin listen
+begin listen
+
+[32m[2016-04-19 19:23:09.399] [INFO] console - [39m[WEBSOCKET]Received: GET
+[32m[2016-04-19 19:23:09.400] [INFO] console - [39mWorker:0 task got
+[32m[2016-04-19 19:23:09.447] [INFO] console - [39m[WEBSOCKET]Received: GET
+[32m[2016-04-19 19:23:09.447] [INFO] console - [39mWorker:1 task got
+[32m[2016-04-19 19:23:15.060] [INFO] console - [39mPID 0:http://m.weibo.cn/u/1914100420
+
+[32m[2016-04-19 19:23:15.237] [INFO] console - [39mPID 0:http://m.weibo.cn/users/1914100420
+
+[32m[2016-04-19 19:23:15.347] [INFO] console - [39mPID 0:http://m.weibo.cn/u/1914100420
+
+[32m[2016-04-19 19:23:15.349] [INFO] console - [39mPID 1:http://m.weibo.cn/u/2138405303
+
+[32m[2016-04-19 19:23:15.506] [INFO] console - [39mPID 1:http://m.weibo.cn/users/2138405303
+
+[32m[2016-04-19 19:23:15.556] [INFO] console - [39mPID 1:http://m.weibo.cn/u/2138405303
+
+[32m[2016-04-19 19:23:22.913] [INFO] console - [39mPID 0:GET Avatar
+
+[32m[2016-04-19 19:23:23.042] [INFO] console - [39mPID 0:Console: getHTML
+
+[32m[2016-04-19 19:23:23.042] [INFO] console - [39mPID 0:Console: 7
+
+[32m[2016-04-19 19:23:23.044] [INFO] console - [39mPID 0:Console: getHTML
+
+[32m[2016-04-19 19:23:23.044] [INFO] console - [39mPID 0:Console: 7
+
+[32m[2016-04-19 19:23:23.047] [INFO] console - [39mPID 0:[WEBSOCKET]Begin to sending data...
+
+[32m[2016-04-19 19:23:23.049] [INFO] console - [39m[WEBSOCKET]Received: user
+[32m[2016-04-19 19:23:23.049] [INFO] console - [39muser add Data pool
+[32m[2016-04-19 19:23:23.052] [INFO] console - [39mPID 0:Thread:1
+
+[32m[2016-04-19 19:23:23.066] [INFO] console - [39mInserted a document into the User_Info collection.
+[32m[2016-04-19 19:23:35.686] [INFO] console - [39mPID 2:Scroll Timeout,reScroll
+
+[32m[2016-04-19 19:23:35.688] [INFO] console - [39mPID 2:GET CARDS
+
+[32m[2016-04-19 19:23:35.692] [INFO] console - [39mPID 2:Console: getHTML
+Console: 20
+
+[32m[2016-04-19 19:23:35.693] [INFO] console - [39mPID 2:Console: getHTML
+
+[32m[2016-04-19 19:23:35.693] [INFO] console - [39mPID 2:Console: 20
+
+[32m[2016-04-19 19:23:35.694] [INFO] console - [39mPID 2:Console: getHTML
+
+[32m[2016-04-19 19:23:35.695] [INFO] console - [39mPID 2:Console: 20
+
+[32m[2016-04-19 19:23:35.696] [INFO] console - [39mPID 2:Console: getHTML
+
+[32m[2016-04-19 19:23:35.696] [INFO] console - [39mPID 2:Console: 20
+
+[32m[2016-04-19 19:23:35.698] [INFO] console - [39mPID 2:Console: getHTML
+Console: 20
+
+[32m[2016-04-19 19:23:35.698] [INFO] console - [39mPID 2:Console: getHTML
+
+[32m[2016-04-19 19:23:35.699] [INFO] console - [39mPID 2:Console: 20
+
+[32m[2016-04-19 19:23:35.699] [INFO] console - [39mPID 2:Console: getAttributeValue
+
+[32m[2016-04-19 19:23:35.701] [INFO] console - [39mPID 2:Console: 7
+Console: getAttributeValue
+
+[32m[2016-04-19 19:23:35.701] [INFO] console - [39mPID 2:Console: 20
+
+[32m[2016-04-19 19:23:35.703] [INFO] console - [39mPID 2:Get 20/1000,微博,0,话题Msg
+
+[32m[2016-04-19 19:23:35.704] [INFO] console - [39m[WEBSOCKET]Received: 20 messages
+[32m[2016-04-19 19:23:35.704] [INFO] console - [39mmessages add Data pool
+[32m[2016-04-19 19:23:35.706] [INFO] console - [39mPID 2:[WEBSOCKET]Begin to sending data...
+
+[32m[2016-04-19 19:23:35.708] [INFO] console - [39mPID 2:Console: evaluate
+
+[32m[2016-04-19 19:23:35.711] [INFO] console - [39mPID 2:Thread:2
+
+[32m[2016-04-19 19:23:35.720] [INFO] console - [39mInserted a document into the Weibo_Messages collection.
+[32m[2016-04-19 19:23:38.955] [INFO] console - [39mPID 2:Scroll Timeout,reScroll
+
+[32m[2016-04-19 19:23:38.959] [INFO] console - [39mPID 2:GET FOCUS
+
+[32m[2016-04-19 19:23:39.116] [INFO] console - [39mPID 2:Console: getAttributeValue
+
+[32m[2016-04-19 19:23:39.116] [INFO] console - [39mPID 2:Console: 10
+
+[32m[2016-04-19 19:23:39.116] [INFO] console - [39mPID 2:Get 10/332,关注,游戏focus
+
+[32m[2016-04-19 19:23:39.116] [INFO] console - [39mPID 2:[WEBSOCKET]Begin to sending data...
+
+[32m[2016-04-19 19:23:39.117] [INFO] console - [39m[WEBSOCKET]Received: 10 focus
+[32m[2016-04-19 19:23:39.117] [INFO] console - [39mPID 2:Thread:3
+
+[32m[2016-04-19 19:23:39.118] [INFO] console - [39mPID 2:[WEBSOCKET]sending END signal
+[WEBSOCKET]Begin to sending data...
+
+[32m[2016-04-19 19:23:39.118] [INFO] console - [39m[WEBSOCKET]Received: END
+[32m[2016-04-19 19:23:39.118] [INFO] console - [39mPID:2 killed
+[32m[2016-04-19 19:23:39.118] [INFO] console - [39mCreate replace worker PID:2
+[32m[2016-04-19 19:23:39.129] [INFO] console - [39mPID 2:1
+[32m[2016-04-19 19:23:40.241] [INFO] console - [39m[WEBSOCKET]Received: OPEN
+[32m[2016-04-19 19:23:40.241] [INFO] console - [39mrestore!!
+[32m[2016-04-19 19:23:40.241] [INFO] console - [39mTask distributed:5745465725
+[32m[2016-04-19 19:23:40.242] [INFO] console - [39mPID 2:[WEBSOCKET]Thread socket opened.
+
+[32m[2016-04-19 19:23:40.244] [INFO] console - [39mPID 2:[WEBSOCKET]Received uid[5745465725]
+
+[32m[2016-04-19 19:23:40.244] [INFO] console - [39mPID 2:begin listen
+begin listen
+begin listen
+
+[32m[2016-04-19 19:23:40.274] [INFO] console - [39m[WEBSOCKET]Received: GET
+[32m[2016-04-19 19:23:40.274] [INFO] console - [39mWorker:2 task got
+[32m[2016-04-19 19:23:40.277] [INFO] console - [39mPID 0:Wait for selector timeout
+
+[32m[2016-04-19 19:23:40.386] [INFO] console - [39mPID 0:[WEBSOCKET]Begin to sending data...
+
+[32m[2016-04-19 19:23:40.387] [INFO] console - [39m[WEBSOCKET]Received: WTIMEOUT
+[32m[2016-04-19 19:23:40.387] [INFO] console - [39mPID:0 killed
+[32m[2016-04-19 19:23:40.387] [INFO] console - [39mCreate replace worker PID:0
+[32m[2016-04-19 19:23:40.392] [INFO] console - [39mPID 0:1
+[32m[2016-04-19 19:23:41.709] [INFO] console - [39m[WEBSOCKET]Received: OPEN
+[32m[2016-04-19 19:23:41.710] [INFO] console - [39mrestore!!
+[32m[2016-04-19 19:23:41.710] [INFO] console - [39mTask distributed:5745465725
+[32m[2016-04-19 19:23:41.712] [INFO] console - [39mPID 0:[WEBSOCKET]Thread socket opened.
+
+[32m[2016-04-19 19:23:41.714] [INFO] console - [39mPID 0:[WEBSOCKET]Received uid[5745465725]
+begin listen
+begin listen
+begin listen
+
+[32m[2016-04-19 19:23:41.743] [INFO] console - [39m[WEBSOCKET]Received: GET
+[32m[2016-04-19 19:23:41.743] [INFO] console - [39mWorker:0 task got
+[32m[2016-04-19 19:23:43.086] [INFO] console - [39mPID 1:Wait for selector timeout
+
+[32m[2016-04-19 19:23:43.602] [INFO] console - [39mPID 1:[WEBSOCKET]Begin to sending data...
+
+[32m[2016-04-19 19:23:43.602] [INFO] console - [39m[WEBSOCKET]Received: WTIMEOUT
+[32m[2016-04-19 19:23:43.602] [INFO] console - [39mPID:1 killed
+[32m[2016-04-19 19:23:43.602] [INFO] console - [39mCreate replace worker PID:1
+[32m[2016-04-19 19:23:43.608] [INFO] console - [39mPID 1:1
+[32m[2016-04-19 19:23:45.807] [INFO] console - [39mPID 2:http://m.weibo.cn/u/5745465725
+
+[32m[2016-04-19 19:23:46.000] [INFO] console - [39m[WEBSOCKET]Received: OPEN
+[32m[2016-04-19 19:23:46.000] [INFO] console - [39mrestore!!
+[32m[2016-04-19 19:23:46.000] [INFO] console - [39mTask distributed:5894256487
+[32m[2016-04-19 19:23:46.002] [INFO] console - [39mPID 1:[WEBSOCKET]Thread socket opened.
+
+[32m[2016-04-19 19:23:46.004] [INFO] console - [39mPID 1:[WEBSOCKET]Received uid[5894256487]
+begin listen
+begin listen
+begin listen
+
+[32m[2016-04-19 19:23:46.038] [INFO] console - [39m[WEBSOCKET]Received: GET
+[32m[2016-04-19 19:23:46.038] [INFO] console - [39mWorker:1 task got
+[32m[2016-04-19 19:23:46.062] [INFO] console - [39mPID 2:http://m.weibo.cn/users/5745465725
+
+[32m[2016-04-19 19:23:46.474] [INFO] console - [39mPID 2:http://m.weibo.cn/u/5745465725
+
+[32m[2016-04-19 19:23:47.349] [INFO] console - [39mPID 0:http://m.weibo.cn/users/5745465725
+
+[32m[2016-04-19 19:23:47.467] [INFO] console - [39mPID 0:http://m.weibo.cn/u/5745465725
+
+[32m[2016-04-19 19:23:47.522] [INFO] console - [39mPID 0:http://m.weibo.cn/u/5745465725
+
+[32m[2016-04-19 19:23:52.182] [INFO] console - [39mPID 0:Console: getAttributeValue
+
+[32m[2016-04-19 19:23:52.182] [INFO] console - [39mPID 0:Console: 2
+Console: getHTML
+Console: 4
+
+[32m[2016-04-19 19:23:52.971] [INFO] console - [39mPID 1:http://m.weibo.cn/u/5894256487
+
+[32m[2016-04-19 19:23:52.972] [INFO] console - [39mPID 1:http://m.weibo.cn/users/5894256487
+
+[32m[2016-04-19 19:23:53.021] [INFO] console - [39mPID 1:http://m.weibo.cn/u/5894256487
+
+[32m[2016-04-19 19:23:54.433] [INFO] console - [39mPID 0:CURRENT:http://m.weibo.cn/page/tpl?containerid=1005055745465725_-_FOLLOWERS 	 EXPECTED:http://m.weibo.cn/page/tpl?containerid=1005055745465725_-_FOLLOWERS
+
+[32m[2016-04-19 19:23:54.434] [INFO] console - [39mPID 0:SCROLL!!
+
+[32m[2016-04-19 19:23:54.435] [INFO] console - [39mPID 0:http://m.weibo.cn/page/tpl?containerid=1005055745465725_-_FOLLOWERS
+
+[32m[2016-04-19 19:23:54.438] [INFO] console - [39mPID 0:10
+
+[32m[2016-04-19 19:23:54.705] [INFO] console - [39mPID 0:SCROLL!!
+
+[32m[2016-04-19 19:23:54.705] [INFO] console - [39mPID 0:http://m.weibo.cn/page/tpl?containerid=1005055745465725_-_FOLLOWERS
+
+[32m[2016-04-19 19:23:54.707] [INFO] console - [39mPID 0:20
+
+[32m[2016-04-19 19:23:55.972] [INFO] console - [39mPID 0:Console: getAttributeValue
+
+[32m[2016-04-19 19:23:55.973] [INFO] console - [39mPID 0:Console: 3
+
+[32m[2016-04-19 19:23:55.973] [INFO] console - [39mPID 0:Console: getHTML
+
+[32m[2016-04-19 19:23:55.973] [INFO] console - [39mPID 0:Console: 5
+
+[32m[2016-04-19 19:23:57.527] [INFO] console - [39mPID 0:SCROLL!!
+
+[32m[2016-04-19 19:23:57.528] [INFO] console - [39mPID 0:http://m.weibo.cn/page/tpl?containerid=1005055745465725_-_FOLLOWERS
+
+[32m[2016-04-19 19:23:57.529] [INFO] console - [39mPID 0:30
+
+[32m[2016-04-19 19:23:57.915] [INFO] console - [39mPID 0:getmsg
+
+[32m[2016-04-19 19:23:58.329] [INFO] console - [39mPID 0:CURRENT:http://m.weibo.cn/ 	 EXPECTED:http://m.weibo.cn/page/tpl?containerid=1005055745465725_-_WEIBO_SECOND_PROFILE_WEIBO&itemid=&title=全部微博
+
+[32m[2016-04-19 19:23:58.330] [INFO] console - [39mPID 0:URL check incorrect,waiting
+
+[32m[2016-04-19 19:23:58.545] [INFO] console - [39mPID 0:[WEBSOCKET]Begin to sending data...
+
+[32m[2016-04-19 19:23:58.546] [INFO] console - [39m[WEBSOCKET]Received: JUMPOUT
+[32m[2016-04-19 19:23:59.548] [INFO] console - [39mPID 0:GET CARDS
+
+[32m[2016-04-19 19:23:59.552] [INFO] console - [39mPID 0:Console: getHTML
+Console: 10
+
+[32m[2016-04-19 19:23:59.553] [INFO] console - [39mPID 0:Console: getHTML
+
+[32m[2016-04-19 19:23:59.553] [INFO] console - [39mPID 0:Console: 10
+
+[32m[2016-04-19 19:23:59.554] [INFO] console - [39mPID 0:Console: getHTML
+
+[32m[2016-04-19 19:23:59.555] [INFO] console - [39mPID 0:Console: 10
+
+[32m[2016-04-19 19:23:59.555] [INFO] console - [39mPID 0:Console: getHTML
+
+[32m[2016-04-19 19:23:59.556] [INFO] console - [39mPID 0:Console: 10
+
+[32m[2016-04-19 19:23:59.557] [INFO] console - [39mPID 0:Console: getHTML
+
+[32m[2016-04-19 19:23:59.557] [INFO] console - [39mPID 0:Console: 10
+
+[32m[2016-04-19 19:23:59.559] [INFO] console - [39mPID 0:Console: getHTML
+Console: 10
+
+[32m[2016-04-19 19:23:59.559] [INFO] console - [39mPID 0:Console: getAttributeValue
+Console: 8
+
+[32m[2016-04-19 19:23:59.560] [INFO] console - [39mPID 0:Console: getAttributeValue
+
+[32m[2016-04-19 19:23:59.560] [INFO] console - [39mPID 0:Console: 10
+
+[32m[2016-04-19 19:23:59.562] [INFO] console - [39mPID 0:Get 10/194,微博,推荐,的人,微人脉Msg
+[WEBSOCKET]Begin to sending data...
+
+[32m[2016-04-19 19:23:59.563] [INFO] console - [39m[WEBSOCKET]Received: 10 messages
+[32m[2016-04-19 19:23:59.563] [INFO] console - [39mmessages add Data pool
+[32m[2016-04-19 19:23:59.568] [INFO] console - [39mPID 0:Console: evaluate
+
+[32m[2016-04-19 19:23:59.572] [INFO] console - [39mPID 0:Thread:1
+
+[32m[2016-04-19 19:23:59.583] [INFO] console - [39mInserted a document into the Weibo_Messages collection.
+[32m[2016-04-19 19:24:16.528] [INFO] console - [39mPID 1:Wait for selector timeout
+
+[32m[2016-04-19 19:24:16.569] [INFO] console - [39m[WEBSOCKET]Received: WTIMEOUT
+[32m[2016-04-19 19:24:16.569] [INFO] console - [39mPID:1 killed
+[32m[2016-04-19 19:24:16.570] [INFO] console - [39mCreate replace worker PID:1
+[32m[2016-04-19 19:24:16.579] [INFO] console - [39mPID 1:[WEBSOCKET]Begin to sending data...
+
+[32m[2016-04-19 19:24:16.581] [INFO] console - [39mPID 1:1
+[32m[2016-04-19 19:24:17.330] [INFO] console - [39mPID 2:Wait for selector timeout
+
+[32m[2016-04-19 19:24:17.444] [INFO] console - [39mPID 2:[WEBSOCKET]Begin to sending data...
+
+[32m[2016-04-19 19:24:17.445] [INFO] console - [39m[WEBSOCKET]Received: WTIMEOUT
+[32m[2016-04-19 19:24:17.445] [INFO] console - [39mPID:2 killed
+[32m[2016-04-19 19:24:17.445] [INFO] console - [39mCreate replace worker PID:2
+[32m[2016-04-19 19:24:17.458] [INFO] console - [39mPID 2:1
+[32m[2016-04-19 19:24:18.255] [INFO] console - [39m[WEBSOCKET]Received: OPEN
+[32m[2016-04-19 19:24:18.256] [INFO] console - [39mrestore!!
+[32m[2016-04-19 19:24:18.256] [INFO] console - [39mTask distributed:1914100420
+[32m[2016-04-19 19:24:18.258] [INFO] console - [39mPID 1:[WEBSOCKET]Thread socket opened.
+
+[32m[2016-04-19 19:24:18.260] [INFO] console - [39mPID 1:[WEBSOCKET]Received uid[1914100420]
+begin listen
+begin listen
+begin listen
+
+[32m[2016-04-19 19:24:18.321] [INFO] console - [39m[WEBSOCKET]Received: GET
+[32m[2016-04-19 19:24:18.321] [INFO] console - [39mWorker:1 task got
+[32m[2016-04-19 19:24:18.812] [INFO] console - [39m[WEBSOCKET]Received: OPEN
+[32m[2016-04-19 19:24:18.812] [INFO] console - [39mrestore!!
+[32m[2016-04-19 19:24:18.812] [INFO] console - [39mTask distributed:5894256487
+[32m[2016-04-19 19:24:18.814] [INFO] console - [39mPID 2:[WEBSOCKET]Thread socket opened.
+
+[32m[2016-04-19 19:24:18.816] [INFO] console - [39mPID 2:[WEBSOCKET]Received uid[5894256487]
+begin listen
+begin listen
+begin listen
+
+[32m[2016-04-19 19:24:18.863] [INFO] console - [39m[WEBSOCKET]Received: GET
+[32m[2016-04-19 19:24:18.863] [INFO] console - [39mWorker:2 task got
+[32m[2016-04-19 19:24:24.515] [INFO] console - [39mPID 1:http://m.weibo.cn/u/1914100420
+
+[32m[2016-04-19 19:24:24.559] [INFO] console - [39mPID 1:http://m.weibo.cn/u/1914100420
+
+[32m[2016-04-19 19:24:24.708] [INFO] console - [39mPID 2:http://m.weibo.cn/users/5894256487
+
+[32m[2016-04-19 19:24:24.802] [INFO] console - [39mPID 2:http://m.weibo.cn/u/5894256487
+
+[32m[2016-04-19 19:24:24.803] [INFO] console - [39mPID 2:http://m.weibo.cn/u/5894256487
+
+[32m[2016-04-19 19:24:25.333] [INFO] console - [39mPID 1:http://m.weibo.cn/users/1914100420
+
+[32m[2016-04-19 19:24:32.581] [INFO] console - [39mPID 0:Wait for selector timeout
+
+[32m[2016-04-19 19:24:32.813] [INFO] console - [39mPID 0:[WEBSOCKET]Begin to sending data...
+
+[32m[2016-04-19 19:24:32.814] [INFO] console - [39m[WEBSOCKET]Received: WTIMEOUT
+[32m[2016-04-19 19:24:32.814] [INFO] console - [39mPID:0 killed
+[32m[2016-04-19 19:24:32.814] [INFO] console - [39mCreate replace worker PID:0
+[32m[2016-04-19 19:24:32.824] [INFO] console - [39mPID 0:1
+[32m[2016-04-19 19:24:33.921] [INFO] console - [39m[WEBSOCKET]Received: OPEN
+[32m[2016-04-19 19:24:33.922] [INFO] console - [39mrestore!!
+[32m[2016-04-19 19:24:33.922] [INFO] console - [39mTask distributed:1914100420
+[32m[2016-04-19 19:24:33.924] [INFO] console - [39mPID 0:[WEBSOCKET]Thread socket opened.
+
+[32m[2016-04-19 19:24:33.926] [INFO] console - [39mPID 0:[WEBSOCKET]Received uid[1914100420]
+begin listen
+begin listen
+begin listen
+
+[32m[2016-04-19 19:24:33.962] [INFO] console - [39m[WEBSOCKET]Received: GET
+[32m[2016-04-19 19:24:33.962] [INFO] console - [39mWorker:0 task got
+[32m[2016-04-19 19:24:38.906] [INFO] console - [39mPID 2:GET Avatar
+
+[32m[2016-04-19 19:24:38.965] [INFO] console - [39mPID 2:Console: getHTML
+
+[32m[2016-04-19 19:24:38.965] [INFO] console - [39mPID 2:Console: 4
+
+[32m[2016-04-19 19:24:38.967] [INFO] console - [39mPID 2:Console: getHTML
+Console: 4
+
+[32m[2016-04-19 19:24:38.971] [INFO] console - [39m[WEBSOCKET]Received: user
+[32m[2016-04-19 19:24:38.972] [INFO] console - [39muser add Data pool
+[32m[2016-04-19 19:24:38.975] [INFO] console - [39mPID 2:[WEBSOCKET]Begin to sending data...
+Thread:1
+
+[32m[2016-04-19 19:24:38.982] [INFO] console - [39mInserted a document into the User_Info collection.
+[32m[2016-04-19 19:24:39.655] [INFO] console - [39mPID 0:http://m.weibo.cn/u/1914100420
+
+[32m[2016-04-19 19:24:39.749] [INFO] console - [39mPID 0:http://m.weibo.cn/u/1914100420
+
+[32m[2016-04-19 19:24:39.858] [INFO] console - [39mPID 0:http://m.weibo.cn/users/1914100420
+
+[32m[2016-04-19 19:24:51.362] [INFO] console - [39mPID 0:Console: getAttributeValue
+
+[32m[2016-04-19 19:24:51.362] [INFO] console - [39mPID 0:Console: 2
+
+[32m[2016-04-19 19:24:51.363] [INFO] console - [39mPID 0:Console: getHTML
+
+[32m[2016-04-19 19:24:51.363] [INFO] console - [39mPID 0:Console: 3
+
+[32m[2016-04-19 19:24:51.367] [INFO] console - [39mPID 0:ResourceError: {
+    "errorCode": 5,
+    "errorString": "Operation canceled",
+    "id": 14,
+    "status": null,
+    "statusText": null,
+    "url": "http://h5.sinaimg.cn/weibocn/v6/img/font/wb440.7dd0d4bb.woff"
+}
+
+[32m[2016-04-19 19:24:53.248] [INFO] console - [39mPID 2:Wait for selector timeout
+
+[32m[2016-04-19 19:24:53.393] [INFO] console - [39mPID 2:[WEBSOCKET]Begin to sending data...
+
+[32m[2016-04-19 19:24:53.393] [INFO] console - [39m[WEBSOCKET]Received: WTIMEOUT
+[32m[2016-04-19 19:24:53.394] [INFO] console - [39mPID:2 killed
+[32m[2016-04-19 19:24:53.394] [INFO] console - [39mCreate replace worker PID:2
+[32m[2016-04-19 19:24:53.402] [INFO] console - [39mPID 2:1
+[32m[2016-04-19 19:24:53.676] [INFO] console - [39mPID 0:CURRENT:http://m.weibo.cn/page/tpl?containerid=1005051914100420_-_FOLLOWERS 	 EXPECTED:http://m.weibo.cn/page/tpl?containerid=1005051914100420_-_FOLLOWERS
+
+[32m[2016-04-19 19:24:53.677] [INFO] console - [39mPID 0:SCROLL!!
+
+[32m[2016-04-19 19:24:53.677] [INFO] console - [39mPID 0:http://m.weibo.cn/page/tpl?containerid=1005051914100420_-_FOLLOWERS
+
+[32m[2016-04-19 19:24:53.684] [INFO] console - [39mPID 0:10
+
+[32m[2016-04-19 19:24:53.803] [INFO] console - [39mPID 1:Wait for selector timeout
+
+[32m[2016-04-19 19:24:54.293] [INFO] console - [39mPID 1:[WEBSOCKET]Begin to sending data...
+
+[32m[2016-04-19 19:24:54.294] [INFO] console - [39m[WEBSOCKET]Received: WTIMEOUT
+[32m[2016-04-19 19:24:54.294] [INFO] console - [39mPID:1 killed
+[32m[2016-04-19 19:24:54.294] [INFO] console - [39mCreate replace worker PID:1
+[32m[2016-04-19 19:24:54.305] [INFO] console - [39mPID 1:1
+[32m[2016-04-19 19:24:54.657] [INFO] console - [39m[WEBSOCKET]Received: OPEN
+[32m[2016-04-19 19:24:54.658] [INFO] console - [39mrestore!!
+[32m[2016-04-19 19:24:54.658] [INFO] console - [39mTask distributed:1914100420
+[32m[2016-04-19 19:24:54.660] [INFO] console - [39mPID 2:[WEBSOCKET]Thread socket opened.
+
+[32m[2016-04-19 19:24:54.662] [INFO] console - [39mPID 2:[WEBSOCKET]Received uid[1914100420]
+begin listen
+begin listen
+begin listen
+
+[32m[2016-04-19 19:24:54.704] [INFO] console - [39m[WEBSOCKET]Received: GET
+[32m[2016-04-19 19:24:54.704] [INFO] console - [39mWorker:2 task got
+[32m[2016-04-19 19:24:55.493] [INFO] console - [39m[WEBSOCKET]Received: OPEN
+[32m[2016-04-19 19:24:55.493] [INFO] console - [39mrestore!!
+[32m[2016-04-19 19:24:55.493] [INFO] console - [39mTask distributed:2138405303
+[32m[2016-04-19 19:24:55.494] [INFO] console - [39mPID 1:[WEBSOCKET]Thread socket opened.
+
+[32m[2016-04-19 19:24:55.496] [INFO] console - [39mPID 1:[WEBSOCKET]Received uid[2138405303]
+begin listen
+begin listen
+begin listen
+
+[32m[2016-04-19 19:24:55.522] [INFO] console - [39m[WEBSOCKET]Received: GET
+[32m[2016-04-19 19:24:55.525] [INFO] console - [39mWorker:1 task got
+[32m[2016-04-19 19:24:56.845] [INFO] console - [39mPID 0:GET Avatar
+
+[32m[2016-04-19 19:24:56.930] [INFO] console - [39mPID 0:Console: getHTML
+
+[32m[2016-04-19 19:24:56.930] [INFO] console - [39mPID 0:Console: 7
+
+[32m[2016-04-19 19:24:56.931] [INFO] console - [39mPID 0:Console: getHTML
+Console: 7
+
+[32m[2016-04-19 19:24:56.933] [INFO] console - [39mPID 0:[WEBSOCKET]Begin to sending data...
+
+[32m[2016-04-19 19:24:56.934] [INFO] console - [39m[WEBSOCKET]Received: user
+[32m[2016-04-19 19:24:56.934] [INFO] console - [39muser add Data pool
+[32m[2016-04-19 19:24:56.937] [INFO] console - [39mPID 0:Thread:1
+
+[32m[2016-04-19 19:24:56.942] [INFO] console - [39mInserted a document into the User_Info collection.
+[32m[2016-04-19 19:25:01.370] [INFO] console - [39mPID 2:http://m.weibo.cn/u/1914100420
+
+[32m[2016-04-19 19:25:01.479] [INFO] console - [39mPID 2:http://m.weibo.cn/users/1914100420
+
+[32m[2016-04-19 19:25:02.087] [INFO] console - [39mPID 1:http://m.weibo.cn/u/2138405303
+
+[32m[2016-04-19 19:25:02.135] [INFO] console - [39mPID 1:http://m.weibo.cn/users/2138405303
+
+[32m[2016-04-19 19:25:02.354] [INFO] console - [39mPID 1:http://m.weibo.cn/u/2138405303
+
+[32m[2016-04-19 19:25:02.429] [INFO] console - [39mPID 2:http://m.weibo.cn/u/1914100420
+
+[32m[2016-04-19 19:25:03.977] [INFO] console - [39mPID 0:Wait for selector timeout
+
+[32m[2016-04-19 19:25:04.195] [INFO] console - [39m[WEBSOCKET]Received: WTIMEOUT
+[32m[2016-04-19 19:25:04.195] [INFO] console - [39mPID:0 killed
+[32m[2016-04-19 19:25:04.195] [INFO] console - [39mCreate replace worker PID:0
+[32m[2016-04-19 19:25:04.200] [INFO] console - [39mPID 0:[WEBSOCKET]Begin to sending data...
+
+[32m[2016-04-19 19:25:04.202] [INFO] console - [39mPID 0:1
+[32m[2016-04-19 19:25:05.444] [INFO] console - [39m[WEBSOCKET]Received: OPEN
+[32m[2016-04-19 19:25:05.444] [INFO] console - [39mrestore!!
+[32m[2016-04-19 19:25:05.444] [INFO] console - [39mTask distributed:1914100420
+[32m[2016-04-19 19:25:05.446] [INFO] console - [39mPID 0:[WEBSOCKET]Thread socket opened.
+
+[32m[2016-04-19 19:25:05.447] [INFO] console - [39mPID 0:[WEBSOCKET]Received uid[1914100420]
+begin listen
+begin listen
+begin listen
+
+[32m[2016-04-19 19:25:05.469] [INFO] console - [39m[WEBSOCKET]Received: GET
+[32m[2016-04-19 19:25:05.470] [INFO] console - [39mWorker:0 task got

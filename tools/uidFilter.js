@@ -1,5 +1,5 @@
-var uid_set = ['5894256487', '5745465725', '1914100420', '1553184325', '2138405303'];
-var cann_restore = [0, 0, 0, 0, 0];
+var uid_set = ['5894256487'];
+var cann_restore = [0];
 var fs = require('fs');
 var bf = require("./bloomfilter"),
     BloomFilter = bf.BloomFilter,
@@ -27,13 +27,13 @@ module.exports = {
     store: function (msg) {
         var length = msg.length;
         for (var x in msg) {
-            if (bloom.test(msg[x])) {
+            if (!bloom.test(msg[x])) {
                 bloom.add(msg[x]);
                 uid_set.push(msg[x]);
                 cann_restore.push(0);
             } else {
                 console.log("UID exist");
-                return false;
+                continue;
             }
         }
         //Array.prototype.push.apply(uid_set, msg); //合并两个数组
