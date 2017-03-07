@@ -218,14 +218,15 @@ var login = function (USER, PASS, casper) //微博登录
     {
 
         if (!cookies.checkCookies()) {
-            casper.wait(2000, function () {
-                casper.capture('./data/weibo.png'); //网页打开页面截图
-                casper.echo(this.getTitle());
-                casper.click('.action a:nth-child(2)'); //点击登录
-                casper.displayCookies();
-            });
+           casper.wait(4000, function () {
+               casper.capture('./data/weibo2.png'); //网页打开页面截图
+               casper.echo(this.getTitle());
+               casper.click('.action a:nth-child(2)'); //点击登录
+               casper.displayCookies();
+           });
 
             casper.then(function () {
+                casper.capture('./data/weibo2.png');
                 casper.fillSelectors('form', {
                     'input[id="loginName"]': USER,
                     'input[id="loginPassword"]': PASS

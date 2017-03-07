@@ -24,90 +24,29 @@ var userAgentPool = [
 var msgPage = require("casper").create({
     pageSettings: {
         loadImages: false,
-        loadPlugins: false,
+        loadPlugins: true,
         userAgent: userAgentPool[0]
     }
     //        ,
     //        verbose: true,
     //        logLevel: "debug"
 });
-
-var focusPage = require("casper").create({
-    pageSettings: {
-        loadImages: false,
-        loadPlugins: false,
-        userAgent: userAgentPool[0]
-    }
-    //    ,
-    //        verbose: true,
-    //        logLevel: "debug"
-});
-
-var userPage = require("casper").create({
-    pageSettings: {
-        loadImages: false,
-        loadPlugins: false,
-        userAgent: userAgentPool[0]
-    }
-    //        ,
-    //        verbose: true,
-    //        logLevel: "debug"
-});
-
-//msgPage.options.onWaitTimeout = function(timeout, details) {
-//    var selector = details.selector.type === 'xpath' ?
-//            details.selector.path : details.selector;
-//    this.echo("Wait timed out after " + timeout + " msec with selector: " + selector);
-//    this.wait(2000,function() {
-//        this.capture('./data/waitSelectorTimeout.png');
-//    });
-//
-//    //socket.sendWs(0, "TIMEOUT", self_PID);
-//};
-//
-//focusPage.options.onWaitTimeout = function(timeout, details) {
-//    var selector = details.selector.type === 'xpath' ?
-//            details.selector.path : details.selector;
-//    this.echo("Wait timed out after " + timeout + " msec with selector: " + selector);
-//    this.wait(2000,function() {
-//        this.capture('./data/waitSelectorTimeout.png');
-//    });
-//    //socket.sendWs(0, "TIMEOUT", self_PID);
-//
-//};
-//
-//userPage.options.onWaitTimeout = function(timeout, details) {
-//    var selector = details.selector.type === 'xpath' ?
-//            details.selector.path : details.selector;
-//    this.echo("Wait timed out after " + timeout + " msec with selector: " + selector);
-//    this.wait(2000,function() {
-//        this.capture('./data/waitSelectorTimeout.png');
-//    });
-//    socket.sendWs(0, "TIMEOUT", self_PID);
-//};
-
-//msgPage.options.onTimeout = function(timeout) {
-//    socket.sendWs(0, "TIMEOUT", self_PID);
-//}
-
 
 var x = require('casper').selectXPath;
-var weibo = require('./tools/caspWeibo');
+var news = require('./tools/newsGetter');
 var cookies = require('./tools/Cookies');
 var socket = require('./tools/ioHub');
 var fs = require('fs');
 var loaderror = require('./tools/errorHandler');
 
 loaderror.configure(msgPage);
-loaderror.configure(focusPage);
-loaderror.configure(userPage);
 
 //phantom.injectJs('./tools/errorHandler.js')
 //console.log("state:"+ws.readyState);
 
-var USER = '13267241477';
-var PASS = 'ql13530088648';
-var URL = 'http://m.weibo.cn/';
+var USER = '16420535';
+var PASS = 'Ql.13530088648';
+var URL = 'http://library.hkbu.edu.hk/main/quicklink_Wisenews.html';
 var UID;
 var NUM = 0;
 
@@ -121,7 +60,7 @@ var self_PID = msgPage.cli.get(0);
 function bindThreadListener(casper, PID) {
     casper.echo('begin listen');
     casper.on('thread.completed', function () {
-        if (NUM == 3) {
+        if (NUM == 1) {
             //this.exit(1);
             this.echo("[WEBSOCKET]sending END signal");
             socket.sendWs(0, 'END', PID);
@@ -129,53 +68,25 @@ function bindThreadListener(casper, PID) {
     });
 }
 
-//检测其他两个线程是否完成
+//检测其他进程是否完成
 function checkThreadExit(casper) {
     NUM++;
-    casper.echo("Thread:" + NUM);
+    casper.echo("Thread:" + NUM+" finished");
     casper.emit('thread.completed');
 }
-
-
-//bindThreadListener(focusPage);
-//bindThreadListener(userPage);
-
-
 
 //三个线程开始运行
 function startScraping(UID) {
     msgPage.start(URL, function () {
-        weibo.login(USER, PASS, msgPage);
+        news.login(USER, PASS, msgPage);
     }).then(function () {
         //this.wait(getRandomWait,1,10);
-        weibo.getMsg(UID, msgPage, function (info) {
-            socket.sendWs(info, "messages", self_PID);
-        });
+        news.configSetting(msgPage);
     }).run(checkThreadExit, msgPage);
-
-    focusPage.start(URL, function () {
-        weibo.login(USER, PASS, focusPage);
-    }).then(function () {
-        //this.wait(getRandomWait,1,10);
-        weibo.getFocusUsers(UID, focusPage, function (info) {
-            socket.sendWs(info, "focus", self_PID);
-        });
-    }).run(checkThreadExit, focusPage);
-
-    userPage.start(URL, function () {
-        weibo.login(USER, PASS, userPage);
-    }).then(function () {
-        //this.wait(getRandomWait,1,10);
-        weibo.getUser(UID, userPage, function (info) {
-            socket.sendWs(info, "user", self_PID);
-        });
-    }).run(checkThreadExit, userPage);
 }
 
 
 socket.createWs(self_PID, function (UID) {
         bindThreadListener(msgPage, self_PID); //页面监听器绑定
-        bindThreadListener(focusPage, self_PID);
-        bindThreadListener(userPage, self_PID);
         startScraping(UID);
 });

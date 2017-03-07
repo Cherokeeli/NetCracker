@@ -39,7 +39,7 @@ log4js.configure({
 var state = 'casperjs'; //启动命令
 var thread = 'mainThread.js'; //进程文件
 
-var NUM_OF_WORKERS = 4;
+var NUM_OF_WORKERS = 1;
 var worker_list = [];
 var NumOfUser = 1;
 
@@ -81,11 +81,11 @@ function myWorkerFork(num) {
                     //Here is where the output goes
                 });
                 child.stderr.on('data', function (data) {
-                    console.log('PID ' + i + ':' + data);
+                    console.log('PID ' + i + 'err: ' + data);
                     //Here is where the error output goes
                 });
                 child.on('close', function (code) {
-                    console.log('PID ' + i + ':' + code);
+                    console.log('PID ' + i + 'closed: ' + code);
                     //Here you can get the exit code of the script
                 });
                 console.log("Spawn process " + i);
@@ -93,7 +93,7 @@ function myWorkerFork(num) {
                 worker_list[i].worker = child;
                 worker_list[i].isAlive = 1;
                 worker_list[i].job = [];
-                console.log(worker_list[i].worker.pid);
+                console.log("New worker created "+worker_list[i].worker.pid);
             })(i);
         } // for
 
@@ -152,15 +152,15 @@ function addDataPool(message) {
 }
 
 function taskDistribute(ws) {
-    var task = filter.restore();
-    if (task == undefined) {
-        setTimeout(function () {
-            taskDistribute(ws);
-        }, 30000);
-    } else {
-        console.log("Task distributed:" + task);
-        ws.send(task);
-    }
+    // var task = filter.restore();
+    // if (task == undefined) {
+    //     setTimeout(function () {
+    //         taskDistribute(ws);
+    //     }, 30000);
+    // } else {
+        console.log("Task distributed:" + 1);
+        ws.send(1);
+   // }
     //return task;
 }
 
@@ -210,7 +210,7 @@ function resolveMessages(message, ws) {
     }
 }
 //cook.updateCookies();
-filter.readBuff();
+//filter.readBuff();
 myWorkerFork(NUM_OF_WORKERS);
 //setInterval(cook.updateCookies,10*(60*60*1000));
 //module.exports = {

@@ -3,6 +3,16 @@
 //*****************************
 //var path='./data/cookies.txt';
 //var fs = require('fs');
+var displayCookies = function () //显示当前cookies
+    {
+        console.log('---------------------------------------------------------------');
+        var cookies = phantom.cookies;
+        for (var i = 0, len = cookies.length; i < len; i++) {
+            console.log(cookies[i].name + ': ' + cookies[i].value);
+        }
+        console.log('---------------------------------------------------------------');
+    } 
+
 var checkCookies = function () {
 
     if (fs.exists('./data/cookies.txt')) {
@@ -26,3 +36,4 @@ var saveCookies = function () {
 
 exports.checkCookies = checkCookies;
 exports.saveCookies = saveCookies;
+exports.displayCookies = displayCookies;

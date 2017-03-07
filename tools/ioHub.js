@@ -17,8 +17,6 @@ var createWs = function (pid, callback) {
         if (evt.data == "COOL") {
             msgPage.echo("COOL DOWNING, PLEASE WAIT FOR 15 MINUTES");
             msgPage.wait(15*60*1000);
-            focusPage.wait(15*60*1000);
-            userPage.wait(15*60*1000);
         } else {
             callback(evt.data);
         }
