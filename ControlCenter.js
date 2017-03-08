@@ -202,7 +202,7 @@ function resolveMessages(message, ws) {
         break;
     case "focus":
         //addDataPool(message);
-        filter.store(message.data);
+        filter.store(message.data); //message.data:Array
         break;
     case "user":
         addDataPool(message);
