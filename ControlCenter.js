@@ -6,6 +6,7 @@ var util = require('util');
 const EventEmitter = require('events');
 var fs = require('fs');
 var user_index = 0;
+var flag_index = 0;
 
 function CoolDown() {
     EventEmitter.call(this);
