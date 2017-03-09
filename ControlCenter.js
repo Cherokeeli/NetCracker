@@ -6,7 +6,7 @@ var util = require('util');
 const EventEmitter = require('events');
 var fs = require('fs');
 var user_index = 0;
-var flag_index = 0;
+var flag_index = 1;
 
 function CoolDown() {
     EventEmitter.call(this);
@@ -40,7 +40,7 @@ log4js.configure({
 var state = 'casperjs'; //启动命令
 var thread = 'mainThread.js'; //进程文件
 
-var NUM_OF_WORKERS = 1;
+var NUM_OF_WORKERS = 2;
 var worker_list = [];
 var NumOfUser = 1;
 
@@ -159,8 +159,9 @@ function taskDistribute(ws) {
     //         taskDistribute(ws);
     //     }, 30000);
     // } else {
-        console.log("Task distributed:" + 1);
-        ws.send(1);
+        console.log("Task distributed:" + flag_index);
+        ws.send(flag_index);
+        flag_index+=50;
    // }
     //return task;
 }

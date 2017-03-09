@@ -39,6 +39,9 @@ var cookies = require('./tools/Cookies');
 var socket = require('./tools/ioHub');
 var fs = require('fs');
 var loaderror = require('./tools/errorHandler');
+var utils = require('utils');
+var pageURL;
+
 
 loaderror.configure(msgPage);
 
@@ -79,16 +82,13 @@ function checkThreadExit(casper) {
 //三个线程开始运行
 function startScraping(UID) {
     msgPage.start(URL, function () {
-        news.login(USER, PASS, msgPage);
-
-        // }).then(function () {
-        //     //this.wait(getRandomWait, 1, 10, function () {
-
-        //     //});
+        //news.login(USER, PASS, msgPage);
+        pageURL = utils.format('http://libwisenews.wisers.net.lib-ezproxy.hkbu.edu.hk/wisenews/content.do?wp_dispatch=menu-content&menu-id=/commons/CFT-HK/DA000-DA003-DA010-/DA000-DA003-DA010-65107-&cp&cp_s=%s&cp_e=%s',parseInt(UID),parseInt(UID)+50);
+        this.echo("pageURL: "+pageURL);
     }).then(function () {
         news.configSetting(msgPage);
     }).then(function() {
-        news.pageProcessing(msgPage);
+        news.pageProcessing(pageURL, msgPage);
     }).run(checkThreadExit, msgPage);
 }
 

@@ -56,12 +56,12 @@ function getAttriValue(selector, attribute) {
 //
 //************************************************************** 
 
-var pageURL = 'http://libwisenews.wisers.net.lib-ezproxy.hkbu.edu.hk/wisenews/content.do?wp_dispatch=menu-content&menu-id=/commons/CFT-HK/DA000-DA003-DA010-/DA000-DA003-DA010-65107-&cp&cp_s=0&cp_e=49'
+//var pageURL = 'http://libwisenews.wisers.net.lib-ezproxy.hkbu.edu.hk/wisenews/content.do?wp_dispatch=menu-content&menu-id=/commons/CFT-HK/DA000-DA003-DA010-/DA000-DA003-DA010-65107-&cp&cp_s=0&cp_e=50';
 var baseURL = 'http://libwisenews.wisers.net.lib-ezproxy.hkbu.edu.hk'
 
 var getHref = function (casper, callback) { //get message href
     var hrefs = [];
-    hrefs = casper.evaluate(getAttriValues, 'tr.ClipItemRow td:nth-last-child(1) a', 'href');
+    hrefs = casper.evaluate(getAttriValues, 'tr.ClipItemRow td:nth-child(3) a', 'href');
     callback(hrefs);
 }
 
@@ -80,32 +80,37 @@ var extractMessages = function (casper, callback) { //extract information
     callback(JSON.stringify(message));
 }
 
+var getRandomWait = function (casper, min, max) {
+    var time = 1000 * Math.random() * (max - min) + min;
+    casper.wait(time);
+}
+
 //**************************************************************
 //
 //                 external casper function 
 //
 //************************************************************** 
 
-var pageProcessing = function (casper) {
+var pageProcessing = function (pageURL, casper) {
     casper.thenOpen(pageURL, function () {
+        this.echo('Pageing in: ' + pageURL);
         getHref(casper, function (href) {
-            casper.echo(href[0]);
-            for (var i = 0; i < 50; i++) {
-                (function (i) {
-                    var url = baseURL + href[i];
-                    casper.echo("url: " + href[i]);
+            //casper.echo(href[0]);
+            for (var i = 0; i < href.length; i++) {
+                var url = baseURL + href[i];
+                (function (i, url) {
+                    
+                    //casper.echo("url: " + href[i]);
                     casper.thenOpen(url, function () {
-                        this.wait(2000, function () {
-                            extractMessages(casper, function (msg) {
-                                var dd = msg.replace(/<\/?.+?>/g, "");
-                                //var dds = dd.replace(/\r?\n|\r/g, "");
-                                //dds = dds.replace(/[\@\#\$\%\^\&\*\(\)\{\}\:\"\L\<\>\?\[\]]/);
-                                casper.echo(dd);
-                            });
-
+                        this.echo("getting in: " + url);
+                    }).wait(3000, function () {
+                        this.capture('./data/getttingPage'+self_PID+'.png')
+                        extractMessages(casper, function (msg) {
+                            var dd = msg.replace(/<\/?.+?>/g, "");
+                            casper.echo(dd);
                         });
-                    }); //thenOpen
-                })(i); //closure
+                    })
+                })(i, url); //closure
             } //for
         });
     })
@@ -115,7 +120,7 @@ exports.pageProcessing = pageProcessing;
 var configSetting = function (casper) {
     var url = 'http://libwisenews.wisers.net.lib-ezproxy.hkbu.edu.hk/wisenews/content.do?wp_dispatch=menu-content&srp_save&menu-id=/commons/CFT-HK/DA000-DA003-DA010-/DA000-DA003-DA010-65107-'
     casper.thenOpen(url, function () {
-    }).then(function () {
+    }).waitForSelector('#FilterFromMonth', function () {
         this.capture('./data/setting1.png');
         this.evaluate(function () {
             document.querySelector('select#FilterFromMonth').selectedIndex = 1;
@@ -141,7 +146,6 @@ var login = function (USER, PASS, casper) //wisenews login
             }, true); //filling the form and submit
 
             casper.capture('./data/newsfilling.png');
-            //casper.click(x('#tab-page-1 > form > p > table > tbody > tr:nth-child(4) > td > a')); //点击登录按钮
         });
 
         casper.wait(2000, function () {
