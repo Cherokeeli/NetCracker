@@ -3,5 +3,5 @@ casperjs+nodejs
 Weibo Scraper
 
 ##Known Issue
-Process will stuck randomly while scrape webpages.
-In getInnerHTML(), node.innerHTML will return not such object.
+1.Process will stuck randomly while scrape webpages.\<br> 
+2.In getInnerHTML(), node.innerHTML will return not such object.
