@@ -40,7 +40,7 @@ log4js.configure({
 var state = 'casperjs'; //启动命令
 var thread = 'mainThread.js'; //进程文件
 
-var NUM_OF_WORKERS = 2;
+var NUM_OF_WORKERS = 4;
 var worker_list = [];
 var NumOfUser = 1;
 

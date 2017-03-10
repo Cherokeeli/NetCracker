@@ -68,9 +68,11 @@ var getHref = function (casper, callback) { //get message href
 var extractMessages = function (casper, callback) { //extract information
     var message = {};
     message.pubName = casper.evaluate(getInnerHTML, 'td.pubName');
+    message.pubName = message.pubName.replace(/<\/?.+?>/g, "").replace(/[\'\"\\\/\b\f\n\r\t&nbsp;]/g,'').trim();
     message.headline = casper.evaluate(getInnerHTML, 'td.headline');
+    message.headline = message.headline.replace(/<\/?.+?>/g, "").replace(/[\'\"\\\/\b\f\n\r\t&nbsp;]/g,'').trim();
     message.content = casper.evaluate(getInnerHTML, 'td.content');
-    message.content = message.content.replace(/\r?\n|\r/g, "");
+    message.content = message.content.replace(/<\/?.+?>/g, "").replace(/[\'\"\\\/\b\f\n\r\t&nbsp;]/g,'').trim();
     var temp = casper.evaluate(getInnerHTML, 'td.info~td.info');
     temp = temp.slice(6).split('<br>'); //cut &nbsp and divide time and author by <br>
     message.time = temp[1];
@@ -99,14 +101,14 @@ var pageProcessing = function (pageURL, casper) {
             for (var i = 0; i < href.length; i++) {
                 var url = baseURL + href[i];
                 (function (i, url) {
-                    
                     //casper.echo("url: " + href[i]);
                     casper.thenOpen(url, function () {
                         this.echo("getting in: " + url);
                     }).wait(3000, function () {
-                        this.capture('./data/getttingPage'+self_PID+'.png')
+                        //this.capture('./data/getttingPage'+self_PID+'.png')
                         extractMessages(casper, function (msg) {
-                            var dd = msg.replace(/<\/?.+?>/g, "");
+                            var dd = msg.replace(/<\/?.+?>/g, ""); //delete html tag
+                            fs.write('./data/result.json', dd+',', 'a+');
                             casper.echo(dd);
                         });
                     })
@@ -119,14 +121,17 @@ exports.pageProcessing = pageProcessing;
 
 var configSetting = function (casper) {
     var url = 'http://libwisenews.wisers.net.lib-ezproxy.hkbu.edu.hk/wisenews/content.do?wp_dispatch=menu-content&srp_save&menu-id=/commons/CFT-HK/DA000-DA003-DA010-/DA000-DA003-DA010-65107-'
-    casper.thenOpen(url, function () {
+    return casper.thenOpen(url, function () {
     }).waitForSelector('#FilterFromMonth', function () {
-        this.capture('./data/setting1.png');
+        //this.capture('./data/setting1.png');
         this.evaluate(function () {
             document.querySelector('select#FilterFromMonth').selectedIndex = 1;
         }); //select past one month data
-    }).thenClick('#FilterBar > button', function () {
-        this.capture('./data/setting2.png');
+    }, function onTimeout() {
+        this.echo("Timeout when connect" + url + ' Reconnecting...');
+        configSetting(casper);
+    }, 10000).thenClick('#FilterBar > button', function () {
+        //this.capture('./data/setting2.png');
     })
 }
 exports.configSetting = configSetting;
@@ -136,21 +141,21 @@ var login = function (USER, PASS, casper) //wisenews login
 
     if (!cookies.checkCookies()) {
         casper.waitForSelector('.content_text', function () {
-            casper.capture('./data/newslogin.png'); //网页打开页面截图
+            //casper.capture('./data/newslogin.png'); //网页打开页面截图
             casper.echo(this.getTitle());
         }).then(function () {
-            casper.capture('./data/new2.png');
+            //casper.capture('./data/new2.png');
             casper.fillSelectors('form', {
                 'input[name="user"]': USER,
                 'input[name="pass"]': PASS
             }, true); //filling the form and submit
 
-            casper.capture('./data/newsfilling.png');
+            //casper.capture('./data/newsfilling.png');
         });
 
         casper.wait(2000, function () {
             casper.echo(casper.getCurrentUrl()); //登录成功标志
-            casper.capture("./data/login.png");
+            //casper.capture("./data/login.png");
             cookies.displayCookies();
             cookies.saveCookies();
         });
@@ -158,7 +163,7 @@ var login = function (USER, PASS, casper) //wisenews login
         casper.reload(function () {
             //casper.echo('reload!');
             casper.wait(3000, function () {
-                casper.capture('./data/reload.png');
+                //casper.capture('./data/reload.png');
             });
 
         });
