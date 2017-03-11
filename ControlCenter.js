@@ -6,7 +6,7 @@ var util = require('util');
 const EventEmitter = require('events');
 var fs = require('fs');
 var user_index = 0;
-var flag_index = 1;
+var flag_index = 2601;
 
 function CoolDown() {
     EventEmitter.call(this);
@@ -178,7 +178,7 @@ function resolveMessages(message, ws) {
     case "OPEN":
         taskDistribute(ws);
         NumOfUser++;
-        cooldown.emit('cool.down');
+        //cooldown.emit('cool.down');
         break;
     case "GET":
         console.log("Worker:" + message.PID + " task got");

@@ -5,6 +5,11 @@
 //
 //************************************************************** 
 
+function getCurrentInfosNum(selector) {
+    var n = document.querySelectorAll(selector).length;
+    return n.length;
+} //getCurrentInfosNum
+
 function getInnerHTMLs(selector) { //s
     try {
         var nodes = document.querySelectorAll(selector);
@@ -68,11 +73,11 @@ var getHref = function (casper, callback) { //get message href
 var extractMessages = function (casper, callback) { //extract information
     var message = {};
     message.pubName = casper.evaluate(getInnerHTML, 'td.pubName');
-    message.pubName = message.pubName.replace(/<\/?.+?>/g, "").replace(/[\'\"\\\/\b\f\n\r\t&nbsp;]/g,'').trim();
+    message.pubName = message.pubName.replace(/<\/?.+?>/g, "").replace(/[\'\"\\\/\b\f\n\r\t&nbsp;]/g, '').trim();
     message.headline = casper.evaluate(getInnerHTML, 'td.headline');
-    message.headline = message.headline.replace(/<\/?.+?>/g, "").replace(/[\'\"\\\/\b\f\n\r\t&nbsp;]/g,'').trim();
+    message.headline = message.headline.replace(/<\/?.+?>/g, "").replace(/[\'\"\\\/\b\f\n\r\t&nbsp;]/g, '').trim();
     message.content = casper.evaluate(getInnerHTML, 'td.content');
-    message.content = message.content.replace(/<\/?.+?>/g, "").replace(/[\'\"\\\/\b\f\n\r\t&nbsp;]/g,'').trim();
+    message.content = message.content.replace(/<\/?.+?>/g, "").replace(/[\'\"\\\/\b\f\n\r\t&nbsp;]/g, '').trim();
     var temp = casper.evaluate(getInnerHTML, 'td.info~td.info');
     temp = temp.slice(6).split('<br>'); //cut &nbsp and divide time and author by <br>
     message.time = temp[1];
@@ -87,6 +92,32 @@ var getRandomWait = function (casper, min, max) {
     casper.wait(time);
 }
 
+var openMessagePage = function (url, casper) { //open message page function attach reconnect
+    return casper.thenOpen(url, function () {
+        this.echo("getting in: " + url);
+        casper.waitFor(function check() {
+            return this.exists('.content');
+        }, function success() {
+            extractMessages(casper, function (msg) {
+                var dd = msg.replace(/<\/?.+?>/g, ""); //delete html tag
+                fs.write('./data/result.json', dd + ',', 'a+');
+                casper.echo(dd);
+                casper.capture('./data/fail'+self_PID+'.png');
+            });
+        }, function onFail() {
+            this.echo('FAILED to getting in '+url+' Reconnecting...');
+            openMessagePage(url, casper);
+        }, 6000)
+    });
+}
+
+// casper.Waiter = function() {
+//     this.wait(3000, function() {
+//         this.echo('Checking wait completed'); 
+//     });
+//     return true;
+// }
+
 //**************************************************************
 //
 //                 external casper function 
@@ -94,41 +125,69 @@ var getRandomWait = function (casper, min, max) {
 //************************************************************** 
 
 var pageProcessing = function (pageURL, casper) {
-    casper.thenOpen(pageURL, function () {
+    // casper.thenOpen(pageURL, function () {
+    //     this.echo('Pageing in: ' + pageURL);
+    // getHref(casper, function (href) {
+    //     //casper.echo(href[0]);
+    //     for (var i = 0; i < href.length; i++) {
+    //         var url = baseURL + href[i];
+    //         (function (i, url) {
+    //             //casper.echo("url: " + href[i]);
+    //             casper.thenOpen(url, function () {
+    //                 this.echo("getting in: " + url);
+    //             }).wait(3000, function () {
+    //                 //this.capture('./data/getttingPage'+self_PID+'.png')
+    //                 extractMessages(casper, function (msg) {
+    //                     var dd = msg.replace(/<\/?.+?>/g, ""); //delete html tag
+    //                     fs.write('./data/result.json', dd+',', 'a+');
+    //                     casper.echo(dd);
+    //                 });
+    //             })
+    //         })(i, url); //closure
+    //     } //for
+    // });
+    // })
+    return casper.thenOpen(pageURL, function () {
         this.echo('Pageing in: ' + pageURL);
-        getHref(casper, function (href) {
-            //casper.echo(href[0]);
-            for (var i = 0; i < href.length; i++) {
-                var url = baseURL + href[i];
-                (function (i, url) {
-                    //casper.echo("url: " + href[i]);
-                    casper.thenOpen(url, function () {
-                        this.echo("getting in: " + url);
-                    }).wait(3000, function () {
-                        //this.capture('./data/getttingPage'+self_PID+'.png')
-                        extractMessages(casper, function (msg) {
-                            var dd = msg.replace(/<\/?.+?>/g, ""); //delete html tag
-                            fs.write('./data/result.json', dd+',', 'a+');
-                            casper.echo(dd);
+        casper.waitFor(function check() {
+            //this.echo("")
+            //return this.evaluate(getCurrentInfosNum,'.ClipItemRow') >= 50;
+            return this.exists('.ClipItemRow');
+        }, function success() {
+            getHref(casper, function (href) {
+                //casper.echo(href[0]);
+                for (var i = 0; i < href.length; i++) {
+                    var url = baseURL + href[i];
+                    (function (i, url) {
+                        //casper.echo("url: " + href[i]);
+                        casper.wait(4000, function() {
+                            openMessagePage(url, casper);
                         });
-                    })
-                })(i, url); //closure
-            } //for
-        });
-    })
+                        casper.capture('./data/fail'+self_PID+'.png');
+                    })(i, url); //closure
+                } //for
+            });
+        }, function onFail() {     
+                this.echo('FAILED to Pageing in '+pageURL+' Reconnecting...');
+                this.capture('./data/fail'+self_PID+'.png');
+                pageProcessing(pageURL, casper);
+        }, 6000);
+    });
 }
 exports.pageProcessing = pageProcessing;
 
 var configSetting = function (casper) {
     var url = 'http://libwisenews.wisers.net.lib-ezproxy.hkbu.edu.hk/wisenews/content.do?wp_dispatch=menu-content&srp_save&menu-id=/commons/CFT-HK/DA000-DA003-DA010-/DA000-DA003-DA010-65107-'
     return casper.thenOpen(url, function () {
-    }).waitForSelector('#FilterFromMonth', function () {
+    }).waitFor(function check() {
         //this.capture('./data/setting1.png');
-        this.evaluate(function () {
+        return casper.exists('#FilterFromMonth');
+    }, function success() {
+        casper.evaluate(function () {
             document.querySelector('select#FilterFromMonth').selectedIndex = 1;
         }); //select past one month data
-    }, function onTimeout() {
-        this.echo("Timeout when connect" + url + ' Reconnecting...');
+    },function onTimeout() {
+        this.echo("Timeout when connect" + url + ' Need Reconnecting...');
         configSetting(casper);
     }, 10000).thenClick('#FilterBar > button', function () {
         //this.capture('./data/setting2.png');

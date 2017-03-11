@@ -73,6 +73,16 @@ function bindThreadListener(casper, PID) {
     });
 }
 
+
+// function statusChecker(casper, PID) {
+//     casper.echo('Status Checking...');
+//     casper.waitFor(function check() {
+//         return this.Waiter();
+//     }, function success() {
+//         socket.sendWs(1, 'LIVE', PID);
+//     });
+// }
+
 //检测其他进程是否完成
 function checkThreadExit(casper) {
     NUM++;
@@ -84,7 +94,7 @@ function checkThreadExit(casper) {
 //三个线程开始运行
 function startScraping(UID) {
     msgPage.start(URL, function () {
-        news.login(USER, PASS, msgPage);
+        //news.login(USER, PASS, msgPage);
         pageURL = utils.format('http://libwisenews.wisers.net.lib-ezproxy.hkbu.edu.hk/wisenews/content.do?wp_dispatch=menu-content&menu-id=/commons/CFT-HK/DA000-DA003-DA010-/DA000-DA003-DA010-65107-&cp&cp_s=%s&cp_e=%s',parseInt(UID),parseInt(UID)+50);
         this.echo("pageURL: "+pageURL);
     }).then(function () {
@@ -100,3 +110,4 @@ function startScraping(UID) {
         startScraping(UID);
     });
 //}
+//1101 2201 //2551 //3101
