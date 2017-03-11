@@ -33,6 +33,13 @@ var msgPage = require("casper").create({
     //        logLevel: "debug"
 });
 
+// msgPage.Waiter = function() {
+//     msgPage.wait(3000, function() {
+//         msgPage.echo('Checking wait completed'); 
+//     });
+//     return true;
+// }
+
 var x = require('casper').selectXPath;
 var news = require('./tools/newsGetter');
 var cookies = require('./tools/Cookies');
@@ -71,16 +78,22 @@ function bindThreadListener(casper, PID) {
             socket.sendWs(0, 'END', PID);
         }
     });
+
+    casper.on('thread.check', function() {
+        this.echo("Sending Status Checking");
+        socket.sendWs(1, 'LIVE', PID);
+    });
 }
 
 
 // function statusChecker(casper, PID) {
 //     casper.echo('Status Checking...');
-//     casper.waitFor(function check() {
-//         return this.Waiter();
-//     }, function success() {
-//         socket.sendWs(1, 'LIVE', PID);
-//     });
+//     return casper.then(function () {
+//         casper.wait(5000, function () {
+//             socket.sendWs(1, 'LIVE', PID);
+//             statusChecker(casper, PID);
+//         });
+//     })
 // }
 
 //检测其他进程是否完成
@@ -94,20 +107,24 @@ function checkThreadExit(casper) {
 //三个线程开始运行
 function startScraping(UID) {
     msgPage.start(URL, function () {
-        //news.login(USER, PASS, msgPage);
-        pageURL = utils.format('http://libwisenews.wisers.net.lib-ezproxy.hkbu.edu.hk/wisenews/content.do?wp_dispatch=menu-content&menu-id=/commons/CFT-HK/DA000-DA003-DA010-/DA000-DA003-DA010-65107-&cp&cp_s=%s&cp_e=%s',parseInt(UID),parseInt(UID)+50);
-        this.echo("pageURL: "+pageURL);
+        news.login(USER, PASS, msgPage);
+        pageURL = utils.format('http://libwisenews.wisers.net.lib-ezproxy.hkbu.edu.hk/wisenews/content.do?wp_dispatch=menu-content&menu-id=/commons/CFT-HK/DA000-DA003-DA010-/DA000-DA003-DA010-65107-&cp&cp_s=%s&cp_e=%s', parseInt(UID), parseInt(UID) + 50);
+        this.echo("pageURL: " + pageURL);
     }).then(function () {
         news.configSetting(msgPage);
-    }).then(function() {
+    }).then(function () {
         news.pageProcessing(pageURL, msgPage);
     }).run(checkThreadExit, msgPage);
 }
 
 //for (; ;) {
-    socket.createWs(self_PID, function (UID) {
-        bindThreadListener(msgPage, self_PID); //页面监听器绑定
-        startScraping(UID);
-    });
+socket.createWs(self_PID, function (UID) {
+    bindThreadListener(msgPage, self_PID); //页面监听器绑定
+    startScraping(UID);
+    //statusChecker(msgPage, self_PID); 
+});
+
+
+
 //}
 //1101 2201 //2551 //3101

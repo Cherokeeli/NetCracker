@@ -6,7 +6,7 @@ var util = require('util');
 const EventEmitter = require('events');
 var fs = require('fs');
 var user_index = 0;
-var flag_index = 2601;
+var flag_index = 0;
 
 function CoolDown() {
     EventEmitter.call(this);
@@ -14,6 +14,7 @@ function CoolDown() {
 util.inherits(CoolDown, EventEmitter);
 
 const cooldown = new CoolDown();
+//const statuscheck = new CoolDown();
 
 
 log4js.configure({
@@ -21,15 +22,15 @@ log4js.configure({
         {
             "type": "console",
             "category": "console"
-            },
+        },
         {
             "category": "log_file",
             "type": "console",
             "filename": "./log/workerEmitter.log",
             "maxLogSize": 104800,
             "backups": 100
-            }
-        ],
+        }
+    ],
     "replaceConsole": true,
     "levels": {
         "log_file": "ALL",
@@ -63,11 +64,24 @@ wss.broadcast = function broadcast(data) {
 cooldown.on('cool.down', () => {
     if (NumOfUser % 30 == 0) {
         wss.broadcast("COOL");
-        spawn('casperjs',['CookieCollector.js',user_index]);
-        user_index = user_index==1? 0:1;
+        spawn('casperjs', ['CookieCollector.js', user_index]);
+        user_index = user_index == 1 ? 0 : 1;
         filter.backup();
     }
 });
+
+function statusCheck() {
+    
+    var curTime = Date.now();
+    for (var i = 0; i < NUM_OF_WORKERS; i++) {
+        console.log('Status Checking...' + i);
+        if (curTime - worker_list[i].preTime >= 10000) {
+            taskKill(i);
+            myWorkerFork(0);
+        }
+    }
+    return;
+}
 
 
 function myWorkerFork(num) {
@@ -94,7 +108,7 @@ function myWorkerFork(num) {
                 worker_list[i].worker = child;
                 worker_list[i].isAlive = 1;
                 worker_list[i].job = [];
-                console.log("New worker created "+worker_list[i].worker.pid);
+                console.log("New worker created " + worker_list[i].worker.pid);
             })(i);
         } // for
 
@@ -159,10 +173,10 @@ function taskDistribute(ws) {
     //         taskDistribute(ws);
     //     }, 30000);
     // } else {
-        console.log("Task distributed:" + flag_index);
-        ws.send(flag_index);
-        flag_index+=50;
-   // }
+    console.log("Task distributed:" + flag_index);
+    ws.send(flag_index);
+    flag_index += 50;
+    // }
     //return task;
 }
 
@@ -175,61 +189,67 @@ function taskKill(pid) {
 
 function resolveMessages(message, ws) {
     switch (message.type) {
-    case "OPEN":
-        taskDistribute(ws);
-        NumOfUser++;
-        //cooldown.emit('cool.down');
-        break;
-    case "GET":
-        console.log("Worker:" + message.PID + " task got");
-        worker_list[message.PID].job.push(message.data);
-        break;
-    case "END":
-        taskKill(message.PID);
-        break;
-    case "WTIMEOUT":
-        filter.store(worker_list[message.PID].job);
-        taskKill(message.PID);
-        break;
-    case "JUMPOUT":
-        setTimeout(function () {
+        case "OPEN":
+            taskDistribute(ws);
+            NumOfUser++;
+            
+            //cooldown.emit('cool.down');
+            break;
+        case "GET":
+            console.log("Worker:" + message.PID + " task got");
+            worker_list[message.PID].job.push(message.data);
+            break;
+        case "END":
+            taskKill(message.PID);
+            break;
+        case "WTIMEOUT":
             filter.store(worker_list[message.PID].job);
             taskKill(message.PID);
-        }, 5 * 60 * 1000);
-        break;
-    case "MSGNONE":
-        break;
-    case "messages":
-        addDataPool(message);
-        break;
-    case "focus":
-        //addDataPool(message);
-        filter.store(message.data); //message.data:Array
-        break;
-    case "user":
-        addDataPool(message);
-        break;
+            break;
+        case "JUMPOUT":
+            setTimeout(function () {
+                filter.store(worker_list[message.PID].job);
+                taskKill(message.PID);
+            }, 5 * 60 * 1000);
+            break;
+        case "MSGNONE":
+            break;
+        case "LIVE":
+            worker_list[message.PID].preTime = Date.now();
+            console.log("Getting LIVE");
+            break;
+        case "messages":
+            addDataPool(message);
+            break;
+        case "focus":
+            //addDataPool(message);
+            filter.store(message.data); //message.data:Array
+            break;
+        case "user":
+            addDataPool(message);
+            break;
     }
 }
 //cook.updateCookies();
 //filter.readBuff();
 myWorkerFork(NUM_OF_WORKERS);
+setInterval(statusCheck, 5000);
 //setInterval(cook.updateCookies,10*(60*60*1000));
 //module.exports = {
-    //start: function () {
-        wss.on('connection', function connection(ws) {
-            ws.on('message', function incoming(messages) {
-                var parMessage = JSON.parse(messages);
-                if (util.isArray(parMessage.data)) {
-                    console.log('[WEBSOCKET]Received: ' + parMessage.data.length + ' ' + parMessage.type);
-                } else {
-                    console.log('[WEBSOCKET]Received: ' + parMessage.type);
-                }
-                resolveMessages(parMessage, ws);
-                myWorkerFork(0);
-            });
-            //ws.send('something');
-        });
+//start: function () {
+wss.on('connection', function connection(ws) {
+    ws.on('message', function incoming(messages) {
+        var parMessage = JSON.parse(messages);
+        if (util.isArray(parMessage.data)) {
+            console.log('[WEBSOCKET]Received: ' + parMessage.data.length + ' ' + parMessage.type);
+        } else {
+            console.log('[WEBSOCKET]Received: ' + parMessage.type);
+        }
+        resolveMessages(parMessage, ws);
+        myWorkerFork(0);
+    });
+    //ws.send('something');
+});
 
     //}//start
 //}

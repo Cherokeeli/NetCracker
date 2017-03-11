@@ -111,12 +111,6 @@ var openMessagePage = function (url, casper) { //open message page function atta
     });
 }
 
-// casper.Waiter = function() {
-//     this.wait(3000, function() {
-//         this.echo('Checking wait completed'); 
-//     });
-//     return true;
-// }
 
 //**************************************************************
 //
@@ -149,6 +143,7 @@ var pageProcessing = function (pageURL, casper) {
     // })
     return casper.thenOpen(pageURL, function () {
         this.echo('Pageing in: ' + pageURL);
+        casper.emit('thread.check');
         casper.waitFor(function check() {
             //this.echo("")
             //return this.evaluate(getCurrentInfosNum,'.ClipItemRow') >= 50;
@@ -160,7 +155,9 @@ var pageProcessing = function (pageURL, casper) {
                     var url = baseURL + href[i];
                     (function (i, url) {
                         //casper.echo("url: " + href[i]);
+                        
                         casper.wait(4000, function() {
+                            casper.emit('thread.check');
                             openMessagePage(url, casper);
                         });
                         casper.capture('./data/fail'+self_PID+'.png');
@@ -179,6 +176,7 @@ exports.pageProcessing = pageProcessing;
 var configSetting = function (casper) {
     var url = 'http://libwisenews.wisers.net.lib-ezproxy.hkbu.edu.hk/wisenews/content.do?wp_dispatch=menu-content&srp_save&menu-id=/commons/CFT-HK/DA000-DA003-DA010-/DA000-DA003-DA010-65107-'
     return casper.thenOpen(url, function () {
+        casper.emit('thread.check');
     }).waitFor(function check() {
         //this.capture('./data/setting1.png');
         return casper.exists('#FilterFromMonth');
