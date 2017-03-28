@@ -63,10 +63,11 @@ var UID;
 var NUM = 0;
 
 
+
 var messages = [];
 //'1793285524';
 var self_PID = msgPage.cli.get(0);
-
+var retry = 5;
 
 //事件绑定
 function bindThreadListener(casper, PID) {
@@ -83,6 +84,15 @@ function bindThreadListener(casper, PID) {
         this.echo("Sending Status Checking");
         socket.sendWs(1, 'LIVE', PID);
     });
+
+    casper.on('thread.retrytimeout', function() {
+        this.echo('Retry Connection Timeout');
+        socket.sendWs(1, 'WTIMEOUT', PID);
+    });
+
+    casper.on('thread.tasksfinished', function() {
+        socket.sendWs(1, 'COUNT', PID);
+    })
 }
 
 
