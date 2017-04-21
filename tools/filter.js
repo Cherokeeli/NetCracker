@@ -4,33 +4,26 @@
 //Mainly for handling retriving data filtering and store.
 //************************************************************** 
 var fs = require('fs');
-var bf = require("./bloomfilter"),
+var bf = require("../lib//bloomfilter"),
     BloomFilter = bf.BloomFilter,
     fnv_1a = bf.fnv_1a,
     fnv_1a_b = bf.fnv_1a_b;
-var bloom = new BloomFilter(
+var bloom = new BloomFilter( //initialize bloom filter
     32 * 256, // number of bits to allocate.
     16 // number of hash functions.
 ); // bloom filter
 
 module.exports = {
-    restore: function () {
-        console.log("restore!!");
-        var length = uid_set.length;
-        for (var i = 0; i < length; i++) {
-            if (!cann_restore[i]) {
-                cann_restore[i] = 1;
-                return uid_set[i];
-            }
+    store: function (msg,callback) {
+        var form_txt = JSON.parse(msg)
+        if (!bloom.test(msg.id)) {
+            bloom.add(msg.id);
+            fs.writeFile('./data/result.json',JSON.stringify(msg),'utf8','w+',(err) => {
+                if (err) return callback(err);
+                //console.log("Store in cache successfully");
+                callback(true);
+            });
         }
-
-    },
-
-    store: function (msg) {
-        var length = msg.length;
-        Array.prototype.push.apply(uid_set, msg); //合并两个数组
-        for (var i = 0; i < length; i++)
-            cann_restore.push(0);
     },
 
     backup: function () {

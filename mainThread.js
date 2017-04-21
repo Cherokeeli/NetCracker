@@ -88,16 +88,6 @@ function bindThreadListener(casper, PID) {
 }
 
 
-// function statusChecker(casper, PID) {
-//     casper.echo('Status Checking...');
-//     return casper.then(function () {
-//         casper.wait(5000, function () {
-//             socket.sendWs(1, 'LIVE', PID);
-//             statusChecker(casper, PID);
-//         });
-//     })
-// }
-
 //检测其他进程是否完成
 function checkThreadExit(casper) {
     NUM++;
@@ -119,14 +109,8 @@ function startScraping(UID) {
     }).run(checkThreadExit, msgPage);
 }
 
-//for (; ;) {
 socket.createWs(self_PID, function (UID) {
     bindThreadListener(msgPage, self_PID); //页面监听器绑定
     startScraping(UID);
     //statusChecker(msgPage, self_PID); 
 });
-
-
-
-//}
-//1101 2201 //2551 //3101
