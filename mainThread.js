@@ -38,11 +38,10 @@ var msgPage = require("casper").create({
 var x = require('casper').selectXPath;
 var news = require('./tools/newsGetter');
 var cookies = require('./tools/Cookies');
-var socket = require('./tools/ioHub');
+var socket = require('./tools/io_hub');
 var fs = require('fs');
-var loaderror = require('./tools/errorHandler');
+var loaderror = require('./tools/error_handler');
 var utils = require('utils');
-var fs = require('fs');
 var pageURL;
 
 
