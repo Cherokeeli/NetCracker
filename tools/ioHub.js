@@ -1,3 +1,11 @@
+//**************************************************************
+//
+//                      ioHub control flow
+//ioHub mainly is consis of socket event
+//Used for handle the worker process messages sending and retransmitt to master
+//process.
+//************************************************************** 
+
 var ws = undefined
 var createWs = function (pid, callback) {
     ws = new WebSocket("ws://localhost:2000/socket");

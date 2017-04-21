@@ -1,6 +1,8 @@
-//*************************
-//爬虫主进程casperjs
-//*************************
+//**************************************************************
+//
+//                  Master control flow
+//worker process.  To control the workflow of extracting content
+//************************************************************** 
 
 function getRandomArbitrary(min, max) {
     return Math.random() * (max - min) + min;
@@ -33,13 +35,6 @@ var msgPage = require("casper").create({
     //        logLevel: "debug"
 });
 
-// msgPage.Waiter = function() {
-//     msgPage.wait(3000, function() {
-//         msgPage.echo('Checking wait completed'); 
-//     });
-//     return true;
-// }
-
 var x = require('casper').selectXPath;
 var news = require('./tools/newsGetter');
 var cookies = require('./tools/Cookies');
@@ -53,8 +48,6 @@ var pageURL;
 
 loaderror.configure(msgPage);
 
-//phantom.injectJs('./tools/errorHandler.js')
-//console.log("state:"+ws.readyState);
 
 var USER = '16420535';
 var PASS = 'Ql.1994822';
@@ -67,7 +60,7 @@ var NUM = 0;
 var messages = [];
 //'1793285524';
 var self_PID = msgPage.cli.get(0);
-var retry = 5;
+
 
 //事件绑定
 function bindThreadListener(casper, PID) {

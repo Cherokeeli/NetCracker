@@ -1,3 +1,10 @@
+//**************************************************************
+//
+//                  Master control flow
+//Master process for controling worker process. Control and Distribute worker.
+//************************************************************** 
+
+
 var filter = require('./tools/uidFilter');
 var spawn = require('child_process').spawn;
 var log4js = require('log4js');
@@ -207,11 +214,8 @@ function taskDistribute(ws, PID) {
             //console.log("Task distributed:" + flag_index);
             ws.send(flag_index); // distribute task
             release();
-
             // everything is now released.
         });
-
-
         release();
     });
 

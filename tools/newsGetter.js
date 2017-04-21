@@ -2,7 +2,8 @@
 //**************************************************************
 //
 //                  DOM getter function 
-//
+//function should be called in evaluate(), which is run on the page 
+//environment, mainly for extracting content
 //************************************************************** 
 
 function getCurrentInfosNum(selector) {
@@ -58,12 +59,12 @@ function getAttriValue(selector, attribute) {
 //**************************************************************
 //
 //                 internal casper function 
-//
+//Internl casper based function which is called by module function
 //************************************************************** 
 
 //var pageURL = 'http://libwisenews.wisers.net.lib-ezproxy.hkbu.edu.hk/wisenews/content.do?wp_dispatch=menu-content&menu-id=/commons/CFT-HK/DA000-DA003-DA010-/DA000-DA003-DA010-65107-&cp&cp_s=0&cp_e=50';
 var baseURL = 'http://libwisenews.wisers.net.lib-ezproxy.hkbu.edu.hk';
-
+var retry = 5;
 
 var getHref = function (casper, callback) { //get message href
     var hrefs = [];
@@ -116,36 +117,15 @@ var openMessagePage = function (url, casper) { //open message page function atta
 //**************************************************************
 //
 //                 external casper function 
-//
+//Casper-based function, mainly exports to worker process to control work flow
 //************************************************************** 
 
 var pageProcessing = function (pageURL, casper) {
-    // casper.thenOpen(pageURL, function () {
-    //     this.echo('Pageing in: ' + pageURL);
-    // getHref(casper, function (href) {
-    //     //casper.echo(href[0]);
-    //     for (var i = 0; i < href.length; i++) {
-    //         var url = baseURL + href[i];
-    //         (function (i, url) {
-    //             //casper.echo("url: " + href[i]);
-    //             casper.thenOpen(url, function () {
-    //                 this.echo("getting in: " + url);
-    //             }).wait(3000, function () {
-    //                 //this.capture('./data/getttingPage'+self_PID+'.png')
-    //                 extractMessages(casper, function (msg) {
-    //                     var dd = msg.replace(/<\/?.+?>/g, ""); //delete html tag
-    //                     fs.write('./data/result.json', dd+',', 'a+');
-    //                     casper.echo(dd);
-    //                 });
-    //             })
-    //         })(i, url); //closure
-    //     } //for
-    // });
-    // })
     return casper.thenOpen(pageURL, function () {
         this.echo('Pageing in: ' + pageURL);
         casper.emit('thread.check');
         casper.waitFor(function check() {
+            this.capture('./data/setting3.png')
             //this.echo("")
             //return this.evaluate(getCurrentInfosNum,'.ClipItemRow') >= 50;
             return this.exists('.ClipItemRow');
@@ -188,7 +168,10 @@ var configSetting = function (casper) {
         casper.evaluate(function () {
             document.querySelector('select#FilterFromYear').selectedIndex = 15;// set 2015
             document.querySelector('select#FilterFromDay').selectedIndex = 14;  // from day
+            document.querySelector('select#FilterFromMonth').selectedIndex = 2;
             document.querySelector('select#FilterToDay').selectedIndex = 14; //to day
+            document.querySelector('select#FilterToMonth').selectedIndex = 2;
+            //this.capture('./data/setting2.png');
         }); //select past one month data
     },function onTimeout() {
         if (retry) {
@@ -200,7 +183,7 @@ var configSetting = function (casper) {
         }
         
     }, 10000).thenClick('#FilterBar > button', function () {
-        this.capture('./data/setting2.png');
+        //this.capture('./data/setting2.png');
     })
 }
 exports.configSetting = configSetting;
