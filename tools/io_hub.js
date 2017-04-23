@@ -20,7 +20,7 @@ var createWs = function (pid, callback) {
     };
 
     ws.onmessage = function (evt) {
-        console.log("[WEBSOCKET]Received uid[" + evt.data + "]");
+        console.log("[WEBSOCKET]Received " + evt.data);
         //ws.send(evt.data);
         if (evt.data == "COOL") {
             msgPage.echo("COOL DOWNING, PLEASE WAIT FOR 15 MINUTES");

@@ -74,6 +74,9 @@ var getHref = function (casper, callback) { //get message href
 
 var extractMessages = function (casper, callback) { //extract information
     var message = {};
+    var re = /\^\d+\(/g;
+    var temp_id = re.exec(casper.getCurrentUrl())
+    message.id = temp_id[0];
     message.pubName = casper.evaluate(getInnerHTML, 'td.pubName');
     message.pubName = message.pubName.replace(/<\/?.+?>/g, "").replace(/[\'\"\\\/\b\f\n\r\t&nbsp;]/g, '').trim();
     message.headline = casper.evaluate(getInnerHTML, 'td.headline');
@@ -86,7 +89,7 @@ var extractMessages = function (casper, callback) { //extract information
     //casper.echo("time: "+message.time);
     message.author = temp[0];
     //casper.echo("author: "+message.author);
-    callback(JSON.stringify(message));
+    callback(JSON.stringify(messasetting3ge));
 }
 
 var getRandomWait = function (casper, min, max) {
@@ -102,7 +105,8 @@ var openMessagePage = function (url, casper) { //open message page function atta
         }, function success() {
             extractMessages(casper, function (msg) {
                 var dd = msg.replace(/<\/?.+?>/g, ""); //delete html tag
-                fs.write('./data/result.json', dd + ',', 'a+');
+                fs.write('./data/result101.json', dd + ',', 'a+');
+                //casper.emit('thread.send',dd);
                 casper.echo(dd);
                 casper.capture('./data/fail'+self_PID+'.png');
             });
@@ -163,7 +167,7 @@ var configSetting = function (casper) {
         casper.emit('thread.check');
     }).waitFor(function check() {
         //this.capture('./data/setting1.png');
-        return casper.exists('#FilterFromMonth');
+        return casper.exists('#FilterFromDay');
     }, function success() {
         casper.evaluate(function () {
             document.querySelector('select#FilterFromYear').selectedIndex = 15;// set 2015
@@ -171,7 +175,7 @@ var configSetting = function (casper) {
             document.querySelector('select#FilterFromMonth').selectedIndex = 2;
             document.querySelector('select#FilterToDay').selectedIndex = 14; //to day
             document.querySelector('select#FilterToMonth').selectedIndex = 2;
-            //this.capture('./data/setting2.png');
+            this.capture('./data/setting2.png');
         }); //select past one month data
     },function onTimeout() {
         if (retry) {

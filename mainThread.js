@@ -29,14 +29,19 @@ var msgPage = require("casper").create({
         loadPlugins: true,
         userAgent: userAgentPool[0]
     },
-    viewportSize: { width: 1024, height: 600 } //page size setting
+    viewportSize: { width: 1024, height: 600 }, //page size setting
     //        ,
-    //        verbose: true,
-    //        logLevel: "debug"
+        //    verbose: true,
+        //    logLevel: "debug",
+    onError: function(msg, backtrace) {
+            this.capture('error.png');
+            console.log("ERRROR:"+msg);
+            //throw new ErrorFunc("fatal","error","filename",backtrace,msg);
+        }
 });
 
 var x = require('casper').selectXPath;
-var news = require('./tools/newsGetter');
+var news = require('./tools/news_extract');
 var cookies = require('./tools/Cookies');
 var socket = require('./tools/io_hub');
 var fs = require('fs');
@@ -72,6 +77,12 @@ function bindThreadListener(casper, PID) {
         }
     });
 
+    casper.on('thread.send', function(msg) {
+        //if (msg) {
+            socket.sendWs(msg,'MESSAGE',PID);
+        //}
+    });
+
     casper.on('thread.check', function() {
         this.echo("Sending Status Checking");
         socket.sendWs(1, 'LIVE', PID);
@@ -93,23 +104,25 @@ function checkThreadExit(casper) {
     NUM++;
     casper.echo("Thread:" + NUM + " finished");
     casper.emit('thread.completed');
-    this.exit();
+    //this.exit();
 }
 
 //三个线程开始运行
 function startScraping(UID) {
     msgPage.start(URL, function () {
         news.login(USER, PASS, msgPage);
-        pageURL = utils.format('http://libwisenews.wisers.net.lib-ezproxy.hkbu.edu.hk/wisenews/content.do?wp_dispatch=menu-content&menu-id=/commons/CFT-HK/DA000-DA003-DA010-/DA000-DA003-DA010-65107-&cp&cp_s=%s&cp_e=%s', parseInt(UID), parseInt(UID) + 50);
-        this.echo("pageURL: " + pageURL);
+        //pageURL = utils.format('http://libwisenews.wisers.net.lib-ezproxy.hkbu.edu.hk/wisenews/content.do?wp_dispatch=menu-content&menu-id=/commons/CFT-HK/DA000-DA003-DA010-/DA000-DA003-DA010-65107-&cp&cp_s=%s&cp_e=%s', parseInt(UID), parseInt(UID) + 50);
+        //this.echo("pageURL: " + pageURL);
     }).then(function () {
-        news.configSetting(msgPage);
+        news.configSetting(UID, msgPage);
+    }).then(function(){
+        news.firstPage(msgPage);
     }).then(function () {
-        news.pageProcessing(pageURL, msgPage);
+        news.pageProcessing(msgPage);
     }).run(checkThreadExit, msgPage);
 }
 
-socket.createWs(self_PID, function (UID) {
+socket.createWs(self_PID, function (UID) { //while this child process is running, connect to master process 
     bindThreadListener(msgPage, self_PID); //页面监听器绑定
     startScraping(UID);
     //statusChecker(msgPage, self_PID); 

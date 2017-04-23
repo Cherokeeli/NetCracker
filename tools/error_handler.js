@@ -43,6 +43,7 @@ exports.configure = function (casper) {
 
     casper.on("page.error", function (msg, trace) {
         this.echo("Error: " + msg);
+        socket.sendWs(0, "ERR", self_PID);
     });
 
     casper.on("resource.error", function (resourceError) {
@@ -55,4 +56,12 @@ exports.configure = function (casper) {
             console.log('Response Timeout (#' + request.id + '): ' + JSON.stringify(request));
         };
     });
+
+    casper.on("exit", function() {
+        this.capture('./data/error.png');
+    });
+
+    casper.on("error", function(msg,tract) {
+        this.echo(err);
+    })
 }

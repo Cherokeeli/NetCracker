@@ -13,7 +13,7 @@ var fs = require('fs');
 var ReadWriteLock = require('rwlock');
 var lock = new ReadWriteLock(); // initialize process lock
 var user_index = 0;
-var flag_index = 0;
+var flag_index = -1;
 var total_message = 0;
 
 
@@ -55,7 +55,7 @@ var worker_list = [];
 var task_list = [];
 var NumOfUser = 1;
 var pre = 0;
-
+var dateset = [2017,3,14,2017,3,15];
 var MongoClient = require('mongodb').MongoClient;
 var assert = require('assert');
 var url = 'mongodb://localhost:27017/Weibo';
@@ -79,8 +79,9 @@ function statusCheck() { //check the child process is alive or not, if not, kill
     for (var i = 0; i < NUM_OF_WORKERS; i++) {
         //console.log('Status Checking...' + i);
         if (curTime - worker_list[i].preTime >= 15000) { // if 10s no response
-            taskKill(i, 0);
-            myWorkerFork(0);
+            Task.kill(i, 0);
+            //myWorkerFork(0);
+            Worker.check()
         }
     }
     return;
@@ -95,23 +96,52 @@ function messageCounter(pre) {
     return Date.now();
 }
 
+function Dateset(set) {
+    this.data = set.slice(0);
+}
 
+Dateset.prototype = {
+    get: function () {
+        return this.data;
+    },
+    next: function () {
+        console.log('list function')
+        console.log(this.data[1])
+        if (this.data[1] - 1 > 0) {
+            this.data[1]-=1;
+
+        } else {
+            this.data[0]-=1;
+            this.data[1] = 11;
+        }
+
+        if (this.data[4] - 1 > 0) {
+            this.data[4]-=1;
+        } else {
+            this.data[3]-=1;
+            this.data[4] = 11;
+        }
+        return this.data;
+    }
+};
+var x = [2017, 2, 15, 2017, 3, 15];
+var dateset = new Dateset(x);
 
 var Task = {
 
     kill: function (pid, status) {
 
-        if (status) { // if normal exit
+        if (!status) { // if normal exit
             //console.log("PID:" + pid + "normally killed");
             //total_message += 50;
             //process.stdout.write('Downloading '+total_message+' messages...\r');
-        } else { // if timeout exit
+            //} else { // if timeout exit
             var task = worker_list[pid].job; // add unfinish task to task list
             task_list.push(task);
             //console.log("PID:" + pid + "killed with no response");
         }
         worker_list[pid].worker.kill();
-        worker_list[pid].isAlive = 0;
+        worker_list[pid].isAlive = 0;TypeError
         worker_list[pid].job = '';
     },
 
@@ -127,7 +157,7 @@ var Task = {
 
 
 var Worker = {
-    generate: function () { //check unworked slot in workerlist
+    generate: function (NUM_OF_WORKERS) { //check unworked slot in workerlist
         for (var i = 0; i < NUM_OF_WORKERS; i++) {
             (function (i) {
                 child = spawn(state, [thread, i]);
@@ -156,7 +186,7 @@ var Worker = {
         } // for
     },
 
-    check: function (NUM_OF_WORKERS) {
+    check: function () {
         for (var i = 0; i < NUM_OF_WORKERS; i++) {
             (function (i) {
                 if (worker_list[i].isAlive == 0) {
@@ -186,15 +216,23 @@ var Worker = {
 
     distribute: function (ws, PID) {
         lock.readLock(function (release) { // lock task_list 
-            flag_index = parseInt(task_list[0]);
+            // ws.send(flag_index);
+            // worker_list[PID].job = flag_index;
+            // console.log("Task distributed:" + flag_index);
+            //var sdata = [2017,3,14,2017,3,15];
+            var sdata = dateset.get();
+            console.log('distribute date '+sdata)
+            ws.send(JSON.stringify(sdata));
             lock.writeLock(function (release) {
+
+                dateset.next();
                 // you can write here
-                task_list = task_list.slice(1); // remove first element
-                var new_node = parseInt(task_list[task_list.length - 1]) + 50;
-                task_list.push(new_node);
-                worker_list[PID].job = flag_index;
-                //console.log("Task distributed:" + flag_index);
-                ws.send(flag_index); // distribute task
+                // task_list = task_list.slice(1); // remove first element
+                // var new_node = parseInt(task_list[task_list.length - 1]) + 50;
+                // task_list.push(new_node);
+                // worker_list[PID].job = flag_index;
+                // //console.log("Task distributed:" + flag_index);
+                // ws.send(flag_index); // distribute task
                 release();
                 // everything is now released.
             });
@@ -202,6 +240,7 @@ var Worker = {
         });
         //done();
         //flag_index += 50;
+
     }
 }
 
@@ -222,11 +261,12 @@ var Message = {
         }
     },
     addDataPool: function (message) {
-        
+
         filter.store(message, (ok, err) => {
             if (err) console.log(err);
             if (ok) {
                 console.log("Store SUCCESSFULLY");
+                pre = messageCounter(pre);
             } else {
                 console.log("Finding duplicated item!");
             }
@@ -234,7 +274,7 @@ var Message = {
 
     },
 
-    addMongoDB: function(message) {
+    addMongoDB: function (message) {
         console.log(message.type + " add Data pool");
         MongoClient.connect(url, function (err, db) {
             assert.equal(null, err);
@@ -258,7 +298,9 @@ function resolveMessages(message, ws) {
             worker_list[message.PID].get = message.data;
             break;
         case "END":
+            console.log("getting end");
             Task.kill(message.PID, 1);
+            Worker.check();
             break;
         case "WTIMEOUT":
             //filter.store(worker_list[message.PID].job);
@@ -274,7 +316,9 @@ function resolveMessages(message, ws) {
             //console.log("Getting LIVE");
             break;
         case "MESSAGE":
-            Message.addDataPool(message);
+            Message.addDataPool(message.data);
+            break;
+        case "ERR":
             break;
     }
 }

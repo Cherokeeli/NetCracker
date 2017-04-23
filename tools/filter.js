@@ -12,13 +12,11 @@ var bloom = new BloomFilter( //initialize bloom filter
     32 * 256, // number of bits to allocate.
     16 // number of hash functions.
 ); // bloom filter
-
 module.exports = {
     store: function (msg,callback) {
-        var form_txt = JSON.parse(msg)
         if (!bloom.test(msg.id)) {
             bloom.add(msg.id);
-            fs.writeFile('./data/result.json',JSON.stringify(msg),'utf8','w+',(err) => {
+            fs.writeFile('./data/result101.json',JSON.stringify(msg)+',','utf8','a+',(err) => {
                 if (err) return callback(err);
                 //console.log("Store in cache successfully");
                 callback(true);
