@@ -64,7 +64,8 @@ function getAttriValue(selector, attribute) {
 
 //var pageURL = 'http://libwisenews.wisers.net.lib-ezproxy.hkbu.edu.hk/wisenews/content.do?wp_dispatch=menu-content&menu-id=/commons/CFT-HK/DA000-DA003-DA010-/DA000-DA003-DA010-65107-&cp&cp_s=0&cp_e=50';
 var baseURL = 'http://libwisenews.wisers.net.lib-ezproxy.hkbu.edu.hk';
-var retry = 5;
+var config_retry = 20;
+var page_retry = 20;
 
 var getHref = function (casper, callback) { //get message href
     var hrefs = [];
@@ -130,14 +131,14 @@ var firstPage = function (casper) {
     casper.echo('in first page');
     casper.capture('./data/page' + self_PID + '.png');
     casper.echo('Current URL is' + casper.getCurrentUrl());
-    casper.thenOpen(url, function () {
+    return casper.thenOpen(url, function () {
         getHref(casper, function (href) {
             //casper.echo(href[0]);
             for (var i = 0; i < href.length; i++) {
                 var url = baseURL + href[i];
                 (function (i, url) {
                     //casper.echo("url: " + href[i]);
-                    casper.wait(4000, function () {
+                    casper.wait(1000, function () {
                         casper.emit('thread.check');
                         openMessagePage(url, casper);
                         casper.emit('thread.tasksfinished');
@@ -154,16 +155,34 @@ var pageProcessing = function (casper) {
     casper.echo('pageprocessing');
     var url = 'http://libwisenews.wisers.net.lib-ezproxy.hkbu.edu.hk/wisenews/content.do?wp_dispatch=menu-content&srp_save&menu-id=/commons/CFT-HK/DA000-DA003-DA010-/DA000-DA003-DA010-65107-';
     return casper.thenOpen(url).thenClick('nobr.NavigationTile a:last-child', function () { // click next page button 
-            //this.echo('Pageing in: ' + pageURL);
-            casper.emit('thread.check');
-            casper.waitFor(function check() {
-                this.capture('./data/settingERROR.png')
-                //this.echo("")
-                //return this.evaluate(getCurrentInfosNum,'.ClipItemRow') >= 50;
-                return !this.visible('nobr.NavigationTile a:last-child'); // if still have next page button, then run into onFail function
-            }, function success() { // if no next page
+        //this.echo('Pageing in: ' + pageURL);
+        casper.emit('thread.check');
+        casper.waitFor(function check() {
+            this.capture('./data/settingERROR.png')
+            //this.echo("")
+            //return this.evaluate(getCurrentInfosNum,'.ClipItemRow') >= 50;
+            return !this.visible('nobr.NavigationTile a:last-child'); // if still have next page button, then run into onFail function
+        }, function success() { // if no next page
+            this.capture('./data/page' + self_PID + '.png');
+            this.echo('Current URL is ' + this.getCurrentUrl());
+            getHref(casper, function (href) {
+                //casper.echo(href[0]);
+                for (var i = 0; i < href.length; i++) {
+                    var url = baseURL + href[i];
+                    (function (i, url) {
+                        //casper.echo("url: " + href[i]);
 
-            }, function onFail() { // if  still have next page 
+                        casper.wait(1000, function () {
+                            casper.emit('thread.check');
+                            openMessagePage(url, casper);
+                            casper.emit('thread.tasksfinished');
+                        });
+                        casper.capture('./data/fail' + self_PID + '.png');
+                    })(i, url); //closure
+                } //for
+            });
+        }, function onFail() { // if  sticasper.emit('thread.retrytimeout');ll have next page 
+            if (page_retry--) {
                 this.capture('./data/page' + self_PID + '.png');
                 this.echo('Current URL is ' + this.getCurrentUrl());
                 getHref(casper, function (href) {
@@ -173,7 +192,7 @@ var pageProcessing = function (casper) {
                         (function (i, url) {
                             //casper.echo("url: " + href[i]);
 
-                            casper.wait(4000, function () {
+                            casper.wait(1000, function () {
                                 casper.emit('thread.check');
                                 openMessagePage(url, casper);
                                 casper.emit('thread.tasksfinished');
@@ -183,8 +202,11 @@ var pageProcessing = function (casper) {
                     } //for
                 });
                 pageProcessing(casper); // continue next page button
-            }, 6000);
-        });
+            } else {
+                casper.emit('thread.retrytimeout');
+            }
+        }, 6000);
+    });
 }
 exports.pageProcessing = pageProcessing;
 
@@ -218,7 +240,7 @@ var configSetting = function (UID, casper) {
             });
 
         }, function onTimeout() {
-            if (retry) {
+            if (config_retry--) {
                 this.echo("Timeout when connect " + url + ' Need Reconnecting...');
                 configSetting(UID, casper);
                 //retry--; // infinite retry time or count times

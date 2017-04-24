@@ -31,13 +31,13 @@ var msgPage = require("casper").create({
     },
     viewportSize: { width: 1024, height: 600 }, //page size setting
     //        ,
-        //    verbose: true,
-        //    logLevel: "debug",
-    onError: function(msg, backtrace) {
-            this.capture('error.png');
-            console.log("ERRROR:"+msg);
-            //throw new ErrorFunc("fatal","error","filename",backtrace,msg);
-        }
+    //    verbose: true,
+    //    logLevel: "debug",
+    onError: function (msg, backtrace) {
+        this.capture('error.png');
+        console.log("ERRROR:" + msg);
+        //throw new ErrorFunc("fatal","error","filename",backtrace,msg);
+    }
 });
 
 var x = require('casper').selectXPath;
@@ -77,23 +77,23 @@ function bindThreadListener(casper, PID) {
         }
     });
 
-    casper.on('thread.send', function(msg) {
+    casper.on('thread.send', function (msg) {
         //if (msg) {
-            socket.sendWs(msg,'MESSAGE',PID);
+        socket.sendWs(msg, 'MESSAGE', PID);
         //}
     });
 
-    casper.on('thread.check', function() {
+    casper.on('thread.check', function () {
         this.echo("Sending Status Checking");
         socket.sendWs(1, 'LIVE', PID);
     });
 
-    casper.on('thread.retrytimeout', function() {
+    casper.on('thread.retrytimeout', function () {
         this.echo('Retry Connection Timeout');
         socket.sendWs(1, 'WTIMEOUT', PID);
     });
 
-    casper.on('thread.tasksfinished', function() {
+    casper.on('thread.tasksfinished', function () {
         socket.sendWs(1, 'COUNT', PID);
     })
 }
@@ -111,15 +111,20 @@ function checkThreadExit(casper) {
 function startScraping(UID) {
     msgPage.start(URL, function () {
         news.login(USER, PASS, msgPage);
+        this.then(function () {
+            news.configSetting(UID, msgPage);
+        });
+        this.then(function() {
+            news.firstPage(msgPage);
+        });
         //pageURL = utils.format('http://libwisenews.wisers.net.lib-ezproxy.hkbu.edu.hk/wisenews/content.do?wp_dispatch=menu-content&menu-id=/commons/CFT-HK/DA000-DA003-DA010-/DA000-DA003-DA010-65107-&cp&cp_s=%s&cp_e=%s', parseInt(UID), parseInt(UID) + 50);
         //this.echo("pageURL: " + pageURL);
-    }).then(function () {
-        news.configSetting(UID, msgPage);
-    }).then(function(){
-        news.firstPage(msgPage);
-    }).then(function () {
-        news.pageProcessing(msgPage);
-    }).run(checkThreadExit, msgPage);
+    });
+    msgPage.then(function () {
+            news.pageProcessing(msgPage);
+    });
+    
+    msgPage.run(msgPage);
 }
 
 socket.createWs(self_PID, function (UID) { //while this child process is running, connect to master process 

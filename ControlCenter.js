@@ -55,7 +55,7 @@ var worker_list = [];
 var task_list = [];
 var NumOfUser = 1;
 var pre = 0;
-var dateset = [2017,3,14,2017,3,15];
+var dateset = [2017, 3, 14, 2017, 3, 15];
 var MongoClient = require('mongodb').MongoClient;
 var assert = require('assert');
 var url = 'mongodb://localhost:27017/Weibo';
@@ -105,26 +105,62 @@ Dateset.prototype = {
         return this.data;
     },
     next: function () {
-        console.log('list function')
-        console.log(this.data[1])
-        if (this.data[1] - 1 > 0) {
-            this.data[1]-=1;
+        
+        if (this.data[2] - 1 > 0) { // if day-1 not equal 0
+            this.data[2]--;
 
-        } else {
-            this.data[0]-=1;
-            this.data[1] = 11;
+        } else { // if day-1 equal 0,shift to last month
+            if (this.data[1] - 1 > 0) { // if month -1 not equal 0
+                this.data[1]--;
+                if ([1, 3, 5, 7, 8, 10, 12].indexOf(this.data[1]) != -1) { this.data[2] = 31; }
+                else {
+                    if (this.data[1] == 2) { // if 2month
+                        if ((this.data[0] % 100 == 0 && this.data[0] % 400 == 0) || this.data[0] % 4 == 0)
+                            this.data[2] = 29;
+                        else
+                            this.data[2] = 28;
+                    } else { // not 2month
+                        this.data[2] = 30;
+                    }
+                }
+            } else { // if month -1 ==0, shift to last year
+                this.data[0]--;
+                this.data[1] = 12;
+                this.data[2] = 31;
+            }
+
         }
 
-        if (this.data[4] - 1 > 0) {
-            this.data[4]-=1;
-        } else {
-            this.data[3]-=1;
-            this.data[4] = 11;
+        if (this.data[5] - 1 > 0) { // if day-1 not equal 0
+            this.data[5]--;
+
+        } else { // if day-1 equal 0,shift to last month
+            if (this.data[4] - 1 > 0) { // if month -1 not equal 0
+                this.data[4]--;
+                if ([1, 3, 5, 7, 8, 10, 12].indexOf(this.data[4]) != -1) { this.data[5] = 31; }
+                else {
+                    if (this.data[4]== 2) { // if 2month
+                        if ((this.data[3] % 100 == 0 && this.data[3] % 400 == 0) || this.data[3] % 4 == 0)
+                            this.data[5] = 29;
+                        else
+                            this.data[5] = 28;
+                    } else { // not 2month
+                        this.data[5] = 30;
+                    }
+                }
+            } else { // if month -1 ==0, shift to last year
+                this.data[3]--;
+                this.data[4] = 12;
+                this.data[5] = 31;
+            }
+
         }
+
         return this.data;
     }
 };
-var x = [2017, 2, 15, 2017, 3, 15];
+var x = [2016, 4, 20, 2016, 4, 20];
+//var x = [2017,3,15,2017,3,15];
 var dateset = new Dateset(x);
 
 var Task = {
@@ -141,7 +177,7 @@ var Task = {
             //console.log("PID:" + pid + "killed with no response");
         }
         worker_list[pid].worker.kill();
-        worker_list[pid].isAlive = 0;TypeError
+        worker_list[pid].isAlive = 0;
         worker_list[pid].job = '';
     },
 
@@ -221,7 +257,7 @@ var Worker = {
             // console.log("Task distributed:" + flag_index);
             //var sdata = [2017,3,14,2017,3,15];
             var sdata = dateset.get();
-            console.log('distribute date '+sdata)
+            console.log('distribute date ' + sdata)
             ws.send(JSON.stringify(sdata));
             lock.writeLock(function (release) {
 

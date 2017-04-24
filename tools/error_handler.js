@@ -46,9 +46,9 @@ exports.configure = function (casper) {
         socket.sendWs(0, "ERR", self_PID);
     });
 
-    casper.on("resource.error", function (resourceError) {
-        this.echo("ResourceError: " + JSON.stringify(resourceError, undefined, 4));
-    });
+    // casper.on("resource.error", function (resourceError) {
+    //     this.echo("ResourceError: " + JSON.stringify(resourceError, undefined, 4));
+    // });
 
     // http://docs.casperjs.org/en/latest/events-filters.html#page-initialized
     casper.on("page.initialized", function (page) {
