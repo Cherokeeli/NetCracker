@@ -53,8 +53,7 @@ var pageURL;
 loaderror.configure(msgPage);
 
 
-var USER = '16420535';
-var PASS = 'Ql.1994822';
+
 var URL = 'http://library.hkbu.edu.hk/main/quicklink_Wisenews.html';
 var UID;
 var NUM = 0;
